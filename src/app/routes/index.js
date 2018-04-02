@@ -1,4 +1,5 @@
 import { h } from "hyperapp"
+import { Enter } from "@hyperapp/transitions"
 
 import state from "app/state"
 import actions from "app/actions"
@@ -20,16 +21,18 @@ export default [
 		path: "/",
 		name: homePageName,
 		render: (props) => (
-			<Home
-				state={state}
-				actions={actions}
-				name={homePageName}
-				metaTitle={"Inès Guerrini - Creative UI Designer"}
-				desc={
-					"Hi, I'm Inès Guerrini, a Creative UI Designer specialized in web, interaction and motion design. I'm based in Nantes and available for freelance."
-				}
-				{...props}
-			/>
+			<Enter css={{ opacity: "0", transform: "translateX(100%)" }}>
+				<Home
+					state={state}
+					actions={actions}
+					name={homePageName}
+					metaTitle={"Inès Guerrini - Creative UI Designer"}
+					desc={
+						"Hi, I'm Inès Guerrini, a Creative UI Designer specialized in web, interaction and motion design. I'm based in Nantes and available for freelance."
+					}
+					{...props}
+				/>
+			</Enter>
 		),
 	},
 	{
