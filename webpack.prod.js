@@ -6,6 +6,7 @@ const HtmlPlugin = require("html-webpack-plugin")
 const UglifyJsPlugin = require("uglifyjs-webpack-plugin")
 const PurifyCSSPlugin = require("purifycss-webpack")
 const WebappPlugin = require("webapp-webpack-plugin")
+const CompressionPlugin = require("compression-webpack-plugin")
 const common = require("./webpack.common.js")
 
 module.exports = merge(common, {
@@ -87,10 +88,14 @@ module.exports = merge(common, {
 		}),
 		new PurifyCSSPlugin({
 			minimize: true,
-			paths: glob.sync([
-				path.join(__dirname, "src/.html"),
-				path.join(__dirname, "src/.js")
-			]),
+			paths: glob.sync([path.join(__dirname, "src/.html"), path.join(__dirname, "src/.js")]),
+		}),
+		new CompressionPlugin({
+			asset: "[path].gz[query]",
+			algorithm: "gzip",
+			test: /\.js$|\.css$|\.html$|\.eot?.+$|\.ttf?.+$|\.woff?.+$|/,
+			threshold: 10240,
+			minRatio: 0.8,
 		}),
 	],
 })

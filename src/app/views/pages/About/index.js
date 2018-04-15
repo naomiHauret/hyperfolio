@@ -1,18 +1,24 @@
 import { h } from "hyperapp"
 import { Enter, Exit } from "@hyperapp/transitions"
-import DistortedBackground from "app/views/components/DistortedBackground"
-import GlitchPortrait from "app/views/components/GlitchPortrait"
+
+import DistortedImage from "app/views/components/DistortedImage"
+import GlitchImage from "app/views/components/GlitchImage"
+
+import portrait from "assets/images/content/portrait.jpg"
+import letters from "assets/images/content/letters.png"
+import filter from "assets/images/filters/displacement.svg"
 
 export default ({ state, actions, name, metaTitle, desc }) => (
-	<Enter css={{ opacity: "0" }}>
-		<Exit css={{ opacity: "0", transform: "scale(2.0,2.0)" }}>
-			<div oncreate={actions.setPageMetaData({ metaTitle, desc })} onupdate={actions.setPageMetaData({ metaTitle, desc })}>
-				<h1>{name}</h1>
-				<div>
-					<GlitchPortrait />
-					<DistortedBackground />
-				</div>
+	<div
+		key="aboutpage"
+		oncreate={actions.setPageMetaData({ metaTitle, desc })}
+		onupdate={actions.setPageMetaData({ metaTitle, desc })}
+	>
+		<Enter>
+			<div>
+				<GlitchImage id="portrait" src={portrait} />
+				<DistortedImage id="lettersBackground" src={letters} filterSrc={filter} />
 			</div>
-		</Exit>
-	</Enter>
+		</Enter>
+	</div>
 )

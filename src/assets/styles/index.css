@@ -1,11 +1,4 @@
 @font-face {
-	font-family: "Druchilla";
-	font-path: "./../fonts/Druchilla";
-	font-weight: normal;
-	font-style: normal;
-}
-
-@font-face {
 	font-family: "Playfair";
 	font-path: "./../fonts/PlayfairDisplay-Regular";
 	font-weight: normal;
@@ -13,38 +6,17 @@
 }
 
 @font-face {
-	font-family: "PlayfairItalic";
-	font-path: "./../fonts/PlayfairDisplay-Italic";
+	font-family: "Pacifico";
+	font-path: "./../fonts/Pacifico";
 	font-weight: normal;
-	font-style: italic;
-}
-
-@font-face {
-	font-family: "PlayfairBlack";
-	font-path: "./../fonts/PlayfairDisplay-Black";
-	font-weight: bolder;
 	font-style: normal;
 }
 
 @font-face {
-	font-family: "PlayfairBlackItalic";
-	font-path: "./../fonts/PlayfairDisplay-BlackItalic";
-	font-weight: bolder;
-	font-style: italic;
-}
-
-@font-face {
-	font-family: "PlayfairBlack";
-	font-path: "./../fonts/PlayfairDisplay-Black";
+	font-family: "PassionOne";
+	font-path: "./../fonts/PassionOne-Bold";
 	font-weight: bold;
 	font-style: normal;
-}
-
-@font-face {
-	font-family: "PlayfairBoldItalic";
-	font-path: "./../fonts/PlayfairDisplay-BoldItalic";
-	font-weight: bold;
-	font-style: italic;
 }
 
 @import-normalize;
@@ -53,9 +25,14 @@
 	box-sizing: border-box;
 }
 
+html {
+	font-size: 16px;
+}
+
 body {
 	display: flex;
 	flex-direction: column;
 	min-height: 100vh;
 	margin: 0 auto;
+	background-color: black;
 }

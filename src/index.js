@@ -5,7 +5,6 @@ import state from "app/state"
 import actions from "app/actions"
 
 import App from "app/views"
-// import "assets/fonts/Druchilla.ttf"
 import "assets/styles/index.css"
 
 const view = (state, actions) => <App state={state} actions={actions} />

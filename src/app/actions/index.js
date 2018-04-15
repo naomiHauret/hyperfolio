@@ -1,7 +1,9 @@
 import { location } from "@hyperapp/router"
-import seoActions from "./seo"
+import pageActions from "./page"
+import musicActions from "./music"
 
 export default {
 	location: location.actions,
-	...seoActions,
+	...pageActions,
+	...musicActions,
 }

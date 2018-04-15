@@ -1,14 +1,11 @@
 import { h } from "hyperapp"
-import letters from "assets/images/content/letters.png"
-import distortionFilter from "assets/images/filters/distortion.jpg"
 import cxs from "cxs"
-
 import { Application, filters, Sprite } from "pixi.js"
 
 const canvasMaxWidth = 650 // in px
 const canvasHeight = 350 // in px
 
-const startDistortionAnimation = () => {
+const startDistortionAnimation = (id, src, filterSrc) => {
 	let app = new Application(canvasMaxWidth, canvasHeight, { transparent: true })
 	app.renderer.view.style.position = "absolute"
 	app.renderer.view.style.display = "block"
@@ -19,16 +16,18 @@ const startDistortionAnimation = () => {
 
 	let count = 0 // will serve for animation
 
-	document.querySelector("#distordedLettersContainer").appendChild(app.view)
+	setTimeout(() => {
+		document.querySelector(`#${id}`).appendChild(app.view)
+	}, 50) 
 
-	let distortedImageSprite = Sprite.fromImage(letters) // image we want to apply distorsion on
+	let distortedImageSprite = Sprite.fromImage(src) // image we want to apply distorsion on
 	distortedImageSprite.anchor.x = 0
 
-	let distortionSprite = Sprite.fromImage(distortionFilter) // distortion filter image (can be any image)
+	let distortionSprite = Sprite.fromImage(filterSrc) // distortion filter image (can be any image)
 
 	let appliedDistortionFilter = new filters.DisplacementFilter(distortionSprite) // create distortion filter based on our distortion filter image
-	distortionSprite.scale.y = 1.5
-	distortionSprite.scale.x = 1.5
+	distortionSprite.scale.y = 0.5
+	distortionSprite.scale.x = 0.5
 
 	app.stage.addChild(distortionSprite)
 	app.stage.addChild(distortedImageSprite)
@@ -36,13 +35,13 @@ const startDistortionAnimation = () => {
 	app.ticker.add((delta) => {
 		distortionSprite.x = count * 60
 		distortionSprite.y = count * 60
-		count += 0.005
+		count += 0.0025
 		app.stage.filters = [appliedDistortionFilter]
 		app.render(app.stage)
 	})
 }
 
-export default () => (
+export default ({ id, src, filterSrc }) => (
 	<div
 		class={cxs({
 			height: `${canvasHeight}px`,
@@ -51,7 +50,7 @@ export default () => (
 			alignItems: "center",
 			justifyContent: "center",
 		})}
-		oncreate={startDistortionAnimation}
-		id="distordedLettersContainer"
+		oncreate={startDistortionAnimation(id, src, filterSrc)}
+		id={id}
 	/>
 )

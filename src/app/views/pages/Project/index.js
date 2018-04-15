@@ -1,11 +1,10 @@
 import { h } from "hyperapp"
-import { Switch, Route, Link } from "@hyperapp/router"
 
-export default ({ state, actions, name, metaTitle, desc }) => (
+export default ({ state, actions }) => (
 	<div
 		oncreate={actions.setPageMetaData({ metaTitle, desc })}
 		onupdate={actions.setPageMetaData({ metaTitle, desc })}
-		key="projectspage"
 	>
+		<h1>Prjt</h1>
 	</div>
 )

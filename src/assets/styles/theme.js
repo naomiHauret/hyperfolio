@@ -1,14 +1,20 @@
 import DesignSystem from "design-system-utils"
 
+const pxFontSize = {
+	sm: 14,
+	base: 16,
+	lg: 27.23,
+	xl: 50,
+	xxl: 300,
+}
+
 const fontFamily = {
 	text:
 		'"Playfair", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Fira Sans", "Droid Sans"',
-	title: '"Druchilla", Georgia, "Times New Roman", Times, serif',
-}
-
-const transitions = {
-	duration: "300ms",
-	timing: "cubic-bezier(0.77, 0, 0.175, 1)",
+	error: {
+		code: '"PassionOne"',
+		text: '"Pacifico"',	
+	}
 }
 
 const colorPalette = {
@@ -28,43 +34,28 @@ export const myDesignSystem = {
 		xl: 1440,
 		xxl: 1920,
 	},
-
 	typo: {
-		baseFontSize: "16px",
-
+		pxFontSize: {
+			...pxFontSize,
+		},
 		sizes: {
-			xs: -2,
-			s: -1,
-			base: 1, // [default] p, h5, h6
-			m: 1.5, // h4
-			l: 2, // h3
-			xl: 3, // h2
-			xxl: 4, // h1
+			sm: `${pxFontSize.sm / pxFontSize.base}rem`, // ~ 14px ,
+			base: 1, // 16px
+			lg: `${pxFontSize.lg / pxFontSize.base}rem`, // ~ 27.23px
+			xl: `${pxFontSize.xl / pxFontSize.base}rem`, // ~ 50px
+			xxl: `${pxFontSize.xxl / pxFontSize.base}rem`, // ~ 300px
 		},
-
-		modularscale: {
-			base: 16, // should be the same as baseFontSize
-			ratio: 1.5,
-		},
-
 		fontFamily,
 		fontFamilyBase: fontFamily.text,
-		fontFamilyHeadings: fontFamily.title,
-
+		fontWeight: {
+			normal: "normal",
+		},
 		lineHeight: {
 			headings: 1.1,
 		},
-
-		fontWeight: {
-			normal: 300, // Useful to set here if using anything other than `normal`
-			bold: "bold", // Useful to set here when bold webfonts come as 400 font-weight.
-			headings: "bold", // instead of browser default, bold
-		},
 	},
-
 	colors: {
 		...colorPalette,
-
 		background: {
 			dark: colorPalette.black,
 			light: colorPalette.white,
@@ -72,36 +63,40 @@ export const myDesignSystem = {
 			rainbow: colorPalette.rainbow,
 			placeholders: colorPalette.grey,
 		},
-
 		text: {
+			link: colorPalette.white,
 			paragraph: colorPalette.white,
 			title: colorPalette.blue,
 			rainbow: colorPalette.pink,
 		},
 	},
-
 	zIndex: {
 		base: 0,
 		mid: 2,
 		high: 3,
 	},
-
 	spacing: {
 		baseline: 20,
 		padding: "0.3em",
 		scale: [0, 8, 16, 24, 32, 40],
+		video : {
+			ytWatermark: "50px",
+		}
 	},
-
-	transition: {
-		default: {
-			duration: transitions.duration,
-			timing: transitions.timing,
-			transition: `all ${transitions.duration} ${transitions.timing}`,
+	dimensions: {
+		video: {
+			cover:{
+				width: 1328.77,
+				height: 565.472,
+			},
+			showcase: {
+				width: 923,
+				height: 491,
+			},
 		},
 	},
-
-	borderRadius: {
-		button: "0.9375em",
+	transition: {
+		fast: "all 350ms ease-in-out",
 	},
 }
 
