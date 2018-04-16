@@ -13,7 +13,7 @@ const startPortraitAnimation = (id, src) => {
 
 	setTimeout(() => {
 		document.querySelector(`#${id}`).appendChild(app.view)
-	}, 50) 
+	}, 50)
 
 	let baseImage = Sprite.fromImage(src)
 	let crtfFilter = new CRTFilter({
@@ -33,7 +33,6 @@ const startPortraitAnimation = (id, src) => {
 		offset: 150,
 		direction: 0,
 		average: false,
-
 	})
 
 	let motionBlurFilter = new MotionBlurFilter({
@@ -44,12 +43,11 @@ const startPortraitAnimation = (id, src) => {
 		kernelSize: 25,
 		offset: 0,
 	})
- 
+
 	app.stage.addChild(baseImage)
 	setInterval(() => {
 		glitchFilter.slices = 150
 	}, 8500)
-
 
 	app.ticker.add((delta) => {
 		glitchFilter.slices - 5 > 0 ? (glitchFilter.slices -= 5) : (glitchFilter.slices += 0.0005 * Math.random())
@@ -61,4 +59,4 @@ const startPortraitAnimation = (id, src) => {
 	})
 }
 
-export default ({id, src}) => <div oncreate={startPortraitAnimation(id, src)} id={id} />
+export default ({ id, src }) => <div oncreate={startPortraitAnimation(id, src)} id={id} />

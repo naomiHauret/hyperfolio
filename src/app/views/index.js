@@ -30,22 +30,27 @@ const notFoundPageStyle = cxs({
 })
 
 export default ({ state, actions }) => {
-	routes.map((route) => route.path).includes(state.location.pathname)
-		&& state.isPlayingMusic === true
+	routes.map((route) => route.path).includes(state.location.pathname) && state.isPlayingMusic === true
 		? music.play()
 		: music.pause()
 
-	return <div
-		class={`
+	return (
+		<div
+			class={`
 			${defaultStyle}
 			${routes.map((route) => route.path).includes(state.location.pathname) === false ? notFoundPageStyle : ""}
 		`}
-	>
-		{routes.map((route) => route.path).includes(state.location.pathname) && <Header state={state} />}
-		{routes.map((route) => route.path).includes(state.location.pathname) && <Navigation state={state} actions={actions} />}
-		{routes.map((route) => route.path).includes(state.location.pathname) && <ToggleMusic state={state} actions={actions} />}
-		<DottedBackground />
+		>
+			{routes.map((route) => route.path).includes(state.location.pathname) && <Header state={state} />}
+			{routes.map((route) => route.path).includes(state.location.pathname) && (
+				<Navigation state={state} actions={actions} />
+			)}
+			{routes.map((route) => route.path).includes(state.location.pathname) && (
+				<ToggleMusic state={state} actions={actions} />
+			)}
+			<DottedBackground />
 
-		<Switch>{routes.map((route) => <Route {...route} />)}</Switch>
-	</div>
+			<Switch>{routes.map((route) => <Route {...route} />)}</Switch>
+		</div>
+	)
 }

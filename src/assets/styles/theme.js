@@ -13,8 +13,8 @@ const fontFamily = {
 		'"Playfair", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Fira Sans", "Droid Sans"',
 	error: {
 		code: '"PassionOne"',
-		text: '"Pacifico"',	
-	}
+		text: '"Pacifico"',
+	},
 }
 
 const colorPalette = {
@@ -79,13 +79,13 @@ export const myDesignSystem = {
 		baseline: 20,
 		padding: "0.3em",
 		scale: [0, 8, 16, 24, 32, 40],
-		video : {
+		video: {
 			ytWatermark: "50px",
-		}
+		},
 	},
 	dimensions: {
 		video: {
-			cover:{
+			cover: {
 				width: 1328.77,
 				height: 565.472,
 			},

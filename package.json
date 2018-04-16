@@ -6,7 +6,7 @@
   "scripts": {
     "start": "npm run dev",
     "dev:build": "npx rimraf dist && npx webpack --config webpack.dev.js",
-    "prod:build": "npx rimraf dist && npx webpack --config webpack.prod.js",
+    "prod:build": "npx rimraf dist && npx webpack --config webpack.prod.js && npx rimraf dist/dist",
     "dev:wds": "npx webpack-dev-server --open --port 3000 --content-base dist --history-api-fallback --watch-content-base --config webpack.dev.js",
     "prod:wds": "npx webpack-dev-server --open --compress --port 3000 --content-base dist --history-api-fallback --watch-content-base --config webpack.prod.js",
     "dev": "npm run dev:build && npm run dev:wds",

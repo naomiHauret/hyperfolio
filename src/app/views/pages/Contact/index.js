@@ -16,14 +16,11 @@ export default ({ state, actions, name, metaTitle, desc }) => (
 			<div>
 				<DistortedImage id="lettersBackground" src={letters} filterSrc={filter} />
 				<form
-					class={
-						cxs({
-							display: "flex",
-							flexDirection: "column",
-						})
-					}
+					class={cxs({
+						display: "flex",
+						flexDirection: "column",
+					})}
 				>
-
 					<label>
 						<div>Name</div>
 						<input

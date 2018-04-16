@@ -18,7 +18,7 @@ const startDistortionAnimation = (id, src, filterSrc) => {
 
 	setTimeout(() => {
 		document.querySelector(`#${id}`).appendChild(app.view)
-	}, 50) 
+	}, 50)
 
 	let distortedImageSprite = Sprite.fromImage(src) // image we want to apply distorsion on
 	distortedImageSprite.anchor.x = 0

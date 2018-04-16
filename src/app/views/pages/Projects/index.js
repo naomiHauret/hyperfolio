@@ -6,6 +6,5 @@ export default ({ state, actions, name, metaTitle, desc }) => (
 		oncreate={actions.setPageMetaData({ metaTitle, desc })}
 		onupdate={actions.setPageMetaData({ metaTitle, desc })}
 		key="projectspage"
-	>
-	</div>
+	/>
 )
