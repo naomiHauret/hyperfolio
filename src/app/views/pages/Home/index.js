@@ -1,6 +1,8 @@
 import { h } from "hyperapp"
 import { Enter, Exit } from "@hyperapp/transitions"
 import Video from "app/views/components/Video"
+import AnimatedLogo from "app/views/components/AnimatedLogo"
+
 import cxs from "cxs"
 
 export default ({ state, actions, name, metaTitle, desc }) => (
@@ -22,5 +24,6 @@ export default ({ state, actions, name, metaTitle, desc }) => (
 			autoplay={true}
 			videoId="ircCLGXBYCg"
 		/>
+		<AnimatedLogo />
 	</div>
 )

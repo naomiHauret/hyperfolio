@@ -12,7 +12,7 @@ export default ({ state, actions, name, metaTitle, desc }) => (
 		oncreate={actions.setPageMetaData({ metaTitle, desc })}
 		onupdate={actions.setPageMetaData({ metaTitle, desc })}
 	>
-		<Enter easing="ease-in-out" time={1000} css={{ transform: "translateY(-100%)" }}>
+		<Enter easing="ease-in-out" time={1000} css={{ transform: "translateY(100%)" }}>
 			<div>
 				<DistortedImage id="lettersBackground" src={letters} filterSrc={filter} />
 				<form

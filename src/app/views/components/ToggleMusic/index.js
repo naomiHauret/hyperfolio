@@ -16,6 +16,9 @@ export default ({ state, actions }) =>
 				left: "55px",
 				cursor: "pointer",
 				padding: "50px,",
+				":focus": {
+					outline: 0,
+				},
 			})}
 		>
 			x

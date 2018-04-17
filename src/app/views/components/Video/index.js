@@ -16,6 +16,11 @@ export default ({ url, loop, autoplay, videoId, type }) => {
 				maxWidth: type === "cover" ? "100vw" : "65vw",
 				margin: "auto 0",
 				transform: "translateY(-1.75%)",
+				" > iframe": {
+					":focus": {
+						outline: 0,
+					},
+				},
 			})}
 		>
 			<div
@@ -27,9 +32,7 @@ export default ({ url, loop, autoplay, videoId, type }) => {
 					width: "100%",
 					height: "100%",
 					marginTop: ds.get("spacing.video.ytWatermark"),
-					":focus": {
-						outline: 0,
-					},
+					padding: "0 4.5%",
 				})}
 				oncreate={() => {
 					let player
