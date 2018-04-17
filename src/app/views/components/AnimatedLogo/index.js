@@ -9,7 +9,7 @@ export default () => (
 			bodymovin.loadAnimation({
 				container: document.getElementById("homeAnimation"),
 				renderer: "svg",
-				loop: true,
+				loop: false,
 				autoplay: true,
 				animationData: animation,
 			})
