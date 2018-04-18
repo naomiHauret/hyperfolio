@@ -15,7 +15,7 @@ export const contactPageName = "Contact"
 export const projectsPageName = "Projects"
 export const notFoundPageName = "I think it's an error..."
 
-export const baseUrl = process.env.NODE_ENV === "production" ? "/hyperfolio" : "/"
+export const baseUrl = process.env.NODE_ENV === "production" ? "/hyperfolio/" : "/"
 export const homePageUrl = baseUrl
 export const aboutPageUrl = `${baseUrl}about`
 export const contactPageUrl = `${baseUrl}contact`
