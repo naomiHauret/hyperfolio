@@ -9,15 +9,21 @@ import Contact from "app/views/pages/Contact"
 import Projects from "app/views/pages/Projects"
 import NotFound from "app/views/pages/NotFound"
 
-const homePageName = "Home"
-const aboutPageName = "About"
-const contactPageName = "Contact"
-const projectsPageName = "Projects"
-const notFoundPageName = "I think it's an error..."
+export const homePageName = "Home"
+export const aboutPageName = "About"
+export const contactPageName = "Contact"
+export const projectsPageName = "Projects"
+export const notFoundPageName = "I think it's an error..."
 
-export default [
+export const baseUrl = process.env.NODE_ENV === "production" ? "/hyperfolio" : "/"
+export const homePageUrl = baseUrl
+export const aboutPageUrl = `${baseUrl}about`
+export const contactPageUrl = `${baseUrl}contact`
+export const projectsPageUrl = `${baseUrl}projects`
+
+export const routes = [
 	{
-		path: "/",
+		path: homePageUrl,
 		name: homePageName,
 		render: (props) => (
 			<Home
@@ -33,7 +39,7 @@ export default [
 		),
 	},
 	{
-		path: "/about",
+		path: aboutPageUrl,
 		name: aboutPageName,
 		render: (props) => (
 			<About
@@ -47,7 +53,7 @@ export default [
 		),
 	},
 	{
-		path: "/contact",
+		path: contactPageUrl,
 		name: contactPageName,
 		render: (props) => (
 			<Contact
@@ -63,7 +69,7 @@ export default [
 		),
 	},
 	{
-		path: "/projects",
+		path: projectsPageUrl,
 		name: projectsPageName,
 		render: (props) => (
 			<Projects

@@ -2,6 +2,7 @@ import { h } from "hyperapp"
 import { Link } from "@hyperapp/router"
 import { ds } from "assets/styles/theme"
 import cxs from "cxs"
+import { homePageUrl } from "app/routes"
 
 export default ({ state, actions, name, metaTitle, desc }) => (
 	<div
@@ -40,7 +41,7 @@ export default ({ state, actions, name, metaTitle, desc }) => (
 				},
 			})}
 		>
-			<Link to="/">Go back</Link>
+			<Link to={homePageUrl} >Go back</Link>
 		</button>
 	</div>
 )

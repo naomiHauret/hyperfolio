@@ -1,19 +1,20 @@
 import { h } from "hyperapp"
 import cxs from "cxs"
-import animation from "assets/animations/data.json"
-import bodymovin from "lottie-web"
+import animation from "assets/animations/animated_logo.json"
+import lottie from "lottie-web"
 
 export default () => (
 	<div
 		oncreate={() => {
-			bodymovin.loadAnimation({
+			lottie.loadAnimation({
 				container: document.getElementById("homeAnimation"),
 				renderer: "svg",
 				loop: false,
-				autoplay: true,
+				autoplay: false,
 				animationData: animation,
 			})
 		}}
+
 		class={cxs({
 			position: "fixed",
 			top: "50%",

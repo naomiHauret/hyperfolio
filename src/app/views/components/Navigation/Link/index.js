@@ -14,7 +14,7 @@ export default ({ path, name, external }) => {
 	})
 
 	return external === true ? (
-		<a href={path}>{name} </a>
+		<a href={path} class={styles}>{name} </a>
 	) : (
 		<Link to={path} class={styles}>
 			{name}

@@ -2,8 +2,9 @@ import { h } from "hyperapp"
 import cxs from "cxs"
 import { ds } from "assets/styles/theme"
 import YouTubePlayer from "youtube-player"
+import lottie from "lottie-web"
 
-export default ({ url, loop, autoplay, videoId, type }) => {
+export default ({ url, loop, autoplay, videoId, type, actions, state }) => {
 	const id = `player-${videoId}`
 	return (
 		<div
@@ -32,7 +33,6 @@ export default ({ url, loop, autoplay, videoId, type }) => {
 					width: "100%",
 					height: "100%",
 					marginTop: ds.get("spacing.video.ytWatermark"),
-					padding: "0 4.5%",
 				})}
 				oncreate={() => {
 					let player
@@ -51,6 +51,10 @@ export default ({ url, loop, autoplay, videoId, type }) => {
 					player.on("stateChange", (e) => {
 						if (e.data === 0) {
 							player.playVideo() // when video ends, relaunch without reloading the video
+						}
+						
+						if (e.data === 1 && type === "cover") {
+							lottie.play() // start all animation on page
 						}
 					})
 

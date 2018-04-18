@@ -1,16 +1,33 @@
 import { h } from "hyperapp"
-import routes from "app/routes"
+import { routes } from "app/routes"
 import { ds } from "assets/styles/theme"
+import animation from "assets/animations/soundbars_on.json"
+import lottie from "lottie-web"
 import cxs from "cxs"
 
-export default ({ state, actions }) =>
-	routes.map((route) => route.path).includes(state.location.pathname) && (
-		<button
-			onclick={actions.togglePlayMusic}
-			class={cxs({
+export default ({ state, actions }) => {
+	let soundbarAnimation
+
+	return <button oncreate={() => {
+				soundbarAnimation = lottie.loadAnimation({
+					container: document.getElementById("soundbarsAnimation"),
+					renderer: "svg",
+					loop: true,
+					autoplay: true,
+					animationData: animation,
+				})
+			}} onclick={() => {
+				if (state.isPlayingMusic === true) {
+					lottie.goToAndStop(20, soundbarAnimation)
+				} else {
+					lottie.play(soundbarAnimation)
+				} 
+				return actions.togglePlayMusic()
+			}} class={cxs({
 				backgroundColor: "transparent",
 				border: 0,
 				color: ds.get("colors.blue"),
+				zIndex: ds.get("zIndex.aboveAll"),
 				position: "fixed",
 				bottom: "50px",
 				left: "55px",
@@ -19,8 +36,7 @@ export default ({ state, actions }) =>
 				":focus": {
 					outline: 0,
 				},
-			})}
-		>
-			x
+			})}>
+			<div id="soundbarsAnimation" />
 		</button>
-	)
+}

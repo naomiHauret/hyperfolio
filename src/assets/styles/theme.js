@@ -28,11 +28,21 @@ const colorPalette = {
 
 export const myDesignSystem = {
 	breakpoints: {
-		sm: 768,
-		md: 992,
-		lg: 1200,
-		xl: 1440,
+		xs: 768,
+		sm: 992,
+		md: 1200,
+		lg: 1440,
 		xxl: 1920,
+	},
+	grid: {
+		width: {
+			xs: "100%", // 0 - 992
+			sm: "750px", // 992 - 1200
+			md: "970px",
+			lg: "1170px", // 1440 - 1920
+			xl: "1440px", // 1920+
+		}
+			
 	},
 	typo: {
 		pxFontSize: {
@@ -74,6 +84,7 @@ export const myDesignSystem = {
 		base: 0,
 		mid: 2,
 		high: 3,
+		aboveAll: 4
 	},
 	spacing: {
 		baseline: 20,

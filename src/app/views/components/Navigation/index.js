@@ -1,5 +1,7 @@
 import { h } from "hyperapp"
 import Menu from "app/views/components/Navigation/Menu"
+import Socials from "app/views/components/Navigation/Socials"
+
 import { ds } from "assets/styles/theme"
 import cxs from "cxs"
 
@@ -38,5 +40,17 @@ export default ({ state, actions }) => (
 		})}
 	>
 		<Menu state={state} actions={actions} />
+		<Socials
+			socials={[
+				{
+					name: "Linkedin",
+					link: "https://www.linkedin.com/in/ines-guerrini-02906b64/",
+				},
+				{
+					name: "Instagram",
+					link: "https://www.instagram.com/ness1726/",
+				},
+			]}
+		/>
 	</nav>
 )

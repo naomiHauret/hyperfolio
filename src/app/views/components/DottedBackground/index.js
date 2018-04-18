@@ -14,6 +14,7 @@ export default () => (
 			position: "absolute",
 			top: `${70 / 1440 * 100}%`,
 			right: `${70 / 1440 * 100}%`,
+			transform: "translateX(33px)",
 			color: ds.get("colors.blue"),
 			top: "25px",
 			zIndex: ds.get("zIndex.mid"),
