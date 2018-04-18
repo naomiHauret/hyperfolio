@@ -16,11 +16,9 @@ export default ({ socials }) => (
 	>
 		{socials.map((social) => (
 			<li
-				class={
-					cxs({
-						position: "relative",
-					})
-				}
+				class={cxs({
+					position: "relative",
+				})}
 			>
 				<Link external path={social.link} name={social.name} />
 			</li>

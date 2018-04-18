@@ -3,7 +3,7 @@ import Link from "app/views/components/Navigation/Link"
 import { ds } from "assets/styles/theme"
 import cxs from "cxs"
 import { homePageUrl, aboutPageUrl, contactPageUrl, aboutPageName, contactPageName } from "app/routes"
-import { projectsPageUrl, projectsPageName } from "../../../../routes";
+import { projectsPageUrl, projectsPageName } from "../../../../routes"
 
 export default ({ state }) => (
 	<ul>
@@ -33,7 +33,7 @@ export default ({ state }) => (
 			</li>
 		)}
 		{state.location.pathname !== projectsPageUrl &&
-			state.location.pathname !==  `${projectsPageUrl}/:projectId` && (
+			state.location.pathname !== `${projectsPageUrl}/:projectId` && (
 				<li
 					class={cxs({
 						position: "absolute",

@@ -41,7 +41,7 @@ export default ({ state, actions, name, metaTitle, desc }) => (
 				},
 			})}
 		>
-			<Link to={homePageUrl} >Go back</Link>
+			<Link to={homePageUrl}>Go back</Link>
 		</button>
 	</div>
 )

@@ -41,8 +41,7 @@ export const myDesignSystem = {
 			md: "970px",
 			lg: "1170px", // 1440 - 1920
 			xl: "1440px", // 1920+
-		}
-			
+		},
 	},
 	typo: {
 		pxFontSize: {
@@ -84,7 +83,7 @@ export const myDesignSystem = {
 		base: 0,
 		mid: 2,
 		high: 3,
-		aboveAll: 4
+		aboveAll: 4,
 	},
 	spacing: {
 		baseline: 20,

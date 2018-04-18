@@ -52,7 +52,7 @@ export default ({ url, loop, autoplay, videoId, type, actions, state }) => {
 						if (e.data === 0) {
 							player.playVideo() // when video ends, relaunch without reloading the video
 						}
-						
+
 						if (e.data === 1 && type === "cover") {
 							lottie.play() // start all animation on page
 						}

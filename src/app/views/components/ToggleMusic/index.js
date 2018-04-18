@@ -8,7 +8,9 @@ import cxs from "cxs"
 export default ({ state, actions }) => {
 	let soundbarAnimation
 
-	return <button oncreate={() => {
+	return (
+		<button
+			oncreate={() => {
 				soundbarAnimation = lottie.loadAnimation({
 					container: document.getElementById("soundbarsAnimation"),
 					renderer: "svg",
@@ -16,14 +18,16 @@ export default ({ state, actions }) => {
 					autoplay: true,
 					animationData: animation,
 				})
-			}} onclick={() => {
+			}}
+			onclick={() => {
 				if (state.isPlayingMusic === true) {
 					lottie.goToAndStop(20, soundbarAnimation)
 				} else {
 					lottie.play(soundbarAnimation)
-				} 
+				}
 				return actions.togglePlayMusic()
-			}} class={cxs({
+			}}
+			class={cxs({
 				backgroundColor: "transparent",
 				border: 0,
 				color: ds.get("colors.blue"),
@@ -36,7 +40,9 @@ export default ({ state, actions }) => {
 				":focus": {
 					outline: 0,
 				},
-			})}>
+			})}
+		>
 			<div id="soundbarsAnimation" />
 		</button>
+	)
 }

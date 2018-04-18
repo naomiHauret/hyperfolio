@@ -9,7 +9,8 @@ export default ({ state, actions }) => {
 
 	return (
 		<header>
-			{state.location.pathname === aboutPageUrl || (state.location.pathname === contactPageUrl && <PageTitle title={title} />)}
+			{state.location.pathname === aboutPageUrl ||
+				(state.location.pathname === contactPageUrl && <PageTitle title={title} />)}
 		</header>
 	)
 }

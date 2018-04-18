@@ -14,7 +14,6 @@ export default () => (
 				animationData: animation,
 			})
 		}}
-
 		class={cxs({
 			position: "fixed",
 			top: "50%",
