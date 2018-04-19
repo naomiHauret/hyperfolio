@@ -36,8 +36,8 @@ export default ({ state }) => (
 			state.location.pathname !== `${projectsPageUrl}/:projectId` && (
 				<li
 					class={cxs({
-						position: "absolute",
-						top: `${document.body.scrollHeight - 120}px`,
+						position: "fixed",
+						bottom: "35px",
 						right: `${70 / 1440 * 100}%`,
 					})}
 				>

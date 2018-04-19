@@ -33,15 +33,11 @@ export default ({ state, actions }) => {
 		? music.play()
 		: music.pause()
 
-	return (
-		<div
-			class={`
+	return <div class={`
 			${defaultStyle}
 			${routes.map((route) => route.path).includes(state.location.pathname) === false ? notFoundPageStyle : ""}
-		`}
-		>
-			<div
-				class={cxs({
+		`}>
+			<div class={cxs({
 					maxWidth: ds.get("grid.width.xs"),
 					margin: "0 auto",
 					height: "100%",
@@ -56,22 +52,23 @@ export default ({ state, actions }) => {
 					"@media (min-width: 1200px)": {
 						maxWidth: ds.get("grid.width.lg"),
 					},
-					"@media (min-width: 1441px)": {
+					"@media (min-width: 1366px)": {
 						maxWidth: ds.get("grid.width.xl"),
 					},
-				})}
-			>
+					"@media (min-width: 1441px)": {
+						maxWidth: ds.get("grid.width.xxl"),
+					},
+				})}>
 				{routes.map((route) => route.path).includes(state.location.pathname) && <Header state={state} />}
-				{routes.map((route) => route.path).includes(state.location.pathname) && (
-					<Navigation state={state} actions={actions} />
-				)}
-				{routes.map((route) => route.path).includes(state.location.pathname) && (
-					<ToggleMusic state={state} actions={actions} />
-				)}
+				{routes
+					.map((route) => route.path)
+					.includes(state.location.pathname) && <Navigation state={state} actions={actions} />}
+				{routes
+					.map((route) => route.path)
+					.includes(state.location.pathname) && <ToggleMusic state={state} actions={actions} />}
 				{routes.map((route) => route.path).includes(state.location.pathname) && <DottedBackground />}
 
 				<Switch>{routes.map((route) => <Route {...route} />)}</Switch>
 			</div>
 		</div>
-	)
 }

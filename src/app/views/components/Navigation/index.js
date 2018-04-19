@@ -1,6 +1,7 @@
 import { h } from "hyperapp"
 import Menu from "app/views/components/Navigation/Menu"
 import Socials from "app/views/components/Navigation/Socials"
+import { aboutPageUrl, contactPageUrl } from "app/routes"
 
 import { ds } from "assets/styles/theme"
 import cxs from "cxs"
@@ -40,7 +41,7 @@ export default ({ state, actions }) => (
 		})}
 	>
 		<Menu state={state} actions={actions} />
-		<Socials
+		{(state.location.pathname === aboutPageUrl || state.location.pathname === contactPageUrl) && <Socials
 			socials={[
 				{
 					name: "Linkedin",
@@ -52,5 +53,6 @@ export default ({ state, actions }) => (
 				},
 			]}
 		/>
+	}
 	</nav>
 )

@@ -36,11 +36,12 @@ export const myDesignSystem = {
 	},
 	grid: {
 		width: {
-			xs: "100%", // 0 - 992
-			sm: "750px", // 992 - 1200
+			xs: "100%",
+			sm: "750px",
 			md: "970px",
-			lg: "1170px", // 1440 - 1920
-			xl: "1440px", // 1920+
+			lg: "1170px",
+			xl: "1280px",
+			xxl: "1440px",
 		},
 	},
 	typo: {
