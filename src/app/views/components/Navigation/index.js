@@ -41,18 +41,19 @@ export default ({ state, actions }) => (
 		})}
 	>
 		<Menu state={state} actions={actions} />
-		{(state.location.pathname === aboutPageUrl || state.location.pathname === contactPageUrl) && <Socials
-			socials={[
-				{
-					name: "Linkedin",
-					link: "https://www.linkedin.com/in/ines-guerrini-02906b64/",
-				},
-				{
-					name: "Instagram",
-					link: "https://www.instagram.com/ness1726/",
-				},
-			]}
-		/>
-	}
+		{(state.location.pathname === aboutPageUrl || state.location.pathname === contactPageUrl) && (
+			<Socials
+				socials={[
+					{
+						name: "Linkedin",
+						link: "https://www.linkedin.com/in/ines-guerrini-02906b64/",
+					},
+					{
+						name: "Instagram",
+						link: "https://www.instagram.com/ness1726/",
+					},
+				]}
+			/>
+		)}
 	</nav>
 )
