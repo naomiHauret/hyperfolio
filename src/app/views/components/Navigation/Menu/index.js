@@ -2,17 +2,27 @@ import { h } from "hyperapp"
 import Link from "app/views/components/Navigation/Link"
 import { ds } from "assets/styles/theme"
 import cxs from "cxs"
-import { homePageUrl, aboutPageUrl, contactPageUrl, aboutPageName, contactPageName } from "app/routes"
-import { projectsPageUrl, projectsPageName } from "../../../../routes"
+import {
+	homePageUrl,
+	aboutPageUrl,
+	contactPageUrl,
+	aboutPageName,
+	contactPageName,
+	projectsPageUrl,
+	projectsPageName,
+} from "app/routes"
 
 export default ({ state }) => (
 	<ul>
 		{state.location.pathname !== aboutPageUrl && (
 			<li
 				class={cxs({
-					position: "fixed",
-					top: state.location.pathname === homePageUrl ? "60px" : "unset",
-					bottom: state.location.pathname === contactPageUrl ? "40px" : "unset",
+					position: state.location.pathname === projectsPageUrl ? "fixed" : "absolute",
+					top:
+						state.location.pathname === homePageUrl || state.location.pathname === projectsPageUrl
+							? `${ds.get("spacing.frame") * 2}px`
+							: "unset",
+					bottom: state.location.pathname === contactPageUrl ? `${ds.get("spacing.frame")}px` : "unset",
 					left: "50%",
 					transform: "translateX(-50%)",
 				})}
@@ -23,8 +33,8 @@ export default ({ state }) => (
 		{state.location.pathname !== contactPageUrl && (
 			<li
 				class={cxs({
-					position: "fixed",
-					bottom: "35px",
+					position: "absolute",
+					bottom: `${ds.get("spacing.frame")}px`,
 					left: "50%",
 					transform: "translateX(-50%)",
 				})}
@@ -36,9 +46,9 @@ export default ({ state }) => (
 			state.location.pathname !== `${projectsPageUrl}/:projectId` && (
 				<li
 					class={cxs({
-						position: "fixed",
-						bottom: "35px",
-						right: `${70 / 1440 * 100}%`,
+						position: "absolute",
+						bottom: `${ds.get("spacing.frame")}px`,
+						right: `${ds.get("spacing.frame") * 2 / ds.get("breakpoints.lg") * 100}%`,
 					})}
 				>
 					<Link path={projectsPageUrl} name={projectsPageName} />

@@ -77,6 +77,7 @@ export const myDesignSystem = {
 			link: colorPalette.white,
 			paragraph: colorPalette.white,
 			title: colorPalette.blue,
+			input: colorPalette.blue,
 			rainbow: colorPalette.pink,
 		},
 	},
@@ -87,9 +88,7 @@ export const myDesignSystem = {
 		aboveAll: 4,
 	},
 	spacing: {
-		baseline: 20,
-		padding: "0.3em",
-		scale: [0, 8, 16, 24, 32, 40],
+		frame: 35,
 		video: {
 			ytWatermark: "50px",
 		},

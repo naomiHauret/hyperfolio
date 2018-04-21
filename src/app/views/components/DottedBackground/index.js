@@ -12,11 +12,11 @@ export default () => (
 			width: "250px",
 			height: "200px",
 			position: "absolute",
-			top: `${70 / 1440 * 100}%`,
-			right: `${70 / 1440 * 100}%`,
+			top: `${ds.get("spacing.frame") * 2 / 1440 * 100}%`,
+			right: `${ds.get("spacing.frame") * 2 / 1440 * 100}%`,
 			transform: "translateX(33px)",
 			color: ds.get("colors.blue"),
-			top: "25px",
+			top: `${ds.get("spacing.frame") + 20}px`,
 			zIndex: ds.get("zIndex.mid"),
 		})}
 	/>
