@@ -39,10 +39,10 @@ export default ({ state, actions, name, metaTitle, desc }) => (
 						left: "50%",
 						top: "70px",
 						transform: "translateX(-50%)",
-						animationName: "unfold", 
+						animationName: "unfold",
 						animationFillMode: "forwards",
 						animationDelay: "750ms",
-						animationDuration: "750ms"
+						animationDuration: "750ms",
 					},
 					"@media (min-width: 768px)": {
 						width: "620px",

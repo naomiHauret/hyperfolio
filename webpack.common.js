@@ -2,7 +2,7 @@ const path = require("path")
 const webpack = require("webpack")
 const ExtractTextPlugin = require("extract-text-webpack-plugin")
 const CopyPlugin = require("copy-webpack-plugin")
-const SocialTagsPlugin = require('social-tags-webpack-plugin')
+const SocialTagsPlugin = require("social-tags-webpack-plugin")
 const Dotenv = require("dotenv-webpack")
 
 const exludedFolders = [path.join(__dirname, "node_modules")]

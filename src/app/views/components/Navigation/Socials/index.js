@@ -22,7 +22,7 @@ export default ({ socials }) => (
 			<li
 				class={cxs({
 					position: "relative",
-					margin: "0 35px"
+					margin: "0 35px",
 				})}
 			>
 				<Link external path={social.link} name={social.name} />
