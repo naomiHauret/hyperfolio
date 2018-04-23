@@ -11,19 +11,27 @@ export default ({ state, actions, name, metaTitle, desc }) => (
 		oncreate={actions.setPageMetaData({ metaTitle, desc })}
 		onupdate={actions.setPageMetaData({ metaTitle, desc })}
 		class={cxs({
-			minHeight: "100vh",
-			display: "flex",
-			flexDirection: "column",
 			flexGrow: "1",
 		})}
 	>
-		<Video
-			url="https://www.youtube.com/embed/ircCLGXBYCg"
-			type="cover"
-			loop={true}
-			autoplay={true}
-			videoId="ircCLGXBYCg"
-		/>
-		<AnimatedLogo />
+		<Exit easing="ease-in-out" time={1750} css={{ transform: "translateY(-100%)" }}>
+			<div
+				key="homepagecontent"
+				class={cxs({
+					minHeight: "100vh",
+					display: "flex",
+					flexDirection: "column",
+				})}
+			>
+				<Video
+					url="https://www.youtube.com/embed/ircCLGXBYCg"
+					type="cover"
+					loop={true}
+					autoplay={true}
+					videoId="ircCLGXBYCg"
+				/>
+				<AnimatedLogo />
+			</div>
+		</Exit>
 	</div>
 )

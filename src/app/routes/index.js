@@ -30,9 +30,9 @@ export const routes = [
 				state={state}
 				actions={actions}
 				name={homePageName}
-				metaTitle={"Inès Guerrini - Creative Digital Designer"}
+				metaTitle={"Inès Guerrini - Digital Designer"}
 				desc={
-					"Hi, I'm Inès Guerrini, a Creative Digital Designer specialized in web, interaction and motion design. I'm based in Nantes and available for freelance."
+					"Hi, I'm Inès Guerrini, a Digital Designer specialized in web, interaction and motion design. I'm based in Nantes and available for freelance."
 				}
 				{...props}
 			/>
@@ -46,7 +46,7 @@ export const routes = [
 				state={state}
 				actions={actions}
 				name={aboutPageName}
-				metaTitle={"About me | Inès Guerrini - Creative Digital Designer"}
+				metaTitle={"About me | Inès Guerrini - Digital Designer"}
 				desc={"I like to design dark stuff."}
 				{...props}
 			/>
@@ -60,7 +60,7 @@ export const routes = [
 				state={state}
 				actions={actions}
 				name={contactPageName}
-				metaTitle={"Contact | Inès Guerrini - Creative Digital Designer"}
+				metaTitle={"Contact | Inès Guerrini - Digital Designer"}
 				desc={
 					"Have a question or an idea ? Like my work ? Want to drink a coffee ? Or do you want to work with me ? We can get in touch."
 				}
@@ -76,7 +76,7 @@ export const routes = [
 				state={state}
 				actions={actions}
 				name={projectsPageName}
-				metaTitle={"Projects | Inès Guerrini - Creative Digital Designer"}
+				metaTitle={"Projects | Inès Guerrini - Digital Designer"}
 				desc={
 					"Video, website, motion design... I worked on various different projects, both personal and professional. Discover my work."
 				}
@@ -91,7 +91,7 @@ export const routes = [
 				state={state}
 				actions={actions}
 				name={notFoundPageName}
-				metaTitle={"Page not found | Inès Guerrini - Creative Digital Designer"}
+				metaTitle={"Page not found | Inès Guerrini - Digital Designer"}
 				desc={
 					"It seems like you are looking for a page that doesn't exist. How about checking my work or get in touch with me instead ?"
 				}

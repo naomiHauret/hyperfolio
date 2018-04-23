@@ -3,6 +3,7 @@ const webpack = require("webpack")
 const ExtractTextPlugin = require("extract-text-webpack-plugin")
 const CopyPlugin = require("copy-webpack-plugin")
 const SocialTagsPlugin = require('social-tags-webpack-plugin')
+const Dotenv = require("dotenv-webpack")
 
 const exludedFolders = [path.join(__dirname, "node_modules")]
 
@@ -74,6 +75,7 @@ module.exports = {
 	},
 	plugins: [
 		new webpack.HotModuleReplacementPlugin(),
+		new Dotenv(),
 		new CopyPlugin([{ from: "./src/assets/fonts/**/*", to: "./dist/assets/fonts" }]),
 		new ExtractTextPlugin({
 			filename: "assets/stylesheets/[name].[hash].css",
@@ -84,11 +86,11 @@ module.exports = {
 			facebook: {
 				"og:url": "http://www.ines-guerrini.com/",
 				"og:type": "website",
-				"og:title": "Inès Guerrini - Creative UI Designer",
+				"og:title": "Inès Guerrini - Digital Designer",
 				// 'og:image': path.resolve('src/img/book.png'),
 				"og:description":
-					"Hi, I'm Inès Guerrini, a Creative UI Designer specialized in web, interaction and motion design. I'm based in Nantes and available for freelance.",
-				"og:site_name": "Inès Guerrini - Creative UI Designer",
+					"Hi, I'm Inès Guerrini, a Digital Designer specialized in web, interaction and motion design. I'm based in Nantes and available for freelance.",
+				"og:site_name": "Inès Guerrini - Digital Designer",
 				"og:locale": "en_US",
 				"og:article:author": "Inès Guerrini",
 			},
@@ -96,9 +98,9 @@ module.exports = {
 				"twitter:card": "summary_large_image",
 				"twitter:creator": "@https://twitter.com/ness_gabrielle",
 				"twitter:url": "http://www.ines-guerrini.com/",
-				"twitter:title": "Inès Guerrini - Creative UI Designer",
+				"twitter:title": "Inès Guerrini - Digital Designer",
 				"twitter:description":
-					"Hi, I'm Inès Guerrini, a Creative UI Designer specialized in web, interaction and motion design. I'm based in Nantes and available for freelance.",
+					"Hi, I'm Inès Guerrini, a Digital Designer specialized in web, interaction and motion design. I'm based in Nantes and available for freelance.",
 				// "twitter:image": path.resolve('src/img/book.png')
 			},
 		}),

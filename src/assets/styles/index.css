@@ -1,3 +1,8 @@
+:root {
+	--backgroundColor: #000000;
+	--textColor: #1700ff;
+}
+
 @font-face {
 	font-family: "Playfair";
 	font-path: "./../fonts/PlayfairDisplay-Regular";
@@ -34,6 +39,51 @@ body {
 	flex-direction: column;
 	min-height: 100vh;
 	margin: 0 auto;
-	background-color: black;
+	background-color: var(--backgroundColor);
 	overflow-x: hidden;
+}
+
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus input:-webkit-autofill,
+textarea:-webkit-autofill,
+textarea:-webkit-autofill:hover textarea:-webkit-autofill:focus {
+	-webkit-text-fill-color: var(--textColor);
+	transition: background-color 5000s ease-in-out 0s;
+}
+
+@keyframes glow {
+	from {
+		border-color: var(--inputBorderColorFrom);
+	}
+	to {
+		border-color: var(--inputBorderColorTo);
+	}
+}
+@keyframes outerMotion {
+	100% {
+		transform: rotate(360deg);
+	}
+}
+
+@keyframes innerMotion {
+	100% {
+		transform: rotate(-360deg);
+	}
+}
+
+@keyframes areaMotion {
+	50% {
+		transform: translate(5%, 5%);
+	}
+
+	100% {
+		transform: translate(-5%, 5%);
+	}
+}
+
+@keyframes unfold {
+	to {
+		height: calc(100vh - 150px);
+	}
 }
