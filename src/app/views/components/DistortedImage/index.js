@@ -2,7 +2,7 @@ import { h } from "hyperapp"
 import cxs from "cxs"
 import { Application, filters, Sprite } from "pixi.js"
 
-const canvasMaxWidth = 650 // in px
+const canvasMaxWidth = 670 // in px
 const canvasHeight = 350 // in px
 
 const startDistortionAnimation = (id, src, filterSrc) => {

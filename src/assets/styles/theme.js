@@ -22,6 +22,7 @@ const colorPalette = {
 	white: "#ffffff",
 	grey: "#6a6a6a",
 	blue: "#1700ff",
+	blueTransparent: "#1700ff73",
 	pink: "#ff5eac",
 	rainbow: "linear-gradient(-180deg, rgb(255, 226, 159) 0%, rgb(255, 169, 159) 48%, rgb(255, 113, 154) 100%)",
 }

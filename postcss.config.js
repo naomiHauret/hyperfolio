@@ -4,5 +4,7 @@ module.exports = {
 		require("postcss-fontpath")({
 			checkFiles: true,
 		}),
+		require("postcss-focus-within"),
+		require("postcss-cssnext"),
 	],
 }

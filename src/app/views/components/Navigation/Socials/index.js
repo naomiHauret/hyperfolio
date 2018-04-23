@@ -12,12 +12,17 @@ export default ({ socials }) => (
 			display: "flex",
 			justifyContent: "center",
 			width: "100%",
+			"> li:nth-child(2)::after": {
+				width: "120px",
+				transform: "translateY(-50%) translateX(4.5%)",
+			},
 		})}
 	>
 		{socials.map((social) => (
 			<li
 				class={cxs({
 					position: "relative",
+					margin: "0 35px"
 				})}
 			>
 				<Link external path={social.link} name={social.name} />

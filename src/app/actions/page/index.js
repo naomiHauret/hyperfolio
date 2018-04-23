@@ -11,9 +11,4 @@ export default {
 			...state,
 		}
 	},
-
-	setCoverLoaded: () => (state) => {
-		console.log("chooh")
-		return { coverLoaded: true }
-	},
 }
