@@ -14,13 +14,13 @@ export default {
 		formData["*default_email"] = process.env.ENFORMED_SEND_MAIL_TO
 
 		if (
-			process.env.NODE_ENV === "production"
-			&& trap === ""
-			&& mailForm.checkValidity()
-			&& sender !== ""
-			&& email !== ""
-			&& subject !== null
-			&& message !== null
+			process.env.NODE_ENV === "production" &&
+			trap === "" &&
+			mailForm.checkValidity() &&
+			sender !== "" &&
+			email !== "" &&
+			subject !== null &&
+			message !== null
 		) {
 			fetch(`https://www.enformed.io/${process.env.ENFORMED_KEY}/`, {
 				method: "POST",
