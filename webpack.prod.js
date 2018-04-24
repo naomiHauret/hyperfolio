@@ -78,7 +78,7 @@ module.exports = merge(common, {
 		}),
 		new PurifyCSSPlugin({
 			minimize: true,
-			paths: glob.sync([path.join(__dirname, "src/.html"), path.join(__dirname, "src/.js")]),
+			paths: glob.sync([path.join(__dirname, "src/**/*.html"), path.join(__dirname, "src/**/*.js")]),
 		}),
 		new HtmlPlugin({
 			template: "./src/index.html",
@@ -91,7 +91,6 @@ module.exports = merge(common, {
 				removeRedundantAttributes: true,
 			},
 		}),
-
 		new AssetsCompressionPlugin({
 			algorithm: "gzip",
 			asset: "[path].gz[query]",
