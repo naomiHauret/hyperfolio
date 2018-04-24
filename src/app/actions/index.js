@@ -7,5 +7,5 @@ export default {
 	location: location.actions,
 	...pageActions,
 	...musicActions,
-	...mailActions
+	...mailActions,
 }

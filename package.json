@@ -48,7 +48,6 @@
     "purifycss-webpack": "^0.7.0",
     "rimraf": "^2.6.2",
     "social-tags-webpack-plugin": "0.0.9",
-    "style-ext-html-webpack-plugin": "^3.4.7",
     "style-loader": "^0.20.3",
     "uglifyjs-webpack-plugin": "^1.2.4",
     "url-loader": "^1.0.1",
@@ -80,10 +79,10 @@
     "not samsung <= 7"
   ],
   "lint-staged": {
-    "**/*.{js,jsx}": [
+    "src/**/*.{js,jsx}": [
       "npx prettier --parser=babylon --write \"src/**/*.js\""
     ],
-    "**/*.css": [
+    "src/**/*.css": [
       "npx prettier --parser=css --write \"src/**/*.css\"",
       "git add"
     ]

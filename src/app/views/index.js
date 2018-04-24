@@ -64,7 +64,6 @@ export default ({ state, actions }) => {
 					},
 				})}
 			>
-				{routes.map((route) => route.path).includes(state.location.pathname) && <Header state={state} />}
 				{routes.map((route) => route.path).includes(state.location.pathname) && (
 					<Navigation state={state} actions={actions} />
 				)}

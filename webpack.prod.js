@@ -5,7 +5,6 @@ const webpack = require("webpack")
 const HtmlPlugin = require("html-webpack-plugin")
 const UglifyJsPlugin = require("uglifyjs-webpack-plugin")
 const PurifyCSSPlugin = require("purifycss-webpack")
-const StyleExtHtmlPlugin = require("style-ext-html-webpack-plugin")
 const WebappPlugin = require("webapp-webpack-plugin")
 const AssetsCompressionPlugin = require("brotli-webpack-plugin")
 const ScriptsCompressionPlugin = require("brotli-gzip-webpack-plugin")
@@ -78,6 +77,7 @@ module.exports = merge(common, {
 			},
 		}),
 		new PurifyCSSPlugin({
+			minimize: true,
 			paths: glob.sync([path.join(__dirname, "src/.html"), path.join(__dirname, "src/.js")]),
 		}),
 		new HtmlPlugin({
@@ -91,9 +91,7 @@ module.exports = merge(common, {
 				removeRedundantAttributes: true,
 			},
 		}),
-		new StyleExtHtmlPlugin({
-			minify: true,
-		}),
+
 		new AssetsCompressionPlugin({
 			algorithm: "gzip",
 			asset: "[path].gz[query]",

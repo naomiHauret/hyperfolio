@@ -7,14 +7,14 @@ import cxs from "cxs"
 
 export default ({ state, actions, name, metaTitle, desc }) => (
 	<div
-		key="homepage"
+		key="page"
 		oncreate={actions.setPageMetaData({ metaTitle, desc })}
 		onupdate={actions.setPageMetaData({ metaTitle, desc })}
 		class={cxs({
 			flexGrow: "1",
 		})}
 	>
-		<Exit easing="ease-in-out" time={1750} css={{ transform: "translateY(-100%)" }}>
+		<Exit easing="ease-in-out" time={550} css={{ transform: "translateY(-80%)", opacity: 0 }}>
 			<div
 				key="homepagecontent"
 				class={cxs({

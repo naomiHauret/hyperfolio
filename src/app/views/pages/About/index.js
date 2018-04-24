@@ -11,7 +11,7 @@ import cxs from "cxs"
 
 export default ({ state, actions, name, metaTitle, desc }) => (
 	<div
-		key="aboutpage"
+		key="page"
 		oncreate={actions.setPageMetaData({ metaTitle, desc })}
 		onupdate={actions.setPageMetaData({ metaTitle, desc })}
 		class={cxs({
@@ -23,6 +23,7 @@ export default ({ state, actions, name, metaTitle, desc }) => (
 	>
 		<Enter>
 			<div
+				key="aboutpagecontent"
 				class={cxs({
 					minHeight: "100vh",
 					display: "flex",
