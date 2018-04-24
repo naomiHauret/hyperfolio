@@ -1,5 +1,6 @@
 import { h } from "hyperapp"
 import { Switch, Route, Link } from "@hyperapp/router"
+import cxs from "cxs"
 
 export default ({ state, actions, name, metaTitle, desc }) => (
 	<div

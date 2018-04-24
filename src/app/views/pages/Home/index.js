@@ -14,7 +14,12 @@ export default ({ state, actions, name, metaTitle, desc }) => (
 			flexGrow: "1",
 		})}
 	>
-		<Exit easing="ease-in-out" time={550} css={{ transform: "translateY(-80%)", opacity: 0 }}>
+		{console.log(state.location)}
+		<Exit easing="ease-in-out" time={550} css={{
+			transform: state.location.previous ==="/contact" ? "translateY(-80%)"
+						:  state.location.previous ==="/about" ? "translateY(80%)"
+						: "translateX(80%)"
+		, opacity: 0 }}>
 			<div
 				key="homepagecontent"
 				class={cxs({

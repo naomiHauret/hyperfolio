@@ -15,7 +15,6 @@ export default ({ state, actions }) => (
 				margin: 0,
 				listStyle: "none",
 				"> li": {
-					padding: "5px",
 					cursor: "pointer",
 					transition: ds.get("transition.fast"),
 					"::after": {
