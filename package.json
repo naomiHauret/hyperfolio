@@ -80,10 +80,10 @@
     "not samsung <= 7"
   ],
   "lint-staged": {
-    "**/*.{js,jsx}": [
+    "src/**/*.{js,jsx}": [
       "npx prettier --parser=babylon --write \"src/**/*.js\""
     ],
-    "**/*.css": [
+    "src/**/*.css": [
       "npx prettier --parser=css --write \"src/**/*.css\"",
       "git add"
     ]
