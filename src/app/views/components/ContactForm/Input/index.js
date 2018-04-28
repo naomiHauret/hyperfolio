@@ -61,7 +61,7 @@ export default ({ type, label, name, duration, delay, direction, transformOrigin
 				title={type === "email" ? "Invalid email address" : "Needs at least 2 characters."}
 				pattern={type === "email" ? ".{5,45}" : "{2,175}$"}
 				class={cxs({
-					color: "currentColor",
+					color: ds.get("colors.white"),
 					borderStyle: "solid",
 					borderWidth: "1px",
 					backgroundColor: ds.get("colors.background.dark"),

@@ -4,7 +4,7 @@ import Navigation from "app/views/components/Navigation"
 import Header from "app/views/components/Header"
 import DottedBackground from "app/views/components/DottedBackground"
 import ToggleMusic from "app/views/components/ToggleMusic"
-import { routes } from "app/routes"
+import { routes, projectsPageUrl } from "app/routes"
 import { ds } from "assets/styles/theme"
 import cxs from "cxs"
 import musicFile from "assets/music/audio.mp3"
@@ -28,20 +28,16 @@ const notFoundPageStyle = cxs({
 	backgroundImage: ds.get("colors.background.rainbow"),
 	fontFamily: ds.get("typo.fontFamily.error.text"),
 })
-export default ({ state, actions }) => {
-	routes.map((route) => route.path).includes(state.location.pathname) && state.isPlayingMusic === true
-		? music.play()
-		: music.pause()
+export default ({ state, actions, match }) => {
+	const not404 = routes.map((route) => route.path).includes(state.location.pathname) || state.location.pathname.indexOf(`${projectsPageUrl}/`) >= 0
 
-	return (
-		<div
-			class={`
+	not404 && state.isPlayingMusic === true ? music.play() : music.pause()
+
+	return <div class={`
 			${defaultStyle}
-			${routes.map((route) => route.path).includes(state.location.pathname) === false ? notFoundPageStyle : ""}
-		`}
-		>
-			<div
-				class={cxs({
+			${not404 === false ? notFoundPageStyle : ""}
+		`}>
+			<div class={cxs({
 					maxWidth: ds.get("grid.width.xs"),
 					margin: "0 auto",
 					height: "100%",
@@ -62,18 +58,14 @@ export default ({ state, actions }) => {
 					"@media (min-width: 1441px)": {
 						maxWidth: ds.get("grid.width.xxl"),
 					},
-				})}
-			>
-				{routes.map((route) => route.path).includes(state.location.pathname) && (
-					<Navigation state={state} actions={actions} />
-				)}
-				{routes.map((route) => route.path).includes(state.location.pathname) && (
-					<ToggleMusic state={state} actions={actions} />
-				)}
-				{routes.map((route) => route.path).includes(state.location.pathname) && <DottedBackground />}
+				})}>
+				{not404 && <Navigation state={state} actions={actions} />}
+				{not404 && <ToggleMusic state={state} actions={actions} />}
+				{not404 && <DottedBackground />}
 
-				<Switch>{routes.map((route) => <Route {...route} />)}</Switch>
+				<Switch>
+					{routes.map((route) => (route.path === projectsPageUrl ? <Route parent {...route} /> : <Route {...route} />))}
+				</Switch>
 			</div>
 		</div>
-	)
 }

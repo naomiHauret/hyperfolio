@@ -4,14 +4,13 @@ import cxs from "cxs"
 import { ds } from "assets/styles/theme"
 import DistortedImage from "app/views/components/DistortedImage"
 import ContactForm from "app/views/components/ContactForm"
-import PageTitle from "app/views/components/PageTitle"
-import { contactPageName } from "app/routes"
+
 import letters from "assets/images/content/letters.png"
 import filter from "assets/images/filters/displacement.svg"
 
 export default ({ state, actions, name, metaTitle, desc }) => (
 	<div
-		key="page"
+		key="contactpage"
 		oncreate={actions.setPageMetaData({ metaTitle, desc })}
 		onupdate={actions.setPageMetaData({ metaTitle, desc })}
 		class={cxs({
@@ -21,9 +20,9 @@ export default ({ state, actions, name, metaTitle, desc }) => (
 			flexGrow: "1",
 		})}
 	>
-		<Enter easing="ease-in-out" time={650} delay={100} css={{ transform: "translateY(20%)", opacity: 0 }}>
+
+		<Enter easing="ease-in-out" delay={250} time={750} css={{ transform: "translateY(5%)" }}>
 			<div
-				key="contactpagecontent"
 				class={cxs({
 					minHeight: "100vh",
 					display: "flex",
@@ -51,7 +50,6 @@ export default ({ state, actions, name, metaTitle, desc }) => (
 					},
 				})}
 			>
-				<PageTitle title={contactPageName} />
 				<div
 					class={cxs({
 						width: "100%",

@@ -44,7 +44,7 @@ export default ({ label, name, delay, duration }) => (
 			title="Your message too short, it must be at least 10 characters long."
 			pattern=".{10,}"
 			class={cxs({
-				color: "currentColor",
+				color: ds.get("colors.white"),
 				borderStyle: "solid",
 				borderWidth: "1px",
 				backgroundColor: ds.get("colors.background.dark"),

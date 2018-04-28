@@ -2,7 +2,7 @@ import { h } from "hyperapp"
 import { ds } from "assets/styles/theme"
 import cxs from "cxs"
 
-export default ({ label }) => (
+export default (props, children) => (
 	<button
 		class={cxs({
 			boxShadow: "0px 21px 47px -2px rgba(0,0,0,0.55)",
@@ -21,6 +21,6 @@ export default ({ label }) => (
 			},
 		})}
 	>
-		{label}
+		{children}
 	</button>
 )

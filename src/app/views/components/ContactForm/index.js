@@ -101,12 +101,7 @@ export default ({ actions }) => (
 				},
 			})}
 		>
-			<Button
-				required={() => {
-					const form = document.querySelector("#contact")
-				}}
-				label="Submit"
-			/>
+			<Button>Submit</Button>
 		</div>
 	</form>
 )
