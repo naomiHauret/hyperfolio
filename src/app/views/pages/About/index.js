@@ -25,22 +25,37 @@ export default ({ state, actions, name, metaTitle, desc }) => (
 		})}
 	>
 		<Enter>
+		<CenterLine id="centerLine" />
 			<div
 				class={cxs({
 					minHeight: "100vh",
 					display: "flex",
 					flexDirection: "column",
 					flexGrow: "1",
-					width: "100%",
-					margin: "auto",
-					justifyContent: "center",
 				})}
 			>
-				<GlitchImage id="portrait" src={portrait} />
+				<div
+					class={cxs({
+						marginTop: "150px",
+					})}
+				>
+					<div
+						class={cxs({
+							position: "absolute",
+							width: "350px",
+							height: "350px",
+							overflow: "hidden",
+							left: "50%",
+							transform: "translateX(-50%)",
+						})}
+					>
+						<GlitchImage id="portrait" src={portrait} />
+					</div>
 					<DistortedImage id="lettersBackground" src={letters} filterSrc={filter} />
-				<PageTitle id="titlePage" title="about" />
+				</div>
+				<PageTitle id="titlePage" title="About" />
 				<SubTitle id="subTitlePage" title="Who I am" />
-				<CenterLine id="centerLine" />
+			
 			</div>
 		</Enter>
 	</div>

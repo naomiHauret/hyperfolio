@@ -5,12 +5,13 @@ import cxs from "cxs"
 export default () => (
 	<div
 		class={cxs({
-      position: "fixed",
-      width: "50%",
-      height: "85%",
-      left: "0",
-      top: "60px",
-      borderRight: "1px solid "+ds.get("colors.blue"),
+			position: "fixed",
+			width: "50%",
+			height: "85%",
+			left: "0",
+			top: "60px",
+			borderRight: "1px solid " + ds.get("colors.blue"),
+			zIndex: "0",
 		})}
-	></div>
+	/>
 )
