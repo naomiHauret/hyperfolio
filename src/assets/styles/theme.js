@@ -10,7 +10,7 @@ const pxFontSize = {
 
 const fontFamily = {
 	text:
-		'"Playfair", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Fira Sans", "Droid Sans"',
+		'"Playfair", BoutiqueScript, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Fira Sans", "Droid Sans"',
 	error: {
 		code: '"PassionOne"',
 		text: '"Pacifico"',
