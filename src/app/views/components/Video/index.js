@@ -6,7 +6,10 @@ import lottie from "lottie-web"
 
 export default ({ url, loop, autoplay, videoId, type, actions, state }) => {
 	const id = `player-${videoId}`
-	return <div data-observable={id} class={cxs({
+	return (
+		<div
+			data-observable={id}
+			class={cxs({
 				pointerEvents: "none",
 				position: "relative",
 				overflow: "hidden",
@@ -20,15 +23,19 @@ export default ({ url, loop, autoplay, videoId, type, actions, state }) => {
 						outline: 0,
 					},
 				},
-			})}>
-			<div id={id} class={cxs({
+			})}
+		>
+			<div
+				id={id}
+				class={cxs({
 					position: "absolute",
 					top: 0,
 					left: 0,
 					width: "100%",
 					height: "100%",
 					marginTop: ds.get("spacing.video.ytWatermark"),
-				})} oncreate={() => {
+				})}
+				oncreate={() => {
 					let player
 					player = YouTubePlayer(id, {
 						videoId,
@@ -67,6 +74,8 @@ export default ({ url, loop, autoplay, videoId, type, actions, state }) => {
 					return observables.forEach((observable) => {
 						observer.observe(observable)
 					})
-				}} />
+				}}
+			/>
 		</div>
+	)
 }

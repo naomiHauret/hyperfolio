@@ -60,4 +60,3 @@ export default ({ state }) => (
 		)}
 	</ul>
 )
-

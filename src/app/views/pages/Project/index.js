@@ -21,8 +21,6 @@ export default ({ state, actions }) => (
 				flexDirection: "column",
 				flexGrow: "1",
 			})}
-		>
-
-		</div>
+		/>
 	</div>
 )
