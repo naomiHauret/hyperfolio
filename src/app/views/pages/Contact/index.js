@@ -20,7 +20,6 @@ export default ({ state, actions, name, metaTitle, desc }) => (
 			flexGrow: "1",
 		})}
 	>
-
 		<Enter easing="ease-in-out" delay={250} time={750} css={{ transform: "translateY(5%)" }}>
 			<div
 				class={cxs({

@@ -20,9 +20,9 @@ export default ({ state }) => (
 			<li
 				key="gotoAbout"
 				class={cxs({
-					position: state.location.pathname === projectsPageUrl ? "fixed" : "absolute",
+					position: state.location.pathname.indexOf(`${projectsPageUrl}`) >= 0 ? "fixed" : "absolute",
 					top:
-						state.location.pathname === homePageUrl || state.location.pathname === projectsPageUrl
+						state.location.pathname === homePageUrl || state.location.pathname.indexOf(`${projectsPageUrl}`) >= 0
 							? `${ds.get("spacing.frame") * 2}px`
 							: "unset",
 					bottom: state.location.pathname === contactPageUrl ? `${ds.get("spacing.frame")}px` : "unset",
@@ -46,18 +46,18 @@ export default ({ state }) => (
 				<Link path={contactPageUrl} name={contactPageName} />
 			</li>
 		)}
-		{state.location.pathname !== projectsPageUrl &&
-			state.location.pathname !== `${projectsPageUrl}/:projectId` && (
-				<li
-					key="gotoProjects"
-					class={cxs({
-						position: "absolute",
-						bottom: `${ds.get("spacing.frame")}px`,
-						right: `${ds.get("spacing.frame") * 2 / ds.get("breakpoints.lg") * 100}%`,
-					})}
-				>
-					<Link path={projectsPageUrl} name={projectsPageName} />
-				</li>
-			)}
+		{state.location.pathname.indexOf(`${projectsPageUrl}`) < 0 && (
+			<li
+				key="gotoProjects"
+				class={cxs({
+					position: "absolute",
+					bottom: `${ds.get("spacing.frame")}px`,
+					right: `${ds.get("spacing.frame") * 2 / ds.get("breakpoints.lg") * 100}%`,
+				})}
+			>
+				<Link path={`${projectsPageUrl}/0`} name={projectsPageName} />
+			</li>
+		)}
 	</ul>
 )
+

@@ -1,5 +1,6 @@
 import { h } from "hyperapp"
 import Project from "app/views/pages/Project"
+import Video from "app/views/components/Video"
 import { Switch, Route, Link } from "@hyperapp/router"
 import cxs from "cxs"
 import { ds } from "assets/styles/theme"
@@ -34,6 +35,15 @@ export default ({ state, actions, name, metaTitle, desc, match }) => (
 					"> li": {
 						cursor: "pointer",
 						transition: ds.get("transition.fast"),
+						"> a": {
+							display: "block",
+							height: "100%",
+							width: "100%",
+							padding: ds.pxTo(5, ds.get("typo.pxFontSize.base"), "rem"),
+							color: ds.get("colors.text.link"),
+							textDecoration: "none",
+							letterSpacing: ds.pxTo(3.5, ds.get("typo.pxFontSize.base"), "em"),
+						},
 						"::after": {
 							content: "' '",
 							width: "125%",
@@ -59,7 +69,7 @@ export default ({ state, actions, name, metaTitle, desc, match }) => (
 					class={cxs({
 						position: "fixed",
 						top: "50%",
-						left: "0%",
+						left: ds.pxTo(57, ds.get("typo.pxFontSize.base"), "rem"),
 						transform: "translateX(-50%) rotate(-90deg)",
 					})}
 				>
@@ -69,17 +79,75 @@ export default ({ state, actions, name, metaTitle, desc, match }) => (
 					class={cxs({
 						position: "fixed",
 						top: "50%",
-						right: "0%",
+						right: "0",
 						transform: "translateX(-50%) rotate(-90deg)",
-						"> a": {
-							textDecoration: "none",
-							color: ds.get('colors.white'),
-						}
 					})}
 				>
 					<Link to={`${match.url}/:projectId`}>Next</Link>
 				</li>
 			</ul>
+
+			<div
+				class={cxs({
+					display: "flex",
+					flexDirection: "column",
+					"@media (min-width: 992px)": {
+						flexDirection: "row",
+					},
+				})}
+			>
+				<div
+					class={cxs({
+						flexGrow: 1,
+					})}
+				>
+					<Video
+						url="https://www.youtube.com/embed/qvh6VhKlTyA"
+						type="project"
+						loop={true}
+						autoplay={true}
+						videoId="qvh6VhKlTyA"
+					/>
+				</div>
+				<div
+					class={cxs({
+						justifyContent: "flex-end",
+					})}
+				>
+					<h1
+						class={cxs({
+							textDecoration: "uppercase",
+							fontSize: "inherit",
+							fontWeight: "inherit",
+						})}
+					>
+						Brand identity
+					</h1>
+					<h2
+						class={cxs({
+							textDecoration: "uppercase",
+							fontSize: "inherit",
+							fontWeight: "inherit",
+						})}
+					>
+						Music group techno dark
+					</h2>
+				</div>
+			</div>
+			<button
+				class={cxs({
+					backgroundColor: "transparent",
+					border: 0,
+					color: ds.get("colors.blue"),
+					width: ds.pxTo(50, ds.get("typo.pxFontSize.base"), "rem"),
+					height: ds.pxTo(50, ds.get("typo.pxFontSize.base"), "rem"),
+					margin: "0 auto",
+					cursor: "pointer",
+				})}
+			>
+				x
+			</button>
+
 			<Route parent path={`${match.path}/:projectId`} render={Project} />
 		</div>
 	</div>

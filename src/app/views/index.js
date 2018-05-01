@@ -29,15 +29,21 @@ const notFoundPageStyle = cxs({
 	fontFamily: ds.get("typo.fontFamily.error.text"),
 })
 export default ({ state, actions, match }) => {
-	const not404 = routes.map((route) => route.path).includes(state.location.pathname) || state.location.pathname.indexOf(`${projectsPageUrl}/`) >= 0
+	const not404 =
+		routes.map((route) => route.path).includes(state.location.pathname) ||
+		state.location.pathname.indexOf(`${projectsPageUrl}/`) >= 0
 
 	not404 && state.isPlayingMusic === true ? music.play() : music.pause()
 
-	return <div class={`
+	return (
+		<div
+			class={`
 			${defaultStyle}
 			${not404 === false ? notFoundPageStyle : ""}
-		`}>
-			<div class={cxs({
+		`}
+		>
+			<div
+				class={cxs({
 					maxWidth: ds.get("grid.width.xs"),
 					margin: "0 auto",
 					height: "100%",
@@ -58,7 +64,8 @@ export default ({ state, actions, match }) => {
 					"@media (min-width: 1441px)": {
 						maxWidth: ds.get("grid.width.xxl"),
 					},
-				})}>
+				})}
+			>
 				{not404 && <Navigation state={state} actions={actions} />}
 				{not404 && <ToggleMusic state={state} actions={actions} />}
 				{not404 && <DottedBackground />}
@@ -68,4 +75,5 @@ export default ({ state, actions, match }) => {
 				</Switch>
 			</div>
 		</div>
+	)
 }

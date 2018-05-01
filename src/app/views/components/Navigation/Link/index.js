@@ -8,15 +8,19 @@ export default ({ path, name, external }) => {
 		display: "block",
 		height: "100%",
 		width: "100%",
-		padding: "5px",
+		padding: ds.pxTo(5, ds.get("typo.pxFontSize.base"), "rem"),
 		color: ds.get("colors.text.link"),
 		textDecoration: "none",
 		letterSpacing: ds.pxTo(3.5, ds.get("typo.pxFontSize.base"), "em"),
 	})
 
-	return external === true ? <a href={path} class={styles} target="_blank" rel="external">
+	return external === true ? (
+		<a href={path} class={styles} target="_blank" rel="external">
 			{name}
-		</a> : <Link to={path} class={styles}>
+		</a>
+	) : (
+		<Link to={path} class={styles}>
 			{name}
 		</Link>
+	)
 }
