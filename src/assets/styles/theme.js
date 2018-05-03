@@ -5,6 +5,7 @@ const pxFontSize = {
 	base: 16,
 	lg: 27.23,
 	xl: 50,
+	xll: 75,
 	xxl: 300,
 }
 
@@ -54,6 +55,7 @@ export const myDesignSystem = {
 			base: 1, // 16px
 			lg: `${pxFontSize.lg / pxFontSize.base}rem`, // ~ 27.23px
 			xl: `${pxFontSize.xl / pxFontSize.base}rem`, // ~ 50px
+			xll: `${pxFontSize.xll / pxFontSize.base}rem`, // ~ 50px
 			xxl: `${pxFontSize.xxl / pxFontSize.base}rem`, // ~ 300px
 		},
 		fontFamily,
@@ -63,6 +65,7 @@ export const myDesignSystem = {
 		},
 		lineHeight: {
 			headings: 1.1,
+			paragraph: 1.7,
 		},
 	},
 	colors: {

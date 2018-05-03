@@ -7,7 +7,7 @@ export default () => (
 		class={cxs({
 			position: "fixed",
 			width: "50%",
-			height: "85%",
+			height: "100%",
 			left: "0",
 			top: "60px",
 			borderRight: "1px solid " + ds.get("colors.blue"),

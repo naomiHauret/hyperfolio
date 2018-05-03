@@ -1,5 +1,6 @@
 import { h } from "hyperapp"
 import { Enter, Exit } from "@hyperapp/transitions"
+import { ds } from "assets/styles/theme"
 
 import CenterLine from "app/views/components/CenterLine"
 import DistortedImage from "app/views/components/DistortedImage"
@@ -42,20 +43,44 @@ export default ({ state, actions, name, metaTitle, desc }) => (
 					<div
 						class={cxs({
 							position: "absolute",
-							width: "350px",
-							height: "350px",
+							width: "440px",
+							height: "440px",
 							overflow: "hidden",
 							left: "50%",
+							zIndex: 4,
 							transform: "translateX(-50%)",
+							boxShadow: "0px 90px 0px 0px rgba(0,0,0,0.5)",
 						})}
 					>
 						<GlitchImage id="portrait" src={portrait} />
 					</div>
-					<DistortedImage id="lettersBackground" src={letters} filterSrc={filter} />
+					<div
+						class={cxs({
+							marginTop: "40px",
+						})}
+					>
+						<DistortedImage id="lettersBackground" src={letters} filterSrc={filter} />
+					</div>
 				</div>
 				<PageTitle id="titlePage" title="About" />
-				<SubTitle id="subTitlePage" title="Who I am" />
-			
+				<div
+					class={cxs({
+						marginTop: "100px",
+					})}
+				>
+					<SubTitle id="subTitlePage" title="Who i am" />
+				</div>
+				<div
+					class={cxs({
+						marginLeft: "auto",
+						marginRight: "auto",
+						width: "440px",
+						lineHeight: ds.get("typo.lineHeight.paragraph"),
+					})}
+				>
+					Lorem ipsum, sit amet tempus lectus lacinia id. Aliquam erat volutpat. Nulla eget arcu lorem. Maecenas magna mi, mattis at egestas et, commodo vel libero. Mauris at erat fermentum tortor rhoncus tincidunt nec at libero. Curabitur vitae laoreet odio. In ipsum velit, sodales eget lobortis nec, luctus maximus urna.<br /><br />
+					Nulla fringilla vulputate magna, quis congue quam vulputate in. Ut aliquam dolor in eros placerat, vel porttitor purus dictum. Praesent sem turpis, gravida id lobortis sit amet, viverra quis lectus. Sed sed metus tellus.
+				</div>
 			</div>
 		</Enter>
 	</div>
