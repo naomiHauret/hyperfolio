@@ -152,7 +152,7 @@ export default ({ state, actions, name, metaTitle, desc, match }) => (
 					cursor: "pointer",
 				})}
 			>
-				x
+				xxx
 			</button>
 
 			<Route parent path={`${match.path}/:projectId`} render={Project} />
