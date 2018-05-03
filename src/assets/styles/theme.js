@@ -127,8 +127,8 @@ export const myDesignSystem = {
 			${47 / pxFontSize.base}rem
 			${-2 / pxFontSize.base}rem
 			rgba(0,0,0,0.55)
-		`
-	}
+		`,
+	},
 }
 
 export const ds = new DesignSystem(myDesignSystem, {
