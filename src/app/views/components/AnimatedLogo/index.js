@@ -8,7 +8,7 @@ export default () => (
 		oncreate={() => {
 			lottie.loadAnimation({
 				container: document.getElementById("homeAnimation"),
-				renderer: "svg",
+				renderer: "canvas",
 				loop: false,
 				autoplay: false,
 				animationData: animation,

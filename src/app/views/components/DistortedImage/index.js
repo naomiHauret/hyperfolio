@@ -26,6 +26,7 @@ const startDistortionAnimation = (id, src, filterSrc) => {
 	let distortionSprite = Sprite.fromImage(filterSrc) // distortion filter image (can be any image)
 
 	let appliedDistortionFilter = new filters.DisplacementFilter(distortionSprite) // create distortion filter based on our distortion filter image
+	appliedDistortionFilter.autoFit = true
 	distortionSprite.scale.y = 0.5
 	distortionSprite.scale.x = 0.5
 

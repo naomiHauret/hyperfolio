@@ -15,7 +15,7 @@ export default ({ actions }) => (
 			return actions.sendMail(form)
 		}}
 		style={{
-			"--inputBorderColorFrom": ds.get("colors.blue"),
+			"--inputBorderColorFrom": ds.get("colors.border.input"),
 			"--inputBorderColorTo": ds.get("colors.blueTransparent"),
 		}}
 		class={cxs({
@@ -44,6 +44,7 @@ export default ({ actions }) => (
 					direction="reverse"
 					transformOrigin="50% 25px"
 					label="Name"
+					indent={7}
 				/>
 			</div>
 		</Enter>
@@ -64,6 +65,7 @@ export default ({ actions }) => (
 					direction="normal"
 					transformOrigin="50% 15px"
 					label="Email"
+					indent={7}
 				/>
 			</div>
 		</Enter>
@@ -85,12 +87,13 @@ export default ({ actions }) => (
 					delay="750ms"
 					direction="normal"
 					transformOrigin="50% 30px"
+					indent={8.5}
 				/>
 			</div>
 		</Enter>
 		<Enter easing="ease-in-out" delay={720} time={850} css={{ transform: "translateX(75%)" }}>
 			<div>
-				<Textarea label="Message" name="message" duration="7750ms" delay="750ms" />
+				<Textarea label="Message" name="message" duration="7750ms" delay="750ms" indent={9.5} />
 			</div>
 		</Enter>
 		<input type="hidden" name="*honeypot" />
