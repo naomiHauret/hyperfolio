@@ -89,56 +89,84 @@ export default ({ state, actions, name, metaTitle, desc, match }) => (
 
 			<div
 				class={cxs({
-					display: "flex",
-					flexDirection: "column",
 					flexGrow: 1,
-					padding: ds.pxTo(70, ds.get("typo.pxFontSize.base"), "rem"),
-
+					paddingLeft: ds.pxTo(70, ds.get("typo.pxFontSize.base"), "rem"),
+					paddingRight: ds.pxTo(70, ds.get("typo.pxFontSize.base"), "rem"),
+					display: "flex",
 					"@media (min-width: 992px)": {
-						flexDirection: "row",
+						paddingRight: 0,
 					},
 				})}
 			>
 				<div
 					class={cxs({
+						display: "flex",
+						flexDirection: "column",
 						flexGrow: 1,
-					})}
-				>
-					<Video
-						url="https://www.youtube.com/embed/qvh6VhKlTyA"
-						type="project"
-						loop={true}
-						autoplay={true}
-						videoId="qvh6VhKlTyA"
-					/>
-				</div>
-				<div
-					class={cxs({
-						justifyContent: "flex-end",
-						alignSelf: "flex-end",
+						padding: ds.pxTo(70, ds.get("typo.pxFontSize.base"), "rem"),
+						margin: "auto",
 						"@media (min-width: 992px)": {
-							marginLeft: ds.pxTo(45, ds.get("typo.pxFontSize.base"), "rem"),
+							flexDirection: "row",
 						},
 					})}
 				>
-					<h1
+					<div
 						class={cxs({
-							textTransform: "uppercase",
-							fontSize: "inherit",
-							fontWeight: "inherit",
+							flexGrow: 1,
+							height: "410px",
+							margin: "auto -35px 40px -35px",
+							"@media (min-width: 992px)": {
+								margin: "0 0 0 -70px",
+							},
+							"@media (min-width: 1200px)": {
+								height: "510px",
+							},
+							"@media (min-width: 1365px)": {
+								height: "610px",
+							},
 						})}
 					>
-						Brand identity
-					</h1>
-					<h2
+						<Video
+							url="https://www.youtube.com/embed/qvh6VhKlTyA"
+							type="project"
+							loop={true}
+							autoplay={true}
+							videoId="qvh6VhKlTyA"
+						/>
+					</div>
+					<div
 						class={cxs({
-							textDecoration: "uppercase",
-							fontSize: "inherit",
-							fontWeight: "inherit",
+							justifyContent: "center",
+							alignSelf: "center",
+							textAlign: "center",
+							"@media (min-width: 992px)": {
+								textAlign: "left",
+								justifyContent: "flex-end",
+								alignSelf: "flex-end",
+								marginLeft: ds.pxTo(45, ds.get("typo.pxFontSize.base"), "rem"),
+							},
 						})}
 					>
-						Music group techno dark
-					</h2>
+						<h1
+							class={cxs({
+								textTransform: "uppercase",
+								fontSize: "inherit",
+								fontWeight: "inherit",
+							})}
+						>
+							Brand identity
+						</h1>
+						<h2
+							class={cxs({
+								textDecoration: "uppercase",
+								fontSize: "inherit",
+								fontWeight: "inherit",
+								marginBottom: "8px",
+							})}
+						>
+							Music group techno dark
+						</h2>
+					</div>
 				</div>
 			</div>
 			<button
