@@ -91,6 +91,9 @@ export default ({ state, actions, name, metaTitle, desc, match }) => (
 				class={cxs({
 					display: "flex",
 					flexDirection: "column",
+					flexGrow: 1,
+					padding: ds.pxTo(70, ds.get("typo.pxFontSize.base"), "rem"),
+
 					"@media (min-width: 992px)": {
 						flexDirection: "row",
 					},
@@ -112,11 +115,15 @@ export default ({ state, actions, name, metaTitle, desc, match }) => (
 				<div
 					class={cxs({
 						justifyContent: "flex-end",
+						alignSelf: "flex-end",
+						"@media (min-width: 992px)": {
+							marginLeft: ds.pxTo(45, ds.get("typo.pxFontSize.base"), "rem"),
+						},
 					})}
 				>
 					<h1
 						class={cxs({
-							textDecoration: "uppercase",
+							textTransform: "uppercase",
 							fontSize: "inherit",
 							fontWeight: "inherit",
 						})}
