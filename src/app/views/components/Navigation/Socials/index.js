@@ -7,7 +7,7 @@ export default ({ socials }) => (
 	<ul
 		class={cxs({
 			position: "absolute",
-			bottom: `${ ds.get("spacing.frame") + 45 }px`,
+			bottom: `${ds.get("spacing.frame") + 45}px`,
 			left: 0,
 			display: "flex",
 			justifyContent: "center",
