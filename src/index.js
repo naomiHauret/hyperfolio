@@ -6,7 +6,9 @@ import actions from "app/actions"
 
 import App from "app/views"
 import "assets/styles/index.css"
+const enhancedActions = Object.assign({}, { location: location.actions }, actions)
 
+console.log(enhancedActions)
 const view = (state, actions) => <App state={state} actions={actions} />
-const main = app(state, actions, view, document.body)
+const main = app(state, enhancedActions, view, document.body)
 const unsubscribe = location.subscribe(main.location)

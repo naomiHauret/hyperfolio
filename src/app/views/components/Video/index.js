@@ -13,8 +13,9 @@ export default ({ url, loop, autoplay, videoId, type, actions, state }) => {
 				pointerEvents: "none",
 				position: "relative",
 				overflow: "hidden",
-				height: "85vh",
-				maxWidth: type === "cover" ? "100vw" : "65vw",
+				height: type === "cover" ? "85vh" : "100%",
+				width: type === "cover" ? "unset" : "100%",
+				maxWidth: type === "cover" ? "100vw" : "unset",
 				margin: "auto 0",
 				transform: "translateY(-1.75%)",
 				" > iframe": {

@@ -14,6 +14,8 @@ export default ({ state, actions, name, metaTitle, desc }) => (
 			flexGrow: "1",
 		})}
 	>
+		{console.log(state.location)}
+
 		<Exit easing="ease-in-out" time={1750} css={{ transform: "translateY(-100%)" }}>
 			<div
 				key="homepagecontent"

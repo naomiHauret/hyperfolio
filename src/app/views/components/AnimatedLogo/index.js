@@ -8,7 +8,7 @@ export default () => (
 		oncreate={() => {
 			lottie.loadAnimation({
 				container: document.getElementById("homeAnimation"),
-				renderer: "svg",
+				renderer: "canvas",
 				loop: false,
 				autoplay: false,
 				animationData: animation,
@@ -19,6 +19,10 @@ export default () => (
 			top: "50%",
 			left: "50%",
 			transform: "translate(-50%, -50%)",
+			width: "900px",
+			"@media (min-width: 992px)": {
+				width: "1200px",
+			},
 		})}
 	>
 		<div id="homeAnimation" />

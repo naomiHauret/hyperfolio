@@ -6,7 +6,7 @@ import DistortedImage from "app/views/components/DistortedImage"
 import ContactForm from "app/views/components/ContactForm"
 
 import letters from "assets/images/content/letters.png"
-import filter from "assets/images/filters/displacement.svg"
+import filter from "assets/images/filters/distortion.jpg"
 
 export default ({ state, actions, name, metaTitle, desc }) => (
 	<div

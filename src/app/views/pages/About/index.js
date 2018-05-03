@@ -25,6 +25,8 @@ export default ({ state, actions, name, metaTitle, desc }) => (
 			flexGrow: "1",
 		})}
 	>
+		{console.log(state.location)}
+
 		<Enter>
 		<CenterLine id="centerLine" />
 			<div
@@ -80,6 +82,7 @@ export default ({ state, actions, name, metaTitle, desc }) => (
 				>
 					Lorem ipsum, sit amet tempus lectus lacinia id. Aliquam erat volutpat. Nulla eget arcu lorem. Maecenas magna mi, mattis at egestas et, commodo vel libero. Mauris at erat fermentum tortor rhoncus tincidunt nec at libero. Curabitur vitae laoreet odio. In ipsum velit, sodales eget lobortis nec, luctus maximus urna.<br /><br />
 					Nulla fringilla vulputate magna, quis congue quam vulputate in. Ut aliquam dolor in eros placerat, vel porttitor purus dictum. Praesent sem turpis, gravida id lobortis sit amet, viverra quis lectus. Sed sed metus tellus.
+					Lorem ipsum, sit amet tempus lectus lacinia id. Aliquam erat volutpat. Nulla eget arcu lorem. Maecenas magna mi, mattis at egestas et, commodo vel libero. Mauris at erat fermentum tortor rhoncus tincidunt nec at libero. Curabitur vitae laoreet odio. In ipsum velit, sodales eget lobortis nec, luctus maximus urna.<br /><br />
 				</div>
 			</div>
 		</Enter>

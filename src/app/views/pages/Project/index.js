@@ -1,7 +1,26 @@
 import { h } from "hyperapp"
+import Video from "app/views/components/Video"
+
+import cxs from "cxs"
 
 export default ({ state, actions }) => (
-	<div oncreate={actions.setPageMetaData({ metaTitle, desc })} onupdate={actions.setPageMetaData({ metaTitle, desc })}>
-		<h1>Prjt</h1>
+	<div
+		key="page"
+		class={cxs({
+			minHeight: "100vh",
+			display: "flex",
+			flexDirection: "column",
+			flexGrow: "1",
+		})}
+	>
+		<div
+			key="projectpage"
+			class={cxs({
+				minHeight: "100vh",
+				display: "flex",
+				flexDirection: "column",
+				flexGrow: "1",
+			})}
+		/>
 	</div>
 )

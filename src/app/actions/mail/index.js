@@ -14,6 +14,7 @@ export default {
 		formData["*default_email"] = process.env.ENFORMED_SEND_MAIL_TO
 
 		if (
+			process.env.NODE_ENV === "production" &&
 			trap === "" &&
 			mailForm.checkValidity() &&
 			sender !== "" &&

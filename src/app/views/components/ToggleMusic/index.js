@@ -13,7 +13,7 @@ export default ({ state, actions }) => {
 			oncreate={() => {
 				soundbarAnimation = lottie.loadAnimation({
 					container: document.getElementById("soundbarsAnimation"),
-					renderer: "svg",
+					renderer: "canvas",
 					loop: true,
 					autoplay: true,
 					animationData: animation,

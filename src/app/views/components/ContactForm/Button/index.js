@@ -2,11 +2,13 @@ import { h } from "hyperapp"
 import { ds } from "assets/styles/theme"
 import cxs from "cxs"
 
-export default ({ label }) => (
+export default (props, children) => (
 	<button
 		class={cxs({
-			boxShadow: "0px 21px 47px -2px rgba(0,0,0,0.55)",
-			border: `solid 1px ${ds.get("colors.blue")}`,
+			boxShadow: ds.get("boxShadow.default"),
+			borderStyle: "solid",
+			borderWidth: ds.pxTo(1, ds.get("typo.pxFontSize.base"), "rem"),
+			borderColor: ds.get("colors.border.button"),
 			backgroundColor: ds.get("colors.background.dark"),
 			color: ds.get("colors.text.link"),
 			textTransform: "uppercase",
@@ -14,13 +16,24 @@ export default ({ label }) => (
 			fontSize: "inherit",
 			cursor: "pointer",
 			width: "100%",
-			padding: "15.5px 0",
+			padding: `${ds.pxTo(ds.get("spacing.input"), ds.get("typo.pxFontSize.base"), "rem")} 0`,
+			transition: ds.get("transition.fast"),
+			":focus": {
+				backgroundColor: ds.get("colors.background.colorful"),
+			},
 			"@media (min-width: 768px)": {
 				width: "unset",
 				padding: "4.5px 22.535px",
+				padding: `
+					${ds.pxTo(4.5, ds.get("typo.pxFontSize.base"), "rem")}
+					${ds.pxTo(22.535, ds.get("typo.pxFontSize.base"), "rem")}
+				`,
+				":hover": {
+					backgroundColor: ds.get("colors.background.colorful"),
+				},
 			},
 		})}
 	>
-		{label}
+		{children}
 	</button>
 )
