@@ -18,7 +18,7 @@ export default () => (
 			transform: "translateX(33px)",
 			color: ds.get("colors.blue"),
 			top: `${ds.get("spacing.frame") + 20}px`,
-			zIndex: ds.get("zIndex.mid"),
+			zIndex: ds.get("zIndex.aboveAll"),
 		})}
 	/>
 )

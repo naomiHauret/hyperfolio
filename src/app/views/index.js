@@ -4,14 +4,13 @@ import Navigation from "app/views/components/Navigation"
 import Header from "app/views/components/Header"
 import DottedBackground from "app/views/components/DottedBackground"
 import ToggleMusic from "app/views/components/ToggleMusic"
-import { routes, projectsPageUrl } from "app/routes"
+import { routes, projectsPageUrl, homePageUrl } from "app/routes"
 import { ds } from "assets/styles/theme"
 import cxs from "cxs"
 import musicFile from "assets/music/audio.mp3"
 
 let music = new Audio(musicFile)
 music.loop = true
-
 const defaultStyle = cxs({
 	flexGrow: 1,
 	color: ds.get("colors.text.paragraph"),
@@ -49,6 +48,7 @@ export default ({ state, actions, match }) => {
 					height: "100%",
 					width: "100%",
 					position: "relative",
+					lineHeight: ds.get("typo.lineHeight.paragraphs"),
 					"@media (min-width: 768px)": {
 						maxWidth: ds.get("grid.width.sm"),
 					},
@@ -66,6 +66,7 @@ export default ({ state, actions, match }) => {
 					},
 				})}
 			>
+				{not404 && state.location.pathname !== homePageUrl && <Header />}
 				{not404 && <Navigation state={state} actions={actions} />}
 				{not404 && <ToggleMusic state={state} actions={actions} />}
 				{not404 && <DottedBackground />}

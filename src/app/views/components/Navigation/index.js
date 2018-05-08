@@ -9,7 +9,6 @@ import cxs from "cxs"
 export default ({ state, actions }) => (
 	<nav
 		class={cxs({
-			zIndex: ds.get("zIndex.high"),
 			"> ul": {
 				padding: 0,
 				margin: 0,
@@ -17,6 +16,8 @@ export default ({ state, actions }) => (
 				"> li": {
 					cursor: "pointer",
 					transition: ds.get("transition.fast"),
+					zIndex: ds.get("zIndex.high"),
+
 					"::after": {
 						content: "' '",
 						width: "125%",

@@ -94,7 +94,7 @@ module.exports = merge(common, {
 		new AssetsCompressionPlugin({
 			algorithm: "gzip",
 			asset: "[path].gz[query]",
-			test: /\.(css|html|svg|ttf|eot|woff|woff2|ico)$/,
+			test: /\.(css|html|svg|ttf|eot|ico)$/,
 			minRatio: 0.8,
 		}),
 		new ScriptsCompressionPlugin({

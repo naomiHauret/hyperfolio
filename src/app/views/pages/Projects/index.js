@@ -1,9 +1,15 @@
 import { h } from "hyperapp"
-import Project from "app/views/pages/Project"
+import Project from "app/views/components/Project"
 import Video from "app/views/components/Video"
 import { Switch, Route, Link } from "@hyperapp/router"
 import cxs from "cxs"
 import { ds } from "assets/styles/theme"
+import postcssJs from "postcss-js"
+import postcssPlacehold from "postcss-placehold"
+let placehold = postcssJs.sync([postcssPlacehold])
+let style = placehold({
+	background: "placehold(400, 400)",
+})
 
 export default ({ state, actions, name, metaTitle, desc, match }) => (
 	<div
@@ -69,8 +75,12 @@ export default ({ state, actions, name, metaTitle, desc, match }) => (
 					class={cxs({
 						position: "fixed",
 						top: "50%",
-						left: ds.pxTo(57, ds.get("typo.pxFontSize.base"), "rem"),
 						transform: "translateX(-50%) rotate(-90deg)",
+						left: ds.pxTo(20, ds.get("typo.pxFontSize.base"), "rem"),
+
+						"@media (min-width: 992px)": {
+							left: ds.pxTo(57, ds.get("typo.pxFontSize.base"), "rem"),
+						},
 					})}
 				>
 					<Link to={`${match.url}/:projectId`}>Previous</Link>
@@ -79,8 +89,12 @@ export default ({ state, actions, name, metaTitle, desc, match }) => (
 					class={cxs({
 						position: "fixed",
 						top: "50%",
-						right: "0",
+						right: ds.pxTo(-33, ds.get("typo.pxFontSize.base"), "rem"),
 						transform: "translateX(-50%) rotate(-90deg)",
+
+						"@media (min-width: 992px)": {
+							right: ds.pxTo(0, ds.get("typo.pxFontSize.base"), "rem"),
+						},
 					})}
 				>
 					<Link to={`${match.url}/:projectId`}>Next</Link>
@@ -120,10 +134,10 @@ export default ({ state, actions, name, metaTitle, desc, match }) => (
 								margin: "0 0 0 -70px",
 							},
 							"@media (min-width: 1200px)": {
-								height: "510px",
+								height: ds.pxTo(510, ds.get("typo.pxFontSize.base"), "rem"),
 							},
 							"@media (min-width: 1365px)": {
-								height: "610px",
+								height: ds.pxTo(610, ds.get("typo.pxFontSize.base"), "rem"),
 							},
 						})}
 					>
@@ -162,7 +176,7 @@ export default ({ state, actions, name, metaTitle, desc, match }) => (
 								textDecoration: "uppercase",
 								fontSize: "inherit",
 								fontWeight: "inherit",
-								marginBottom: "8px",
+								marginBottom: ds.pxTo(8, ds.get("typo.pxFontSize.base"), "rem"),
 							})}
 						>
 							Music group techno dark
@@ -191,37 +205,363 @@ export default ({ state, actions, name, metaTitle, desc, match }) => (
 
 			<div
 				class={cxs({
-					display: "flex",
+					padding: `${ds.pxTo(130, ds.get("typo.pxFontSize.base"), "rem")}
+						${ds.pxTo(70, ds.get("typo.pxFontSize.base"), "rem")}
+						${ds.pxTo(170, ds.get("typo.pxFontSize.base"), "rem")}
+					`,
+					"@media (min-width: 992px)": {
+						padding: `${ds.pxTo(90, ds.get("typo.pxFontSize.base"), "rem")}
+							${ds.pxTo(70, ds.get("typo.pxFontSize.base"), "rem")}
+							${ds.pxTo(170, ds.get("typo.pxFontSize.base"), "rem")}
+						`,
+					},
 				})}
 			>
-				<div>
-					<p>
-						Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet
-						dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit
-						lobortis nisl ut aliquip ex ea commodo consequat. Duis autem vel eum iriure dolor in hendrerit in vulputate velit
-						esse molestie consequat, vel illum Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh
-						euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci
-						tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat. Duis autem vel eum iriure dolor in
-						hendrerit in vulputate velit esse molestie consequat, vel illum
-					</p>
-					<p>
-						Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet
-						dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit
-						lobortis nisl ut aliquip ex ea commodo consequat. Duis autem vel eum iriure dolor in hendrerit in vulputate velit
-						esse molestie consequat, vel illum Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh
-						euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci
-						tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat. Duis autem vel eum iriure dolor in
-						hendrerit in vulputate velit esse molestie consequat, vel illum
-					</p>
+				<div
+					class={cxs({
+						marginTop: ds.pxTo(150, ds.get("typo.pxFontSize.base"), "rem"),
+						marginLeft: "auto",
+						marginRight: "auto",
+						flexGrow: 1,
+						"@media (min-width: 992px)": {
+							marginTop: ds.pxTo(0, ds.get("typo.pxFontSize.base"), "rem"),
+							marginLeft: 0,
+							marginRight: 0,
+						},
+					})}
+				>
+					<h2
+						class={cxs({
+							fontFamily: ds.get("typo.fontFamily.title"),
+							fontSize: ds.get("typo.sizes.xxl"),
+							fontWeight: ds.get("typo.fontWeight.lightest"),
+							background: "linear-gradient(to top, black -57%, #1800ff, #263939)",
+							"-webkit-text-fill-color": "transparent",
+							"-webkit-background-clip": "text",
+							color: "blue",
+							marginBottom: 0,
+						})}
+					>
+						Stupid project name
+					</h2>
 				</div>
-			</div>
-			<div
-				class={cxs({
-					display: "flex",
-				})}
-			>
-				<div>
-					<img src="" />
+				<div
+					class={cxs({
+						display: "flex",
+						flexDirection: "column-reverse",
+						"@media (min-width: 992px)": {
+							flexDirection: "row !important",
+							justifyContent: "space-between",
+						},
+					})}
+				>
+					<div
+						class={cxs({
+							width: "100%",
+							marginTop: ds.pxTo(35, ds.get("typo.pxFontSize.base"), "rem"),
+							"@media (min-width: 992px)": {
+								width: "50%",
+								marginTop: 0,
+							},
+							"@media (min-width: 1200px)": {
+								width: `${7 / 12 * 100}%`,
+							},
+						})}
+					>
+						<p>
+							Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet
+							dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit
+							lobortis nisl ut aliquip ex ea commodo consequat. Duis autem vel eum iriure dolor in hendrerit in vulputate velit
+							esse molestie consequat, vel illum Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy
+							nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud
+							exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat. Duis autem vel eum iriure
+							dolor in hendrerit in vulputate velit esse molestie consequat, vel illum
+						</p>
+						<p>
+							Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet
+							dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit
+							lobortis nisl ut aliquip ex ea commodo consequat. Duis autem vel eum iriure dolor in hendrerit in vulputate velit
+							esse molestie consequat, vel illum Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy
+							nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud
+							exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat. Duis autem vel eum iriure
+							dolor in hendrerit in vulputate velit esse molestie consequat, vel illum
+						</p>
+					</div>
+					<div
+						class={cxs({
+							width: ds.pxTo(370, ds.get("typo.pxFontSize.base"), "rem"),
+							height: ds.pxTo(130, ds.get("typo.pxFontSize.base"), "rem"),
+							margin: "15px auto 0",
+							"@media (min-width: 992px)": {
+								margin: "35px 0 0 0",
+							},
+						})}
+					>
+						<img
+							src=""
+							class={cxs(
+								placehold({
+									width: "100%",
+									height: "100%",
+									background: "placehold(129, 371)",
+									objectFit: "cover",
+									objectPosition: "center",
+								}),
+							)}
+						/>
+					</div>
+				</div>
+				<div
+					class={cxs({
+						display: "flex",
+						flexWrap: "wrap",
+						"@media (min-width: 992px)": {
+							"> div": {
+								width: "100%",
+								height: "35vh",
+								"@media (min-width: 992px)": {
+									maxWidth: ds.pxTo(550, ds.get("typo.pxFontSize.base"), "rem"),
+									width: "75%",
+									height: ds.pxTo(350, ds.get("typo.pxFontSize.base"), "rem"),
+								},
+								":nth-child(odd)": {
+									"margin-left": "auto",
+								},
+								":nth-child(even)": {
+									"margin-right": "auto",
+								},
+								":nth-child(3n+0)": {
+									margin: "0 auto",
+								},
+								":nth-last-child(-n+2)": {
+									width: "50%",
+									margin: 0,
+								},
+							},
+						},
+					})}
+				>
+					<div>
+						<img
+							src=""
+							class={cxs(
+								placehold({
+									width: "100%",
+									height: "100%",
+									background: "placehold(300, 450)",
+									objectFit: "contain",
+									objectPosition: "center",
+
+									"@media (min-width: 992px)": {
+										cursor: "nesw-resize",
+										filter: "blur(5px)",
+										transition: "linear 250ms",
+										":hover": {
+											filter: "blur(0)",
+										},
+									},
+								}),
+							)}
+						/>
+					</div>
+					<div
+						class={cxs({
+							width: "100%",
+							height: "35vh",
+							"@media (min-width: 992px)": {
+								maxWidth: ds.pxTo(550, ds.get("typo.pxFontSize.base"), "rem"),
+								width: "75%",
+								height: ds.pxTo(350, ds.get("typo.pxFontSize.base"), "rem"),
+							},
+						})}
+					>
+						<img
+							src="https://media.istockphoto.com/photos/plant-growing-picture-id510222832?k=6&m=510222832&s=612x612&w=0&h=Pzjkj2hf9IZiLAiXcgVE1FbCNFVmKzhdcT98dcHSdSk="
+							class={cxs(
+								placehold({
+									width: "100%",
+									height: "100%",
+									background: "placehold(300, 450)",
+									objectFit: "contain",
+									objectPosition: "center",
+
+									"@media (min-width: 992px)": {
+										cursor: "nesw-resize",
+										filter: "blur(5px)",
+										transition: "linear 250ms",
+										":hover": {
+											filter: "blur(0)",
+										},
+									},
+								}),
+							)}
+						/>
+					</div>
+					<div
+						class={cxs({
+							width: "100%",
+							height: "35vh",
+							"@media (min-width: 992px)": {
+								maxWidth: ds.pxTo(550, ds.get("typo.pxFontSize.base"), "rem"),
+								width: "75%",
+								height: ds.pxTo(350, ds.get("typo.pxFontSize.base"), "rem"),
+							},
+						})}
+					>
+						<img
+							src=""
+							class={cxs(
+								placehold({
+									width: "100%",
+									height: "100%",
+									background: "placehold(300, 450)",
+									objectFit: "contain",
+									objectPosition: "center",
+
+									"@media (min-width: 992px)": {
+										cursor: "nesw-resize",
+										filter: "blur(5px)",
+										transition: "linear 250ms",
+										":hover": {
+											filter: "blur(0)",
+										},
+									},
+								}),
+							)}
+						/>
+					</div>
+					<div
+						class={cxs({
+							width: "100%",
+							height: "35vh",
+							"@media (min-width: 992px)": {
+								maxWidth: ds.pxTo(550, ds.get("typo.pxFontSize.base"), "rem"),
+								width: "75%",
+								height: ds.pxTo(350, ds.get("typo.pxFontSize.base"), "rem"),
+							},
+						})}
+					>
+						<img
+							src=""
+							class={cxs(
+								placehold({
+									width: "100%",
+									height: "100%",
+									background: "placehold(300, 450)",
+									objectFit: "contain",
+									objectPosition: "center",
+
+									"@media (min-width: 992px)": {
+										cursor: "nesw-resize",
+										filter: "blur(5px)",
+										transition: "linear 250ms",
+										":hover": {
+											filter: "blur(0)",
+										},
+									},
+								}),
+							)}
+						/>
+					</div>
+					<div
+						class={cxs({
+							width: "100%",
+							height: "35vh",
+							"@media (min-width: 992px)": {
+								maxWidth: ds.pxTo(550, ds.get("typo.pxFontSize.base"), "rem"),
+								width: "75%",
+								height: ds.pxTo(350, ds.get("typo.pxFontSize.base"), "rem"),
+							},
+						})}
+					>
+						<img
+							src=""
+							class={cxs(
+								placehold({
+									width: "100%",
+									height: "100%",
+									background: "placehold(300, 450)",
+									objectFit: "contain",
+									objectPosition: "center",
+
+									"@media (min-width: 992px)": {
+										cursor: "nesw-resize",
+										filter: "blur(5px)",
+										transition: "linear 250ms",
+										":hover": {
+											filter: "blur(0)",
+										},
+									},
+								}),
+							)}
+						/>
+					</div>
+					<div
+						class={cxs({
+							width: "100%",
+							height: "35vh",
+							"@media (min-width: 992px)": {
+								maxWidth: ds.pxTo(550, ds.get("typo.pxFontSize.base"), "rem"),
+								width: "75%",
+								height: ds.pxTo(350, ds.get("typo.pxFontSize.base"), "rem"),
+							},
+						})}
+					>
+						<img
+							src=""
+							class={cxs(
+								placehold({
+									width: "100%",
+									height: "100%",
+									background: "placehold(300, 450)",
+									objectFit: "contain",
+									objectPosition: "center",
+
+									"@media (min-width: 992px)": {
+										cursor: "nesw-resize",
+										filter: "blur(5px)",
+										transition: "linear 250ms",
+										":hover": {
+											filter: "blur(0)",
+										},
+									},
+								}),
+							)}
+						/>
+					</div>
+					<div
+						class={cxs({
+							width: "100%",
+							height: "35vh",
+							"@media (min-width: 992px)": {
+								maxWidth: ds.pxTo(550, ds.get("typo.pxFontSize.base"), "rem"),
+								width: "75%",
+								height: ds.pxTo(350, ds.get("typo.pxFontSize.base"), "rem"),
+							},
+						})}
+					>
+						<img
+							src=""
+							class={cxs(
+								placehold({
+									width: "100%",
+									height: "100%",
+									background: "placehold(300, 450)",
+									objectFit: "contain",
+									objectPosition: "center",
+
+									"@media (min-width: 992px)": {
+										cursor: "nesw-resize",
+										filter: "blur(5px)",
+										transition: "linear 250ms",
+										":hover": {
+											filter: "blur(0)",
+										},
+									},
+								}),
+							)}
+						/>
+					</div>
 				</div>
 			</div>
 

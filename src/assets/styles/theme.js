@@ -6,7 +6,8 @@ const pxFontSize = {
 	base: 16,
 	lg: 27.23,
 	xl: 50,
-	xxl: 300,
+	xxl: 87,
+	xxxl: 300,
 }
 
 const fontFamily = {
@@ -16,6 +17,7 @@ const fontFamily = {
 		code: '"PassionOne"',
 		text: '"Pacifico"',
 	},
+	title: '"BoutiqueScript"',
 }
 
 const colorPalette = {
@@ -57,15 +59,17 @@ export const myDesignSystem = {
 			base: 1, // 16px
 			lg: `${pxFontSize.lg / pxFontSize.base}rem`, // ~ 27.23px
 			xl: `${pxFontSize.xl / pxFontSize.base}rem`, // ~ 50px
-			xxl: `${pxFontSize.xxl / pxFontSize.base}rem`, // ~ 300px
+			xxl: `${pxFontSize.xxl / pxFontSize.base}rem`, // ~ 87px
+			xxxl: `${pxFontSize.xxxl / pxFontSize.base}rem`, // ~ 300px
 		},
 		fontFamily,
 		fontFamilyBase: fontFamily.text,
 		fontWeight: {
+			lightest: 100,
 			normal: "normal",
 		},
 		lineHeight: {
-			headings: 1.1,
+			paragraphs: 1.35,
 		},
 	},
 	colors: {

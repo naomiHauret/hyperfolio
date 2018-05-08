@@ -21,8 +21,6 @@ export default ({ state, actions, name, metaTitle, desc }) => (
 			flexGrow: "1",
 		})}
 	>
-		{console.log(state.location)}
-
 		<Enter>
 			<div
 				class={cxs({
