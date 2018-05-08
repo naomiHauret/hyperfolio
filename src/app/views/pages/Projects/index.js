@@ -162,25 +162,22 @@ export default ({ state, actions, name, metaTitle, desc, match }) => (
 							},
 						})}
 					>
-						<h1
+						<div
 							class={cxs({
 								textTransform: "uppercase",
 								fontSize: "inherit",
-								fontWeight: "inherit",
 							})}
 						>
 							Brand identity
-						</h1>
-						<h2
+						</div>
+						<div
 							class={cxs({
 								textDecoration: "uppercase",
-								fontSize: "inherit",
-								fontWeight: "inherit",
 								marginBottom: ds.pxTo(8, ds.get("typo.pxFontSize.base"), "rem"),
 							})}
 						>
 							Music group techno dark
-						</h2>
+						</div>
 					</div>
 				</div>
 			</div>
@@ -230,7 +227,7 @@ export default ({ state, actions, name, metaTitle, desc, match }) => (
 						},
 					})}
 				>
-					<h2
+					<h1
 						class={cxs({
 							fontFamily: ds.get("typo.fontFamily.title"),
 							fontSize: ds.get("typo.sizes.xxl"),
@@ -243,7 +240,7 @@ export default ({ state, actions, name, metaTitle, desc, match }) => (
 						})}
 					>
 						Stupid project name
-					</h2>
+					</h1>
 				</div>
 				<div
 					class={cxs({
