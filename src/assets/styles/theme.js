@@ -101,6 +101,7 @@ export const myDesignSystem = {
 		mid: 2,
 		high: 3,
 		aboveAll: 4,
+		godView: 5,
 	},
 	spacing: {
 		frame: 35,

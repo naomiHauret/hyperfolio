@@ -1,19 +1,8 @@
 import { h } from "hyperapp"
 import cxs from "cxs"
-import animation from "assets/animations/animated_logo.json"
-import lottie from "lottie-web"
 
 export default () => (
 	<div
-		oncreate={() => {
-			lottie.loadAnimation({
-				container: document.getElementById("homeAnimation"),
-				renderer: "canvas",
-				loop: false,
-				autoplay: false,
-				animationData: animation,
-			})
-		}}
 		class={cxs({
 			position: "fixed",
 			top: "50%",
@@ -24,7 +13,5 @@ export default () => (
 				width: "1200px",
 			},
 		})}
-	>
-		<div id="homeAnimation" />
-	</div>
+	/>
 )

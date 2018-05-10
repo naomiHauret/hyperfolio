@@ -1,48 +1,60 @@
 import { h } from "hyperapp"
 import { routes } from "app/routes"
 import { ds } from "assets/styles/theme"
-import animation from "assets/animations/soundbars_on.json"
-import lottie from "lottie-web"
 import cxs from "cxs"
+import soundOn from "assets/images/content/soundOn.gif"
 
 export default ({ state, actions }) => {
-	let soundbarAnimation
-
 	return (
 		<button
-			oncreate={() => {
-				soundbarAnimation = lottie.loadAnimation({
-					container: document.getElementById("soundbarsAnimation"),
-					renderer: "canvas",
-					loop: true,
-					autoplay: true,
-					animationData: animation,
-				})
-			}}
-			onclick={() => {
-				if (state.isPlayingMusic === true) {
-					lottie.goToAndStop(20, soundbarAnimation)
-				} else {
-					lottie.play(soundbarAnimation)
-				}
-				return actions.togglePlayMusic()
-			}}
+			onclick={actions.togglePlayMusic}
 			class={cxs({
 				backgroundColor: "transparent",
-				border: 0,
 				color: ds.get("colors.blue"),
 				zIndex: ds.get("zIndex.aboveAll"),
+				border: 0,
 				position: "fixed",
-				bottom: "50px",
-				left: "55px",
+				bottom: "15px",
+				left: "30px",
 				cursor: "pointer",
-				padding: "50px,",
+				width: "65px",
+				height: "65px",
+				display: "flex",
+				justifyContent: "center",
 				":focus": {
 					outline: 0,
 				},
 			})}
 		>
-			<div id="soundbarsAnimation" />
+			<div class={cxs({ justifyContent: "flex-end", alignItems: "flex-end" })}>
+				{state.isPlayingMusic === true ? (
+					<img
+						src={soundOn}
+						alt="toggle music off"
+						class={cxs({
+							objectFit: "cover",
+							objectPosition: "center",
+							width: "100%",
+							height: "100%",
+						})}
+					/>
+				) : (
+					<svg
+						class={cxs({
+							width: "34px",
+							height: "6px",
+							marginTop: "13px",
+						})}
+						xmlns="http://www.w3.org/2000/svg"
+						viewBox="0 0 24 5"
+					>
+						<path
+							d="M5.1.8h3.3v3.4H5.1zM10.1.8h3.3v3.4h-3.3zM15.1.8h3.3v3.4h-3.3zM20.1.8h3.3v3.4h-3.3zM.3.8h3.3v3.4H.3z"
+							fill={`${ds.get("colors.blue")}`}
+						/>
+					</svg>
+				)}
+			</div>
 		</button>
 	)
 }

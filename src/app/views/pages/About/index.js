@@ -11,7 +11,7 @@ import cxs from "cxs"
 
 export default ({ state, actions, name, metaTitle, desc }) => (
 	<div
-		key="aboutpage"
+		key="page"
 		oncreate={actions.setPageMetaData({ metaTitle, desc })}
 		onupdate={actions.setPageMetaData({ metaTitle, desc })}
 		class={cxs({
@@ -21,18 +21,21 @@ export default ({ state, actions, name, metaTitle, desc }) => (
 			flexGrow: "1",
 		})}
 	>
-		<Enter>
-			<div
-				class={cxs({
-					minHeight: "100vh",
-					display: "flex",
-					flexDirection: "column",
-					flexGrow: "1",
-				})}
-			>
-				<GlitchImage id="portrait" src={portrait} />
-				<DistortedImage id="lettersBackground" src={letters} filterSrc={filter} />
-			</div>
-		</Enter>
+		<Exit>
+			<Enter>
+				<div
+					key="contactcontent"
+					class={cxs({
+						minHeight: "100vh",
+						display: "flex",
+						flexDirection: "column",
+						flexGrow: "1",
+					})}
+				>
+					<GlitchImage id="portrait" src={portrait} />
+					<DistortedImage id="lettersBackground" src={letters} filterSrc={filter} />
+				</div>
+			</Enter>
+		</Exit>
 	</div>
 )

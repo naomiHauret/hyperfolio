@@ -16,7 +16,7 @@ export default ({ state, actions }) => (
 				"> li": {
 					cursor: "pointer",
 					transition: ds.get("transition.fast"),
-					zIndex: ds.get("zIndex.high"),
+					zIndex: ds.get("zIndex.godView"),
 
 					"::after": {
 						content: "' '",

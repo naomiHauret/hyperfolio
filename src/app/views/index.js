@@ -8,6 +8,7 @@ import { routes, projectsPageUrl, homePageUrl } from "app/routes"
 import { ds } from "assets/styles/theme"
 import cxs from "cxs"
 import musicFile from "assets/music/audio.mp3"
+import { Enter, Exit } from "@hyperapp/transitions"
 
 let music = new Audio(musicFile)
 music.loop = true
