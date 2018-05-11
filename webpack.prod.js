@@ -58,7 +58,7 @@ module.exports = merge(common, {
 			},
 		}),
 		new WebappPlugin({
-			logo: "./src/assets/images/favicon/index.svg",
+			logo: "./src/assets/images/favicon/index.png",
 			favicons: {
 				appName: "portfolio",
 				appDescription: "My awesome portfolio",
