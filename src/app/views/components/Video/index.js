@@ -2,7 +2,6 @@ import { h } from "hyperapp"
 import cxs from "cxs"
 import { ds } from "assets/styles/theme"
 import YouTubePlayer from "youtube-player"
-import lottie from "lottie-web"
 
 export default ({ url, loop, autoplay, videoId, type, actions, state }) => {
 	const id = `player-${videoId}`
@@ -52,10 +51,6 @@ export default ({ url, loop, autoplay, videoId, type, actions, state }) => {
 					player.on("stateChange", (e) => {
 						if (e.data === 0) {
 							player.playVideo() // when video ends, relaunch without reloading the video
-						}
-
-						if (e.data === 1 && type === "cover") {
-							lottie.play() // start all animation on page
 						}
 					})
 

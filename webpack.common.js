@@ -12,6 +12,7 @@ module.exports = {
 	output: {
 		filename: "assets/scripts/[name].[hash].js",
 		path: path.resolve(__dirname, "dist"),
+		publicPath: process.env.NODE_ENV === "production" ? "./" : "/dist",
 	},
 	resolve: {
 		modules: [path.resolve("./src"), path.resolve("./node_modules")],
@@ -40,8 +41,7 @@ module.exports = {
 					{
 						loader: "file-loader",
 						options: {
-							name: "[path][name].[ext]",
-							outputPath: "assets/images/",
+							name: "assets/images/[name].[ext]",
 						},
 					},
 				],
