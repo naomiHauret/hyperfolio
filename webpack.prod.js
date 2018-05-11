@@ -8,7 +8,6 @@ const PurifyCSSPlugin = require("purifycss-webpack")
 const WebappPlugin = require("webapp-webpack-plugin")
 const AssetsCompressionPlugin = require("brotli-webpack-plugin")
 const ScriptsCompressionPlugin = require("brotli-gzip-webpack-plugin")
-const ImageminPlugin = require("imagemin-webpack-plugin").default
 const common = require("./webpack.common.js")
 
 module.exports = merge(common, {
@@ -92,7 +91,6 @@ module.exports = merge(common, {
 				removeRedundantAttributes: true,
 			},
 		}),
-		new ImageminPlugin({ test: /\.(png|jpg|gif)$/ }),
 		new AssetsCompressionPlugin({
 			algorithm: "gzip",
 			asset: "[path].gz[query]",
