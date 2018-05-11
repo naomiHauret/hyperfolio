@@ -23,7 +23,7 @@ export default ({ state }) => (
 					position: state.location.pathname.indexOf(`${projectsPageUrl}`) >= 0 ? "fixed" : "absolute",
 					top:
 						state.location.pathname === homePageUrl || state.location.pathname.indexOf(`${projectsPageUrl}`) >= 0
-							? `${ds.get("spacing.frame") * 2}px`
+							? `47px`
 							: "unset",
 					bottom: state.location.pathname === contactPageUrl ? `${ds.get("spacing.frame")}px` : "unset",
 					left: "50%",

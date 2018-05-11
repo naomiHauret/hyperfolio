@@ -1,5 +1,6 @@
 import { h } from "hyperapp"
 import Video from "app/views/components/Video"
+import HandwrittenTitle from "app/views/components/HandwrittenTitle"
 import { ds } from "assets/styles/theme"
 import postcssJs from "postcss-js"
 import postcssPlacehold from "postcss-placehold"
@@ -157,20 +158,7 @@ export default ({ state, actions }) => (
 						},
 					})}
 				>
-					<h1
-						class={cxs({
-							fontFamily: ds.get("typo.fontFamily.title"),
-							fontSize: ds.get("typo.sizes.xxl"),
-							fontWeight: ds.get("typo.fontWeight.lightest"),
-							background: "linear-gradient(to top, black -57%, #1800ff, #263939)",
-							"-webkit-text-fill-color": "transparent",
-							"-webkit-background-clip": "text",
-							color: "blue",
-							marginBottom: 0,
-						})}
-					>
-						Stupid project name
-					</h1>
+					<HandwrittenTitle title="Stupid project title" />
 				</div>
 				<div
 					class={cxs({

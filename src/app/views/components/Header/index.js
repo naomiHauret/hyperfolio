@@ -8,11 +8,11 @@ export default ({ state, actions }) => {
 	return (
 		<header
 			class={cxs({
-				backgroundColor: ds.get("colors.background.dark"),
+				background: "linear-gradient(black, transparent 115%)",
 				position: "fixed",
 				top: 0,
 				left: 0,
-				zIndex: ds.get("zIndex.high"),
+				zIndex: ds.get("zIndex.godView"),
 				width: "100%",
 				height: ds.pxTo(125, ds.get("typo.pxFontSize.base"), "rem"),
 				display: "flex",

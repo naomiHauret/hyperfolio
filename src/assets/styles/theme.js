@@ -69,7 +69,7 @@ export const myDesignSystem = {
 			normal: "normal",
 		},
 		lineHeight: {
-			paragraphs: 1.35,
+			paragraphs: 1.65,
 		},
 	},
 	colors: {
@@ -102,6 +102,7 @@ export const myDesignSystem = {
 		high: 3,
 		aboveAll: 4,
 		godView: 5,
+		aboveGodView: 6,
 	},
 	spacing: {
 		frame: 35,

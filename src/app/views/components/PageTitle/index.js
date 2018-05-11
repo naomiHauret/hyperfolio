@@ -12,6 +12,7 @@ export default ({ title }) => (
 			left: "50%",
 			transform: "translateX(-50%)",
 			fontWeight: "normal",
+			zIndex: ds.get("zIndex.aboveGodView"),
 			"::after": {
 				content: "' '",
 				display: "flex",

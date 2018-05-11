@@ -93,6 +93,12 @@ textarea:-webkit-autofill:hover textarea:-webkit-autofill:focus {
 	}
 }
 
+@keyframes miniUnfold {
+	to {
+		height: 55px;
+	}
+}
+
 @keyframes unfold {
 	to {
 		height: calc(100vh - 150px);
