@@ -12,6 +12,10 @@ import portrait from "assets/images/content/portrait.jpg"
 import letters from "assets/images/content/letters.png"
 import filter from "assets/images/filters/distortion.jpg"
 import cxs from "cxs"
+import Prismic from "prismic-javascript"
+
+const apiEndpoint = process.env.PRISMIC_API_ENDPOINT
+const apiToken = process.env.PRISMIC_TOKEN
 
 export default ({ state, actions, name, metaTitle, desc }) => (
 	<div
@@ -113,7 +117,13 @@ export default ({ state, actions, name, metaTitle, desc }) => (
 							paddingBottom: ds.pxTo(145, ds.get("typo.pxFontSize.base"), "rem"),
 							zIndex: ds.get("zIndex.aboveAll"),
 						})}
-						oncreate={actions.setAboutContent()}
+						oncreate={() => Prismic.getApi(apiEndpoint, { accessToken: apiToken })
+							.then((api) => {
+								return api.query(Prismic.Predicates.at("document.type", "about_page"))
+							})
+							.then((response) => {
+								actions.onAboutSuccess(response.results[0].data.about_content.map((content) => content.text))
+							})}
 					>
 						{state.aboutContent}
 					</div>
