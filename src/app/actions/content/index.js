@@ -4,12 +4,9 @@ const apiEndpoint = process.env.PRISMIC_API_ENDPOINT
 const apiToken = process.env.PRISMIC_TOKEN
 
 export default {
-	onAboutSuccess: (data) => {
-		console.log("hey")
-		return {
-			aboutContent: data
-		}
-	},
+	onAboutSuccess: (data) => ({
+		aboutContent: data
+	}),
 	onError: (error) => ({ error }),
 	setAboutContent: () => (state, actions) => {
 		Prismic.getApi(apiEndpoint, { accessToken: apiToken })

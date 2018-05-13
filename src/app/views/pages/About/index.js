@@ -125,7 +125,8 @@ export default ({ state, actions, name, metaTitle, desc }) => (
 								actions.onAboutSuccess(response.results[0].data.about_content.map((content) => content.text))
 							})}
 					>
-						{state.aboutContent}
+						{state.aboutContent ? state.aboutContent.map(text => <p>{text}</p>) : <p>...</p>}
+						{console.log(state)}
 					</div>
 				</div>
 			</Enter>

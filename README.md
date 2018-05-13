@@ -31,5 +31,10 @@ To be able to test out the contact page:
 ## Under the hood
 - Hyperapp ecosystem: hyperapp, hyperapp-router and hyperapp-transitions
 - Style: CSS-in-JS powered by CXS, some PostCSS
-- Animations: PixiJS, Pixi-Filters, Lottie-Web
-- Mail service: Enformed.io
+- Animations: PixiJS, Pixi-Filters
+- Mail service: Enformed
+- Content: Prismic
+
+## Special thanks
+
+I wanted to thank the awesome Hyperapp community, who kindly helped me to get my head around things :) 
