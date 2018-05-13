@@ -21,8 +21,8 @@ export default ({ state, actions, name, metaTitle, desc }) => (
 			flexGrow: "1",
 		})}
 	>
-		<Exit easing="linear" time={350} css={{ opacity: 0 }}>
-			<Enter easing="ease-in-out" time={500} css={{ transform: "translateY(25%)" }}>
+		<Exit easing="linear" time={50} css={{ opacity: 0 }}>
+			<Enter easing="ease-in-out" time={550} css={{ opacity: 1, transform: "translateY(-150px)", scrollBehavior: "auto" }}>
 				<div
 					key="contactcontent"
 					class={cxs({
@@ -51,6 +51,7 @@ export default ({ state, actions, name, metaTitle, desc }) => (
 							width: "620px",
 						},
 					})}
+					ondestroy={() => window.scrollTo(0, 0)}
 				>
 					<PageTitle title="Contact" />
 					<div

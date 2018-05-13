@@ -24,7 +24,11 @@ export default ({ actions }) => (
 			zIndex: ds.get("zIndex.mid"),
 			padding: "0 3.75vw",
 			"@media (min-width: 768px)": {
-				padding: 0,
+				paddingLeft: 0,
+				paddingRight: 0,
+			},
+			"@media (min-width: 768px)": {
+				paddingTop: ds.pxTo(80, ds.get("typo.pxFontSize.base"), "rem"),
 			},
 		})}
 	>

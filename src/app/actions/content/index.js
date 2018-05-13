@@ -4,35 +4,14 @@ const apiEndpoint = process.env.PRISMIC_API_ENDPOINT
 const apiToken = process.env.PRISMIC_TOKEN
 
 export default {
-	setHomeContent: () => (state) => {
-		return Prismic.getApi(apiEndpoint, { accessToken: apiToken })
+	setAboutContent: () => (state) => ({
+		aboutContent: Prismic.getApi(apiEndpoint, { accessToken: apiToken })
 			.then((api) => {
-				return api.query(Prismic.Predicates.at("document.type", "home"))
+				return api.query(Prismic.Predicates.at("document.type", "about_page"))
 			})
 			.then((response) => {
-				return response.results[0].data.home_video.url
-			})
-			.then(
-				(data) => {
-					return {
-						homeVideoUrl: data,
-					}
-				},
-				(err) => {
-					console.log("Something went wrong: ", err)
-				},
-			)
-	},
-
-	setAboutContent: () => (state) => {
-		return {
-			isPlayingMusic: !state.isPlayingMusic,
-		}
-	},
-
-	setProjectsContent: () => (state) => {
-		return {
-			isPlayingMusic: !state.isPlayingMusic,
-		}
-	},
+				console.log(response.results[0].data.about_content.map((content) => content.text))
+				return response.results[0].data.about_content.map((content) => content.text)
+			}),
+	}),
 }

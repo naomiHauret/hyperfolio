@@ -1,5 +1,6 @@
 import { h } from "hyperapp"
 import { Switch, Route, Link } from "@hyperapp/router"
+import { Enter, Exit, Move } from "@hyperapp/transitions"
 import Navigation from "app/views/components/Navigation"
 import Header from "app/views/components/Header"
 import DottedBackground from "app/views/components/DottedBackground"
@@ -8,7 +9,6 @@ import { routes, projectsPageUrl, homePageUrl } from "app/routes"
 import { ds } from "assets/styles/theme"
 import cxs from "cxs"
 import musicFile from "assets/music/audio.mp3"
-import { Enter, Exit } from "@hyperapp/transitions"
 
 let music = new Audio(musicFile)
 music.loop = true
@@ -67,7 +67,12 @@ export default ({ state, actions, match }) => {
 					},
 				})}
 			>
-				{not404 && state.location.pathname !== homePageUrl && <Header />}
+				{not404 &&
+					state.location.pathname !== homePageUrl && (
+						<Enter easing="ease-in-out" time={550} css={{ transform: "translateY(15%)" }}>
+							<Header />{" "}
+						</Enter>
+					)}
 				{not404 && <Navigation state={state} actions={actions} />}
 				{not404 && <ToggleMusic state={state} actions={actions} />}
 				{not404 && <DottedBackground />}

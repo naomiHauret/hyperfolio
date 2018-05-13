@@ -2,11 +2,12 @@ import { h } from "hyperapp"
 import { Enter, Exit } from "@hyperapp/transitions"
 import { ds } from "assets/styles/theme"
 
+import { contactPageUrl } from "app/routes"
+
 import DistortedImage from "app/views/components/DistortedImage"
 import GlitchImage from "app/views/components/GlitchImage"
 import PageTitle from "app/views/components/PageTitle"
 import HandwrittenTitle from "app/views/components/HandwrittenTitle"
-
 import portrait from "assets/images/content/portrait.jpg"
 import letters from "assets/images/content/letters.png"
 import filter from "assets/images/filters/distortion.jpg"
@@ -41,13 +42,17 @@ export default ({ state, actions, name, metaTitle, desc }) => (
 			},
 		})}
 	>
-		<Exit easing="linear" time={350} css={{ opacity: 0 }}>
+		<Exit easing="linear" time={50} css={{ opacity: 0 }}>
 			<Enter
 				easing="ease-in-out"
 				time={550}
 				css={{
-					transform: state.location.pathname === "/" ? "translateY(25%)" : "translateY(-25%)",
+					transform:
+						state.location.previous || state.location.pathname === contactPageUrl
+							? "translateY(150px)"
+							: "translateY(-150px)",
 					opacity: 1,
+					scrollBehavior: "auto",
 				}}
 			>
 				<div
@@ -57,6 +62,7 @@ export default ({ state, actions, name, metaTitle, desc }) => (
 						flexDirection: "column",
 						flexGrow: "1",
 					})}
+					ondestroy={() => window.scrollTo(0, 0)}
 				>
 					<PageTitle title="About" />
 
@@ -107,16 +113,9 @@ export default ({ state, actions, name, metaTitle, desc }) => (
 							paddingBottom: ds.pxTo(145, ds.get("typo.pxFontSize.base"), "rem"),
 							zIndex: ds.get("zIndex.aboveAll"),
 						})}
+						oncreate={actions.setAboutContent()}
 					>
-						<p>
-							Lorem ipsum, sit amet tempus lectus lacinia id. Aliquam erat volutpat. Nulla eget arcu lorem. Maecenas magna mi,
-							mattis at egestas et, commodo vel libero. Mauris at erat fermentum tortor rhoncus tincidunt nec at libero.
-							Curabitur vitae laoreet odio. In ipsum velit, sodales eget lobortis nec, luctus maximus urna.
-						</p>
-						<p>
-							Nulla fringilla vulputate magna, quis congue quam vulputate in. Ut aliquam dolor in eros placerat, vel porttitor
-							purus dictum. Praesent sem turpis, gravida id lobortis sit amet, viverra quis lectus. Sed sed metus tellus.
-						</p>
+						{state.aboutContent}
 					</div>
 				</div>
 			</Enter>

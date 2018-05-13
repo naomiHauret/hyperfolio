@@ -2,6 +2,8 @@ import { h } from "hyperapp"
 import Project from "app/views/components/Project"
 import Video from "app/views/components/Video"
 import { Switch, Route, Link } from "@hyperapp/router"
+import { Enter, Exit } from "@hyperapp/transitions"
+
 import cxs from "cxs"
 import { ds } from "assets/styles/theme"
 import postcssJs from "postcss-js"
@@ -33,6 +35,7 @@ export default ({ state, actions, name, metaTitle, desc, match }) => (
 				flexDirection: "column",
 				flexGrow: "1",
 			})}
+			ondestroy={() => window.scrollTo(0, 0)}
 		>
 			<ul
 				class={cxs({
@@ -73,35 +76,52 @@ export default ({ state, actions, name, metaTitle, desc, match }) => (
 					},
 				})}
 			>
-				<li
-					class={cxs({
-						position: "fixed",
-						top: "50%",
-						transform: "translateX(-50%) rotate(-90deg)",
-						left: ds.pxTo(20, ds.get("typo.pxFontSize.base"), "rem"),
-
-						"@media (min-width: 992px)": {
-							left: ds.pxTo(57, ds.get("typo.pxFontSize.base"), "rem"),
-						},
-					})}
+				<Enter
+					easing="ease-in-out"
+					time={2500}
+					css={{
+						left: "1050%",
+					}}
 				>
-					<Link to={`${match.url}/:projectId`}>Previous</Link>
-				</li>
-				<li
-					class={cxs({
-						position: "fixed",
-						top: "50%",
-						right: ds.pxTo(-33, ds.get("typo.pxFontSize.base"), "rem"),
-						transform: "translateX(-50%) rotate(-90deg)",
+					<li
+						class={cxs({
+							position: "fixed",
+							top: "50%",
+							transform: "translateX(-50%) rotate(-90deg)",
+							left: ds.pxTo(20, ds.get("typo.pxFontSize.base"), "rem"),
 
-						"@media (min-width: 992px)": {
-							right: ds.pxTo(0, ds.get("typo.pxFontSize.base"), "rem"),
-						},
-					})}
+							"@media (min-width: 992px)": {
+								left: ds.pxTo(57, ds.get("typo.pxFontSize.base"), "rem"),
+							},
+						})}
+					>
+						<Link to={`${match.url}/:projectId`}>Previous</Link>
+					</li>
+				</Enter>
+				<Enter
+					easing="ease-in-out"
+					time={2500}
+					css={{
+						right: "-150%",
+					}}
 				>
-					<Link to={`${match.url}/:projectId`}>Next</Link>
-				</li>
+					<li
+						class={cxs({
+							position: "fixed",
+							top: "50%",
+							right: ds.pxTo(-33, ds.get("typo.pxFontSize.base"), "rem"),
+							transform: "translateX(-50%) rotate(-90deg)",
+
+							"@media (min-width: 992px)": {
+								right: ds.pxTo(0, ds.get("typo.pxFontSize.base"), "rem"),
+							},
+						})}
+					>
+						<Link to={`${match.url}/:projectId`}>Next</Link>
+					</li>
+				</Enter>
 			</ul>
+
 			<Route parent path={`${match.path}/:projectId`} render={Project} />
 		</div>
 	</div>
