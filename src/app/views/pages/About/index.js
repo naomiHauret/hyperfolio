@@ -117,15 +117,17 @@ export default ({ state, actions, name, metaTitle, desc }) => (
 							paddingBottom: ds.pxTo(145, ds.get("typo.pxFontSize.base"), "rem"),
 							zIndex: ds.get("zIndex.aboveAll"),
 						})}
-						oncreate={() => Prismic.getApi(apiEndpoint, { accessToken: apiToken })
-							.then((api) => {
-								return api.query(Prismic.Predicates.at("document.type", "about_page"))
-							})
-							.then((response) => {
-								actions.onAboutSuccess(response.results[0].data.about_content.map((content) => content.text))
-							})}
+						oncreate={() =>
+							Prismic.getApi(apiEndpoint, { accessToken: apiToken })
+								.then((api) => {
+									return api.query(Prismic.Predicates.at("document.type", "about_page"))
+								})
+								.then((response) => {
+									actions.onAboutSuccess(response.results[0].data.about_content.map((content) => content.text))
+								})
+						}
 					>
-						{state.aboutContent ? state.aboutContent.map(text => <p>{text}</p>) : <p>...</p>}
+						{state.aboutContent ? state.aboutContent.map((text) => <p>{text}</p>) : <p>...</p>}
 						{console.log(state)}
 					</div>
 				</div>

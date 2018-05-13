@@ -5,7 +5,7 @@ const apiToken = process.env.PRISMIC_TOKEN
 
 export default {
 	onAboutSuccess: (data) => ({
-		aboutContent: data
+		aboutContent: data,
 	}),
 	onError: (error) => ({ error }),
 	setAboutContent: () => (state, actions) => {

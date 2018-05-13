@@ -248,14 +248,26 @@ export default ({ state, actions }) => (
 										height: "35vh",
 										"@media (min-width: 992px)": {
 											maxWidth: ds.pxTo(550, ds.get("typo.pxFontSize.base"), "rem"),
-											width: "75%",
+											width: "100%",
 											height: ds.pxTo(350, ds.get("typo.pxFontSize.base"), "rem"),
 										},
+
+										"@media (min-width: 1200px)": {
+											maxWidth: "unset",
+											"> img": {
+												maxWidth: ds.pxTo(550, ds.get("typo.pxFontSize.base"), "rem"),
+											},
+										},
 										":nth-child(odd)": {
-											"margin-left": "auto",
+											marginLeft: "auto",
+											textAlign: "right",
 										},
 										":nth-child(even)": {
-											"margin-right": "auto",
+											marginRight: "auto",
+											textAlign: "left",
+										},
+										":nth-child(2n+0)": {
+											marginTop: "-15%",
 										},
 										":nth-child(3n+0)": {
 											margin: "0 auto",
@@ -263,6 +275,7 @@ export default ({ state, actions }) => (
 										":nth-last-child(-n+2)": {
 											width: "50%",
 											margin: 0,
+											marginTop: "15%",
 										},
 									},
 								},
@@ -350,7 +363,7 @@ export default ({ state, actions }) => (
 												filter: "blur(5px)",
 												transition: "linear 250ms",
 												":hover": {
-													filter: "blur(0)",
+													filter: "blur",
 												},
 											},
 										}),
