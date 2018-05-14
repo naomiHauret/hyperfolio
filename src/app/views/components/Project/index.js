@@ -163,10 +163,12 @@ export default ({ state, actions }) => (
 								marginLeft: "auto",
 								marginRight: "auto",
 								flexGrow: 1,
+								textAlign: "center",
 								"@media (min-width: 992px)": {
 									marginTop: ds.pxTo(0, ds.get("typo.pxFontSize.base"), "rem"),
 									marginLeft: 0,
 									marginRight: 0,
+									textAlign: "left",
 								},
 							})}
 						>
