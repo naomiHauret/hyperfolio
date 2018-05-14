@@ -12,7 +12,7 @@ export default ({ actions }) => (
 		onsubmit={(e) => {
 			e.preventDefault()
 			const form = e.currentTarget.id
-			// return actions.sendMail(form)
+			return actions.sendMail(form)
 		}}
 		style={{
 			"--inputBorderColorFrom": ds.get("colors.border.input"),

@@ -39,4 +39,8 @@ export default {
 				.catch((err) => console.log(err))
 		}
 	},
+
+	showSentMessage: () => ({
+		emailSentMessage: true,
+	})
 }

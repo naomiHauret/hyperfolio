@@ -1,5 +1,4 @@
 import { h, app } from "hyperapp"
-import devtools from "hyperapp-devtools"
 import state from "app/state"
 import { location } from "@hyperapp/router"
 import actions from "app/actions"
