@@ -5,15 +5,16 @@ import { ds } from "assets/styles/theme"
 import DistortedImage from "app/views/components/DistortedImage"
 import ContactForm from "app/views/components/ContactForm"
 import PageTitle from "app/views/components/PageTitle"
-
 import letters from "assets/images/content/letters.png"
 import filter from "assets/images/filters/distortion.jpg"
 
-export default ({ state, actions, name, metaTitle, desc }) => (
+import { contactPageName, contactPageTitle, contactPageDesc } from "app/routes"
+
+export default () => (state, actions) => (
 	<div
 		key="page"
-		oncreate={actions.setPageMetaData({ metaTitle, desc })}
-		onupdate={actions.setPageMetaData({ metaTitle, desc })}
+		oncreate={actions.setPageMetaData({ metaTitle: contactPageTitle, desc: contactPageDesc })}
+		onupdate={actions.setPageMetaData({ metaTitle: contactPageTitle, desc: contactPageDesc })}
 		class={cxs({
 			minHeight: "100vh",
 			display: "flex",
@@ -53,7 +54,7 @@ export default ({ state, actions, name, metaTitle, desc }) => (
 					})}
 					ondestroy={() => window.scrollTo(0, 0)}
 				>
-					<PageTitle title="Contact" />
+					<PageTitle title={contactPageName} />
 					<div
 						class={cxs({
 							width: "100%",

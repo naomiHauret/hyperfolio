@@ -1,13 +1,45 @@
 import { h } from "hyperapp"
+// Router
 import { Switch, Route, Link } from "@hyperapp/router"
 import { Enter, Exit, Move } from "@hyperapp/transitions"
+
+// Pages
+import Home from "app/views/pages/Home"
+import About from "app/views/pages/About"
+import Contact from "app/views/pages/Contact"
+import Projects from "app/views/pages/Projects"
+import NotFound from "app/views/pages/NotFound"
+
+// Components
 import Navigation from "app/views/components/Navigation"
 import Header from "app/views/components/Header"
 import DottedBackground from "app/views/components/DottedBackground"
 import ToggleMusic from "app/views/components/ToggleMusic"
-import { routes, projectsPageUrl, homePageUrl } from "app/routes"
+
+import {
+	homePageUrl,
+	aboutPageUrl,
+	contactPageUrl,
+	projectsPageUrl,
+	aboutPageName,
+	contactPageName,
+	projectsPageName,
+	notFoundPageName,
+	contactPageTitle,
+	aboutPageTitle,
+	projectsPageTitle,
+	notFoundPageTitle,
+	aboutPageDesc,
+	contactPageDesc,
+	projectsPageDesc,
+	notFoundPageDesc,
+	routes
+} from "app/routes"
+
 import { ds } from "assets/styles/theme"
 import cxs from "cxs"
+
+// Other assets
 import musicFile from "assets/music/audio.mp3"
 
 let music = new Audio(musicFile)
@@ -29,21 +61,14 @@ const notFoundPageStyle = cxs({
 	fontFamily: ds.get("typo.fontFamily.error.text"),
 })
 export default ({ state, actions, match }) => {
-	const not404 =
-		routes.map((route) => route.path).includes(state.location.pathname) ||
-		state.location.pathname.indexOf(`${projectsPageUrl}/`) >= 0
-
+	const not404 = true
 	not404 && state.isPlayingMusic === true ? music.play() : music.pause()
 
-	return (
-		<div
-			class={`
+	return <div class={`
 			${defaultStyle}
 			${not404 === false ? notFoundPageStyle : ""}
-		`}
-		>
-			<div
-				class={cxs({
+		`}>
+			<div class={cxs({
 					maxWidth: ds.get("grid.width.xs"),
 					margin: "0 auto",
 					height: "100%",
@@ -65,22 +90,20 @@ export default ({ state, actions, match }) => {
 					"@media (min-width: 1441px)": {
 						maxWidth: ds.get("grid.width.xxl"),
 					},
-				})}
-			>
-				{not404 &&
-					state.location.pathname !== homePageUrl && (
-						<Enter easing="ease-in-out" time={550} css={{ transform: "translateY(15%)" }}>
-							<Header />{" "}
-						</Enter>
-					)}
+				})}>
+				{not404 && state.location.pathname !== homePageUrl && <Enter easing="ease-in-out" time={550} css={{ transform: "translateY(15%)" }}>
+							<Header />
+						</Enter>}
 				{not404 && <Navigation state={state} actions={actions} />}
 				{not404 && <ToggleMusic state={state} actions={actions} />}
 				{not404 && <DottedBackground />}
 
 				<Switch>
-					{routes.map((route) => (route.path === projectsPageUrl ? <Route parent {...route} /> : <Route {...route} />))}
+					<Route path={homePageUrl} render={Home} />
+					<Route path={aboutPageUrl} render={About} />
+					<Route path={contactPageUrl} render={Contact} />
+					<Route parent path={projectsPageUrl} render={Projects} />
 				</Switch>
 			</div>
 		</div>
-	)
 }

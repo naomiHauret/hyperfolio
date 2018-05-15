@@ -13,7 +13,7 @@ let style = placehold({
 	background: "placehold(400, 400)",
 })
 
-export default ({ state, actions }) => (
+export default ({ match }) => (state, actions) => (
 	<div
 		key="page"
 		class={cxs({

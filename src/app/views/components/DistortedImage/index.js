@@ -19,7 +19,7 @@ const startDistortionAnimation = (id, src, filterSrc) => {
 
 	setTimeout(() => {
 		document.querySelector(`#${id}`).appendChild(app.view)
-	}, 50)
+	}, 500)
 
 	let distortedImageSprite = Sprite.fromImage(src) // image we want to apply distorsion on
 	distortedImageSprite.anchor.x = 0
@@ -35,15 +35,13 @@ const startDistortionAnimation = (id, src, filterSrc) => {
 	app.stage.addChild(distortedImageSprite)
 
 	app.ticker.add((delta) => {
-		distortionSprite.x = count * 60
-		distortionSprite.y = count * 60
 		count += 0.0025
 		app.stage.filters = [appliedDistortionFilter]
 		app.render(app.stage)
 	})
 }
 
-export default ({ id, src, filterSrc }) => (
+export default ({ id, src, filterSrc }) => () => (
 	<div
 		class={cxs({
 			height: `${canvasHeight}px`,

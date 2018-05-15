@@ -2,9 +2,9 @@ import { h } from "hyperapp"
 import { Link } from "@hyperapp/router"
 import { ds } from "assets/styles/theme"
 import cxs from "cxs"
-import { homePageUrl } from "app/routes"
+import { homePageUrl, notFoundPageTitle, notFoundPageName, notFoundPageDesc, } from "app/routes"
 
-export default ({ state, actions, name, metaTitle, desc }) => (
+export default () => (state, actions) => (
 	<div
 		oncreate={actions.setPageMetaData({ metaTitle, desc })}
 		onupdate={actions.setPageMetaData({ metaTitle, desc })}
@@ -17,7 +17,7 @@ export default ({ state, actions, name, metaTitle, desc }) => (
 				letterSpacing: ds.pxTo(5, ds.get("typo.pxFontSize.xl"), "em"),
 			})}
 		>
-			{name}
+			{notFoundPageName}
 		</h1>
 		<button
 			type="button"

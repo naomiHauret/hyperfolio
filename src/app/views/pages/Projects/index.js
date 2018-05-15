@@ -1,9 +1,9 @@
 import { h } from "hyperapp"
+import { projectsPageTitle, projectsPageDesc } from "app/routes"
 import Project from "app/views/components/Project"
 import Video from "app/views/components/Video"
 import { Switch, Route, Link } from "@hyperapp/router"
 import { Enter, Exit } from "@hyperapp/transitions"
-
 import cxs from "cxs"
 import { ds } from "assets/styles/theme"
 import postcssJs from "postcss-js"
@@ -15,10 +15,10 @@ let style = placehold({
 	background: "placehold(400, 400)",
 })
 
-export default ({ state, actions, name, metaTitle, desc, match }) => (
+export default ({ match }) => (state, actions) => (
 	<div
-		oncreate={actions.setPageMetaData({ metaTitle, desc })}
-		onupdate={actions.setPageMetaData({ metaTitle, desc })}
+		oncreate={actions.setPageMetaData({ metaTitle: projectsPageTitle, desc: projectsPageDesc })}
+		onupdate={actions.setPageMetaData({ metaTitle: projectsPageTitle, desc: projectsPageDesc })}
 		key="page"
 		class={cxs({
 			minHeight: "100vh",

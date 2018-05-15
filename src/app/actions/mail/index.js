@@ -38,6 +38,9 @@ export default {
 				})
 				.catch((err) => console.log(err))
 		}
+		return {
+			...state,
+		}
 	},
 
 	showSentMessage: () => ({
