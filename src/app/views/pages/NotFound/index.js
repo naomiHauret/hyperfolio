@@ -41,7 +41,7 @@ export default () => (state, actions) => (
 				},
 			})}
 		>
-			<Link to={homePageUrl}>Go back</Link>
+			<Link to={state.projects[0]["uid"]}>Go back</Link>
 		</button>
 	</div>
 )

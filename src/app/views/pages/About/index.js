@@ -50,8 +50,8 @@ export default () => (state, actions) => {
 							state.location.previous || state.location.pathname === contactPageUrl
 								? "translateY(150px)"
 								: "translateY(-150px)",
-						opacity: 1,
-						scrollBehavior: "auto",
+						opacity: 0,
+						overflow: "hidden",
 					}}
 				>
 					<div

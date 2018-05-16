@@ -1,4 +1,5 @@
 import { h } from "hyperapp"
+import { Link } from "@hyperapp/router"
 import { Enter, Exit, Move } from "@hyperapp/transitions"
 import cxs from "cxs"
 import { ds } from "assets/styles/theme"
@@ -160,7 +161,7 @@ export default () => (state, actions) => (
 											})}
 											onclick={actions.toggleShowSentMessage}
 										>
-											<a
+											<Link
 												class={cxs({
 													color: "inherit",
 													textDecoration: "none",
@@ -170,10 +171,10 @@ export default () => (state, actions) => (
 													height: "100%",
 													padding: ds.pxTo(10, ds.get("typo.pxFontSize.base"), "rem"),
 												})}
-												href={projectsPageUrl}
+												to={`${projectsPageUrl}/${state.projects[0]["uid"]}`}
 											>
 												Go back to projects
-											</a>
+											</Link>
 										</button>
 									</div>
 								</Enter>

@@ -75,10 +75,6 @@ export default ({ match }) => (state, actions) => (
 			>
 				<Enter
 					easing="ease-in-out"
-					time={2500}
-					css={{
-						left: "1050%",
-					}}
 				>
 					<li
 						class={cxs({
@@ -97,10 +93,6 @@ export default ({ match }) => (state, actions) => (
 				</Enter>
 				<Enter
 					easing="ease-in-out"
-					time={2500}
-					css={{
-						right: "-150%",
-					}}
 				>
 					<li
 						class={cxs({

@@ -36,7 +36,6 @@ import cxs from "cxs"
 // Other assets
 import musicFile from "assets/music/audio.mp3"
 
-
 // Music
 let music = new Audio(musicFile)
 music.loop = true
@@ -61,13 +60,12 @@ const notFoundPageStyle = cxs({
 export default ({ state, actions, match }) => {
 	const not404 = true
 	not404 && state.isPlayingMusic === true ? music.play() : music.pause()
-	actions.setProjectsNavigation(state, actions)
+	actions.setProjects(state, actions)
 
 	return <div class={`
 			${defaultStyle}
 			${not404 === false ? notFoundPageStyle : ""}
-			`}
-		>
+			`}>
 			<div class={cxs({
 					maxWidth: ds.get("grid.width.xs"),
 					margin: "0 auto",
@@ -97,12 +95,12 @@ export default ({ state, actions, match }) => {
 				{not404 && <Navigation state={state} actions={actions} />}
 				{not404 && <ToggleMusic state={state} actions={actions} />}
 				{not404 && <DottedBackground />}
-
 				<Switch>
 					<Route path={homePageUrl} render={Home} />
 					<Route path={aboutPageUrl} render={About} />
 					<Route path={contactPageUrl} render={Contact} />
 					<Route parent path={projectsPageUrl} render={Projects} />
+					<Route parent render={NotFound} />
 				</Switch>
 			</div>
 		</div>

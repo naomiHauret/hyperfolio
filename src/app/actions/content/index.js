@@ -13,18 +13,48 @@ const setupMeta = (metaTitle, desc) => {
 }
 export default {
 	// Nav (projects)
-	setProjectsNavigation: () => (state, actions) => {
+	setProjects: () => (state, actions) => {
 		Prismic.getApi(apiEndpoint, { accessToken: apiToken })
 			.then((api) => {
 				return api.query(Prismic.Predicates.at("document.type", "project_page"))
 			})
 			.then((response) => {
-				actions.onFetchProjectsSuccess(response.results.map((r) => r.uid))
+				actions.onFetchProjectsSuccess(response.results.map((r) => ({ uid: r.uid, id: r.id })))
 			})
 	},
 
 	onFetchProjectsSuccess: (data) => (state) => ({
 		projects: data,
+	}),
+
+	setProjectContent: ({ uid }) => (state, actions) => {
+		const id = state.projects.filter((project) => project.uid === uid)[0]["id"]
+		Prismic.getApi(apiEndpoint, { accessToken: apiToken })
+			.then((api) => {
+				return api.getByID(id)
+			})
+			.then((response) => {
+				let rawData = response.data
+				let metaTitle = rawData.meta_title
+				let desc = rawData.meta_description
+				let data = {
+					uid: response.uid,
+					title: rawData.title,
+					type: rawData.type,
+					client: rawData.client,
+					mainVideoId: rawData.video_id,
+					branding: rawData.branding,
+					content: rawData.content,
+					videoGallery: rawData.video_gallery,
+					imagesGallery: rawData.images_gallery,
+				}
+				setupMeta(metaTitle, desc)
+				actions.onFetchProjectSuccess(data)
+			})
+	},
+
+	onFetchProjectSuccess: (data) => (state) => ({
+		currentProject: data,
 	}),
 
 	// Home
@@ -34,10 +64,11 @@ export default {
 				return api.query(Prismic.Predicates.at("document.type", "home_page"))
 			})
 			.then((response) => {
-				let metaTitle = response.results[0].data["meta_title"]
-				let desc = response.results[0].data["meta_description"]
+				let rawData = response.results[0].data
+				let metaTitle = rawData.meta_title
+				let desc = rawData.meta_description
 				setupMeta(metaTitle, desc)
-				actions.onFetchHomeSuccess(response.results[0].data.video_id)
+				actions.onFetchHomeSuccess(rawData.video_id)
 			})
 	},
 
@@ -52,10 +83,11 @@ export default {
 				return api.query(Prismic.Predicates.at("document.type", "about_page"))
 			})
 			.then((response) => {
-				const metaTitle = response.results[0].data["meta_title"]
-				const desc = response.results[0].data["meta_description"]
+				let rawData = response.results[0].data
+				let metaTitle = rawData.meta_title
+				let desc = rawData.meta_description
 				setupMeta(metaTitle, desc)
-				actions.onFetchAboutSuccess(response.results[0].data.text.map((content) => content.text))
+				actions.onFetchAboutSuccess(rawData.text.map((content) => content.text))
 			})
 	},
 
@@ -70,8 +102,9 @@ export default {
 				return api.query(Prismic.Predicates.at("document.type", "contact_page"))
 			})
 			.then((response) => {
-				const metaTitle = response.results[0].data["meta_title"]
-				const desc = response.results[0].data["meta_description"]
+				let rawData = response.results[0].data
+				let metaTitle = rawData.meta_title
+				let desc = rawData.meta_description
 				setupMeta(metaTitle, desc)
 			})
 	},
@@ -83,8 +116,9 @@ export default {
 				return api.query(Prismic.Predicates.at("document.type", "notfound_page"))
 			})
 			.then((response) => {
-				const metaTitle = response.results[0].data["meta_title"]
-				const desc = response.results[0].data["meta_description"]
+				let rawData = response.results[0].data
+				let metaTitle = rawData.meta_title
+				let desc = rawData.meta_description
 				setupMeta(metaTitle, desc)
 			})
 	},

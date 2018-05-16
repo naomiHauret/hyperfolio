@@ -13,7 +13,7 @@ export default () => (state, actions) => {
 			onupdate={actions.setHomeContent(state, actions)}
 		>
 			<Exit easing="ease-in-out" time={50} css={{ opacity: 0 }}>
-				<Enter easing="linear" time={550} css={{ opacity: 1, scrollBehavior: "auto" }}>
+				<Enter easing="linear" time={550} css={{ opacity: 0, overflow: "hidden" }}>
 					<div key="homepagecontent" class={cxs({ minHeight: "100vh", display: "flex", flexDirection: "column" })}>
 						{state.homeVideoId && <Video type="cover" loop={true} autoplay={true} videoId={state.homeVideoId} />}
 

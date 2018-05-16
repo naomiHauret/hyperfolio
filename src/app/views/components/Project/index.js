@@ -13,7 +13,11 @@ let style = placehold({
 	background: "placehold(400, 400)",
 })
 
-export default ({ match }) => (state, actions) => (
+export default ({ match }) => (state, actions) => {
+	const projectUid = match.params["projectId"]
+
+	
+	return (
 	<div
 		key="page"
 		class={cxs({
@@ -22,17 +26,19 @@ export default ({ match }) => (state, actions) => (
 			flexDirection: "column",
 			flexGrow: "1",
 		})}
+		oncreate={actions.setProjectContent({uid: projectUid})}
 	>
-		<Exit easing="linear" time={50} css={{ opacity: 0 }}>
+		<Exit easing="linear" time={50} css={{ display: "none", opacity: 0, overflow: "hidden", }}>
 			<Enter
 				easing="ease-in-out"
 				time={500}
 				css={{
 					transform: "translateX(40%)",
-					opacity: 1,
-					scrollBehavior: "auto",
+					opacity: 0,
+					overflow: "hidden",
 				}}
 			>
+			{state.currentProject !== null && state.currentProject !== undefined && state.currentProject.uid === projectUid &&
 				<div
 					key="projectpage"
 					class={cxs({
@@ -83,12 +89,12 @@ export default ({ match }) => (state, actions) => (
 									},
 								})}
 							>
+								
 								<Video
-									url="https://www.youtube.com/embed/qvh6VhKlTyA"
 									type="project"
 									loop={true}
 									autoplay={true}
-									videoId="qvh6VhKlTyA"
+									videoId={state.currentProject.mainVideoId}
 								/>
 							</div>
 							<div
@@ -110,7 +116,7 @@ export default ({ match }) => (state, actions) => (
 										fontSize: "inherit",
 									})}
 								>
-									Brand identity
+									{state.currentProject.type}
 								</div>
 								<div
 									class={cxs({
@@ -118,7 +124,7 @@ export default ({ match }) => (state, actions) => (
 										marginBottom: ds.pxTo(8, ds.get("typo.pxFontSize.base"), "rem"),
 									})}
 								>
-									Music group techno dark
+									{state.currentProject.client}
 								</div>
 							</div>
 						</div>
@@ -171,7 +177,7 @@ export default ({ match }) => (state, actions) => (
 								},
 							})}
 						>
-							<HandwrittenTitle title="Stupid project title" />
+							<HandwrittenTitle title={state.currentProject.title} />
 						</div>
 						<div
 							class={cxs({
@@ -196,24 +202,9 @@ export default ({ match }) => (state, actions) => (
 									},
 								})}
 							>
-								<p>
-									Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet
-									dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper
-									suscipit lobortis nisl ut aliquip ex ea commodo consequat. Duis autem vel eum iriure dolor in hendrerit in
-									vulputate velit esse molestie consequat, vel illum Lorem ipsum dolor sit amet, consectetuer adipiscing elit,
-									sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim
-									veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat. Duis
-									autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum
-								</p>
-								<p>
-									Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet
-									dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper
-									suscipit lobortis nisl ut aliquip ex ea commodo consequat. Duis autem vel eum iriure dolor in hendrerit in
-									vulputate velit esse molestie consequat, vel illum Lorem ipsum dolor sit amet, consectetuer adipiscing elit,
-									sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim
-									veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat. Duis
-									autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum
-								</p>
+								{console.log(state.currentProject)}
+								{state.currentProject.content.map(element =>
+									<p>{element}</p>)}
 							</div>
 							<div
 								class={cxs({
@@ -308,7 +299,8 @@ export default ({ match }) => (state, actions) => (
 						</div>
 					</div>
 				</div>
+			}
 			</Enter>
 		</Exit>
 	</div>
-)
+)}
