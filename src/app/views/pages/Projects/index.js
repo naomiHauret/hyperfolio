@@ -73,9 +73,7 @@ export default ({ match }) => (state, actions) => (
 					},
 				})}
 			>
-				<Enter
-					easing="ease-in-out"
-				>
+				<Enter easing="ease-in-out">
 					<li
 						class={cxs({
 							position: "fixed",
@@ -91,9 +89,7 @@ export default ({ match }) => (state, actions) => (
 						<Link to={`${match.url}/:projectId`}>Previous</Link>
 					</li>
 				</Enter>
-				<Enter
-					easing="ease-in-out"
-				>
+				<Enter easing="ease-in-out">
 					<li
 						class={cxs({
 							position: "fixed",
