@@ -1,7 +1,7 @@
 import { h } from "hyperapp"
 import { Enter, Exit } from "@hyperapp/transitions"
 import { ds } from "assets/styles/theme"
-import { aboutPageUrl, contactPageUrl, aboutPageName, aboutPageTitle, aboutPageDesc } from "app/routes"
+import { aboutPageUrl, contactPageUrl, aboutPageName } from "app/routes"
 import DistortedImage from "app/views/components/DistortedImage"
 import GlitchImage from "app/views/components/GlitchImage"
 import PageTitle from "app/views/components/PageTitle"

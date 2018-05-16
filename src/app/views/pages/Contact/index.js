@@ -8,7 +8,7 @@ import PageTitle from "app/views/components/PageTitle"
 import letters from "assets/images/content/letters.png"
 import filter from "assets/images/filters/distortion.jpg"
 import html2canvas from "html2canvas"
-import { contactPageName, contactPageTitle, contactPageDesc, projectsPageUrl } from "app/routes"
+import { contactPageName, projectsPageUrl } from "app/routes"
 
 export default () => (state, actions) => (
 	<div

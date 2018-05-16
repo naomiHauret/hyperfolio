@@ -55,7 +55,7 @@ export default ({ state }) => (
 					right: `${ds.get("spacing.frame") * 2 / ds.get("breakpoints.lg") * 100}%`,
 				})}
 			>
-				<Link path={`${projectsPageUrl}/0`} name={projectsPageName} />
+				<Link path={`${projectsPageUrl}/${state.projects[0]}`} name={projectsPageName} />
 			</li>
 		)}
 	</ul>

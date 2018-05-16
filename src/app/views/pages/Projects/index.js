@@ -1,5 +1,4 @@
 import { h } from "hyperapp"
-import { projectsPageTitle, projectsPageDesc } from "app/routes"
 import Project from "app/views/components/Project"
 import Video from "app/views/components/Video"
 import { Switch, Route, Link } from "@hyperapp/router"

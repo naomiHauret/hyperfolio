@@ -1,5 +1,5 @@
+// Hyperapp
 import { h } from "hyperapp"
-// Router
 import { Switch, Route, Link } from "@hyperapp/router"
 import { Enter, Exit, Move } from "@hyperapp/transitions"
 
@@ -16,6 +16,7 @@ import Header from "app/views/components/Header"
 import DottedBackground from "app/views/components/DottedBackground"
 import ToggleMusic from "app/views/components/ToggleMusic"
 
+// Routes related
 import {
 	homePageUrl,
 	aboutPageUrl,
@@ -25,25 +26,22 @@ import {
 	contactPageName,
 	projectsPageName,
 	notFoundPageName,
-	contactPageTitle,
-	aboutPageTitle,
-	projectsPageTitle,
-	notFoundPageTitle,
-	aboutPageDesc,
-	contactPageDesc,
-	projectsPageDesc,
-	notFoundPageDesc,
 	routes,
 } from "app/routes"
 
+// Styles
 import { ds } from "assets/styles/theme"
 import cxs from "cxs"
 
 // Other assets
 import musicFile from "assets/music/audio.mp3"
 
+
+// Music
 let music = new Audio(musicFile)
 music.loop = true
+
+// Base style
 const defaultStyle = cxs({
 	flexGrow: 1,
 	color: ds.get("colors.text.paragraph"),
@@ -55,24 +53,22 @@ const defaultStyle = cxs({
 	flexDirection: "column",
 	width: "100vw",
 })
-
 const notFoundPageStyle = cxs({
 	backgroundImage: ds.get("colors.background.rainbow"),
 	fontFamily: ds.get("typo.fontFamily.error.text"),
 })
+
 export default ({ state, actions, match }) => {
 	const not404 = true
 	not404 && state.isPlayingMusic === true ? music.play() : music.pause()
+	actions.setProjectsNavigation(state, actions)
 
-	return (
-		<div
-			class={`
+	return <div class={`
 			${defaultStyle}
 			${not404 === false ? notFoundPageStyle : ""}
-		`}
+			`}
 		>
-			<div
-				class={cxs({
+			<div class={cxs({
 					maxWidth: ds.get("grid.width.xs"),
 					margin: "0 auto",
 					height: "100%",
@@ -94,14 +90,10 @@ export default ({ state, actions, match }) => {
 					"@media (min-width: 1441px)": {
 						maxWidth: ds.get("grid.width.xxl"),
 					},
-				})}
-			>
-				{not404 &&
-					state.location.pathname !== homePageUrl && (
-						<Enter easing="ease-in-out" time={550} css={{ transform: "translateY(15%)" }}>
+				})}>
+				{not404 && state.location.pathname !== homePageUrl && <Enter easing="ease-in-out" time={550} css={{ transform: "translateY(15%)" }}>
 							<Header />
-						</Enter>
-					)}
+						</Enter>}
 				{not404 && <Navigation state={state} actions={actions} />}
 				{not404 && <ToggleMusic state={state} actions={actions} />}
 				{not404 && <DottedBackground />}
@@ -114,5 +106,4 @@ export default ({ state, actions, match }) => {
 				</Switch>
 			</div>
 		</div>
-	)
 }

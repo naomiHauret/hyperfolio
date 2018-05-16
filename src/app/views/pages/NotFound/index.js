@@ -2,7 +2,7 @@ import { h } from "hyperapp"
 import { Link } from "@hyperapp/router"
 import { ds } from "assets/styles/theme"
 import cxs from "cxs"
-import { homePageUrl, notFoundPageTitle, notFoundPageName, notFoundPageDesc } from "app/routes"
+import { homePageUrl, notFoundPageName } from "app/routes"
 
 export default () => (state, actions) => (
 	<div

@@ -12,6 +12,21 @@ const setupMeta = (metaTitle, desc) => {
 	document.querySelector("meta[name='twitter:description']").setAttribute("content", desc)
 }
 export default {
+	// Nav (projects)
+	setProjectsNavigation: () => (state, actions) => {
+		Prismic.getApi(apiEndpoint, { accessToken: apiToken })
+			.then((api) => {
+				return api.query(Prismic.Predicates.at("document.type", "project_page"))
+			})
+			.then((response) => {
+				actions.onFetchProjectsSuccess(response.results.map((r) => r.uid))
+			})
+	},
+
+	onFetchProjectsSuccess: (data) => (state) => ({
+		projects: data,
+	}),
+
 	// Home
 	setHomeContent: () => (state, actions) => {
 		Prismic.getApi(apiEndpoint, { accessToken: apiToken })
