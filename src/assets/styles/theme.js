@@ -4,6 +4,7 @@ const pxFontSize = {
 	xs: 13,
 	sm: 14,
 	base: 16,
+	md: 25,
 	lg: 27.23,
 	xl: 50,
 	xxl: 87,
@@ -57,6 +58,7 @@ export const myDesignSystem = {
 			xs: `${pxFontSize.xs / pxFontSize.base}rem`, // ~ 13px ,
 			sm: `${pxFontSize.sm / pxFontSize.base}rem`, // ~ 14px ,
 			base: 1, // 16px
+			md: `${pxFontSize.md / pxFontSize.base}rem`, // ~ 25px ,
 			lg: `${pxFontSize.lg / pxFontSize.base}rem`, // ~ 27.23px
 			xl: `${pxFontSize.xl / pxFontSize.base}rem`, // ~ 50px
 			xxl: `${pxFontSize.xxl / pxFontSize.base}rem`, // ~ 87px
@@ -94,6 +96,7 @@ export const myDesignSystem = {
 		border: {
 			input: colorPalette.blue,
 			button: colorPalette.blue,
+			modal: colorPalette.blue,
 		},
 	},
 	zIndex: {
@@ -103,6 +106,7 @@ export const myDesignSystem = {
 		aboveAll: 4,
 		godView: 5,
 		aboveGodView: 6,
+		modal: 9,
 	},
 	spacing: {
 		frame: 35,

@@ -1,5 +1,5 @@
 export default {
-	sendMail: (form) => {
+	sendMail: (form) => (state, actions) => {
 		const mailForm = document.forms[form]
 		const sender = mailForm.elements["sender"].value.trim()
 		const email = mailForm.elements["email"].value.trim()
@@ -35,6 +35,7 @@ export default {
 					mailForm.elements["email"].value = ""
 					mailForm.elements["subject"].value = ""
 					mailForm.elements["message"].value = ""
+					actions.toggleShowSentMessage()
 				})
 				.catch((err) => console.log(err))
 		}
@@ -43,7 +44,7 @@ export default {
 		}
 	},
 
-	showSentMessage: () => ({
-		emailSentMessage: true,
-	})
+	toggleShowSentMessage: () => (state) => ({
+		emailSent: !state.emailSent
+	}),
 }
