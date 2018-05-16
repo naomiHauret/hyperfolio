@@ -13,8 +13,8 @@ import { contactPageName, contactPageTitle, contactPageDesc, projectsPageUrl } f
 export default () => (state, actions) => (
 	<div
 		key="page"
-		oncreate={actions.setPageMetaData({ metaTitle: contactPageTitle, desc: contactPageDesc })}
-		onupdate={actions.setPageMetaData({ metaTitle: contactPageTitle, desc: contactPageDesc })}
+		oncreate={actions.setContactContent(state, actions)}
+		onupdate={actions.setContactContent(state, actions)}
 		class={cxs({
 			minHeight: "100vh",
 			display: "flex",

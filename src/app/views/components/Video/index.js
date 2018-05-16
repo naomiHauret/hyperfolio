@@ -3,7 +3,7 @@ import cxs from "cxs"
 import { ds } from "assets/styles/theme"
 import YouTubePlayer from "youtube-player"
 
-export default ({ url, loop, autoplay, videoId, type, actions, state }) => {
+export default ({ loop, autoplay, videoId, type, actions, state }) => {
 	const id = `player-${videoId}`
 	return (
 		<div

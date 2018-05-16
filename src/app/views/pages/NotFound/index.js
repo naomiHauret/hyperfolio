@@ -6,8 +6,8 @@ import { homePageUrl, notFoundPageTitle, notFoundPageName, notFoundPageDesc } fr
 
 export default () => (state, actions) => (
 	<div
-		oncreate={actions.setPageMetaData({ metaTitle, desc })}
-		onupdate={actions.setPageMetaData({ metaTitle, desc })}
+		oncreate={actions.setNotFoundContent(state, actions)}
+		onupdate={actions.setNotFoundContent(state, actions)}
 		key="notfoundpage"
 	>
 		<h1

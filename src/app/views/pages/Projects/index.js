@@ -17,8 +17,6 @@ let style = placehold({
 
 export default ({ match }) => (state, actions) => (
 	<div
-		oncreate={actions.setPageMetaData({ metaTitle: projectsPageTitle, desc: projectsPageDesc })}
-		onupdate={actions.setPageMetaData({ metaTitle: projectsPageTitle, desc: projectsPageDesc })}
 		key="page"
 		class={cxs({
 			minHeight: "100vh",

@@ -15,14 +15,8 @@ export default () => (state, actions) => {
 	return (
 		<div
 			key="page"
-			oncreate={actions.setPageMetaData({
-				metaTitle: aboutPageTitle,
-				desc: aboutPageDesc,
-			})}
-			onupdate={actions.setPageMetaData({
-				metaTitle: aboutPageTitle,
-				desc: aboutPageDesc,
-			})}
+			oncreate={actions.setAboutContent(state, actions)}
+			onupdate={actions.setAboutContent(state, actions)}
 			class={cxs({
 				minHeight: "100vh",
 				display: "flex",
@@ -109,7 +103,6 @@ export default () => (state, actions) => {
 								paddingBottom: ds.pxTo(145, ds.get("typo.pxFontSize.base"), "rem"),
 								zIndex: ds.get("zIndex.aboveAll"),
 							})}
-							oncreate={actions.setAboutContent(state, actions)}
 						>
 							{state.aboutContent ? state.aboutContent.map((text) => <p>{text}</p>) : <p>...</p>}
 						</div>
