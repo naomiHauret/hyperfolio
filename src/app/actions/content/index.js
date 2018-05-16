@@ -4,7 +4,7 @@ const apiEndpoint = process.env.PRISMIC_API_ENDPOINT
 const apiToken = process.env.PRISMIC_TOKEN
 
 export default {
-	onAboutSuccess: (data) => state => {
+	onAboutSuccess: (data) => (state) => {
 		return { aboutContent: data }
 	},
 

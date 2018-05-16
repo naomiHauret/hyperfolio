@@ -8,4 +8,3 @@ import "assets/styles/index.css"
 const view = (state, actions) => <App state={state} actions={actions} />
 const main = app(state, actions, view, document.body)
 const unsubscribe = location.subscribe(main.location)
-

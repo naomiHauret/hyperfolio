@@ -7,7 +7,7 @@ import ContactForm from "app/views/components/ContactForm"
 import PageTitle from "app/views/components/PageTitle"
 import letters from "assets/images/content/letters.png"
 import filter from "assets/images/filters/distortion.jpg"
-
+import html2canvas from "html2canvas"
 import { contactPageName, contactPageTitle, contactPageDesc, projectsPageUrl } from "app/routes"
 
 export default () => (state, actions) => (
@@ -74,7 +74,7 @@ export default () => (state, actions) => (
 					{state.emailSent === false ? (
 						<ContactForm actions={actions} />
 					) : (
-						<Enter easing="ease-in-out" time={350} css={{ opacity: 0}}>
+						<Enter easing="ease-in-out" time={350} css={{ opacity: 0 }}>
 							<div
 								class={cxs({
 									position: "fixed",
@@ -88,8 +88,25 @@ export default () => (state, actions) => (
 									justifyContent: "center",
 									alignItems: "center",
 								})}
+								role="modal"
 							>
-								<Enter easing="ease-in-out" delay={375} time={550} css={{ opacity: 0, transform: "translateY(-5%) scale(0.75)" }}>
+								<div
+									id="backdrop"
+									class={cxs({
+										position: "absolute",
+										top: 0,
+										left: 0,
+										width: "100%",
+										height: "100%",
+										opacity: 1,
+									})}
+								/>
+								<Enter
+									easing="ease-in-out"
+									delay={375}
+									time={550}
+									css={{ opacity: 0, transform: "translateY(-5%) scale(0.75)" }}
+								>
 									<div
 										class={cxs({
 											minWidth: ds.pxTo(200, ds.get("typo.pxFontSize.base"), "rem"),
@@ -97,11 +114,27 @@ export default () => (state, actions) => (
 											border: `solid ${ds.pxTo(1, ds.get("typo.pxFontSize.base"), "rem")} ${ds.get("colors.border.modal")}`,
 											backgroundColor: ds.get("colors.background.dark"),
 											padding: `
-										${ds.pxTo(0, ds.get("typo.pxFontSize.base"), "rem")}
-										${ds.pxTo(40, ds.get("typo.pxFontSize.base"), "rem")}
-										${ds.pxTo(40, ds.get("typo.pxFontSize.base"), "rem")}
-									`,
+												${ds.pxTo(0, ds.get("typo.pxFontSize.base"), "rem")}
+												${ds.pxTo(40, ds.get("typo.pxFontSize.base"), "rem")}
+												${ds.pxTo(40, ds.get("typo.pxFontSize.base"), "rem")}
+											`,
+											position: "relative",
+											zIndex: 50,
 										})}
+										oncreate={() =>
+											html2canvas(document.body).then((canvas) => {
+												let modal = document.querySelector("#backdrop")
+												modal.style.backgroundImage = "url(" + canvas.toDataURL("image/png") + ")"
+												modal.style.filter = "blur(2px)"
+											})
+										}
+										onupdate={() =>
+											html2canvas(document.body).then((canvas) => {
+												let modal = document.querySelector("#backdrop")
+												modal.style.backgroundImage = "url(" + canvas.toDataURL("image/png") + ")"
+												modal.style.filter = "blur(2px)"
+											})
+										}
 									>
 										<h3
 											class={cxs({

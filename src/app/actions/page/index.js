@@ -6,9 +6,5 @@ export default {
 		document.querySelector("meta[name='description']").setAttribute("content", desc)
 		document.querySelector("meta[property='og:description']").setAttribute("content", desc)
 		document.querySelector("meta[name='twitter:description']").setAttribute("content", desc)
-
-		return {
-			...state,
-		}
 	},
 }

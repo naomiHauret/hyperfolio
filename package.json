@@ -63,6 +63,7 @@
     "@hyperapp/transitions": "^1.0.2",
     "cxs": "^6.2.0",
     "design-system-utils": "^0.12.1",
+    "html2canvas": "^1.0.0-alpha.12",
     "hyperapp": "^1.2.5",
     "pixi-filters": "^2.6.0",
     "pixi.js": "^4.7.3",

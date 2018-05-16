@@ -45,6 +45,6 @@ export default {
 	},
 
 	toggleShowSentMessage: () => (state) => ({
-		emailSent: !state.emailSent
+		emailSent: !state.emailSent,
 	}),
 }
