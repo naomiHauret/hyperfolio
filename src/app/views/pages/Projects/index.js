@@ -102,6 +102,7 @@ export default ({ match }) => (state, actions) => (
 							},
 						})}
 					>
+						{/* console.log(state.projects.map(project => project.uid).indexOf(state.currentProject.uid) ) */}
 						<Link to={`${match.url}/:projectId`}>Next</Link>
 					</li>
 				</Enter>

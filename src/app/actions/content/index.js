@@ -1,4 +1,5 @@
 import Prismic from "prismic-javascript"
+import Blazy from "blazy"
 
 const apiEndpoint = process.env.PRISMIC_API_ENDPOINT
 const apiToken = process.env.PRISMIC_TOKEN
@@ -11,6 +12,9 @@ const setupMeta = (metaTitle, desc) => {
 	document.querySelector("meta[property='og:description']").setAttribute("content", desc)
 	document.querySelector("meta[name='twitter:description']").setAttribute("content", desc)
 }
+
+const lazyloadContent = () => new Blazy({ selector: '[data-lazy="true"]' })
+
 export default {
 	// Nav (projects)
 	setProjects: () => (state, actions) => {
@@ -19,7 +23,7 @@ export default {
 				return api.query(Prismic.Predicates.at("document.type", "project_page"))
 			})
 			.then((response) => {
-				actions.onFetchProjectsSuccess(response.results.map((r) => ({ uid: r.uid, id: r.id })))
+				actions.onFetchProjectsSuccess(response.results.map((r, index) => ({ uid: r.uid, id: r.id, index: index })))
 			})
 	},
 
@@ -49,6 +53,7 @@ export default {
 					imagesGallery: rawData.images_gallery,
 				}
 				setupMeta(metaTitle, desc)
+				lazyloadContent()
 				actions.onFetchProjectSuccess(data)
 			})
 	},

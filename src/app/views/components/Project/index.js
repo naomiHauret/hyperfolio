@@ -1,17 +1,12 @@
 import { h } from "hyperapp"
 import { Enter, Exit } from "@hyperapp/transitions"
 import Video from "app/views/components/Video"
+import Branding from "app/views/components/Project/Branding"
+import ImagesGallery from "app/views/components/Project/ImagesGallery"
 import HandwrittenTitle from "app/views/components/HandwrittenTitle"
 import { ds } from "assets/styles/theme"
-import postcssJs from "postcss-js"
-import postcssPlacehold from "postcss-placehold"
 import scrollDown from "assets/images/content/scrollDown.gif"
 import cxs from "cxs"
-
-let placehold = postcssJs.sync([postcssPlacehold])
-let style = placehold({
-	background: "placehold(400, 400)",
-})
 
 export default ({ match }) => (state, actions) => {
 	const projectUid = match.params["projectId"]
@@ -201,107 +196,19 @@ export default ({ match }) => (state, actions) => {
 										</div>
 										<div
 											class={cxs({
-												width: ds.pxTo(370, ds.get("typo.pxFontSize.base"), "rem"),
-												height: ds.pxTo(130, ds.get("typo.pxFontSize.base"), "rem"),
 												margin: "15px auto 0",
 												"@media (min-width: 992px)": {
 													margin: "35px 0 0 0",
 												},
 											})}
 										>
-											{console.log(state.currentProject.branding)}
-											<img
-												alt={state.currentProject.branding.alt !== null ? state.currentProject.branding.alt : ""}
-												class={cxs({
-														width: "100%",
-														height: "100%",
-														backgroundImage: `url("${state.currentProject.branding.preview.url}")`,
-														display: 'block',
-														backgroundRepeat: 'no-repeat',
-														backgroundPosition: 'center',
-														backgroundSize: 'cover',
-														filter: 'blur(30px)',
-														objectFit: "cover",
-														objectPosition: "center",														
-													})}
-													src={`${state.currentProject.branding.url}`}
-													srcset={`
-														${state.currentProject.branding['xs-1x'].url} ${state.currentProject.branding['xs-1x'].dimensions.width}w,
-														${state.currentProject.branding['xs-2x'].url} ${state.currentProject.branding['xs-2x'].dimensions.width}w,
-														${state.currentProject.branding['sm-1x'].url} ${state.currentProject.branding['sm-1x'].dimensions.width}w,
-														${state.currentProject.branding.url} ${state.currentProject.branding.dimensions.width}w
-													`}
-													sizes={`100vw`}
-											/>
+											<Branding data={state.currentProject.branding} />
 										</div>
 									</div>
-									<div
-										class={cxs({
-											display: "flex",
-											flexWrap: "wrap",
-											"@media (min-width: 992px)": {
-												"> div": {
-													width: "100%",
-													height: "35vh",
-													"@media (min-width: 992px)": {
-														maxWidth: ds.pxTo(550, ds.get("typo.pxFontSize.base"), "rem"),
-														width: "100%",
-														height: ds.pxTo(350, ds.get("typo.pxFontSize.base"), "rem"),
-													},
-
-													"@media (min-width: 1200px)": {
-														maxWidth: "unset",
-														"> img": {
-															maxWidth: ds.pxTo(550, ds.get("typo.pxFontSize.base"), "rem"),
-														},
-													},
-													":nth-child(odd)": {
-														marginLeft: "auto",
-														textAlign: "right",
-													},
-													":nth-child(even)": {
-														marginRight: "auto",
-														textAlign: "left",
-													},
-													":nth-child(2n+0)": {
-														marginTop: "-15%",
-													},
-													":nth-child(3n+0)": {
-														margin: "0 auto",
-													},
-													":nth-last-child(-n+2)": {
-														width: "50%",
-														margin: 0,
-														marginTop: "15%",
-													},
-												},
-											},
-										})}
-									>
-										<div>
-											<img
-												src=""
-												class={cxs(
-													placehold({
-														width: "100%",
-														height: "100%",
-														background: "placehold(300, 450)",
-														objectFit: "contain",
-														objectPosition: "center",
-
-														"@media (min-width: 992px)": {
-															cursor: "nesw-resize",
-															filter: "blur(5px)",
-															transition: "linear 250ms",
-															":hover": {
-																filter: "blur(0)",
-															},
-														},
-													}),
-												)}
-											/>
-										</div>
-									</div>
+									{state.currentProject.imagesGallery !== null &&
+										state.currentProject.imagesGallery.length > 0 && (
+											<ImagesGallery images={state.currentProject.imagesGallery} />
+										)}
 								</div>
 							</div>
 						)}

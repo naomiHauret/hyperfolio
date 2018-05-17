@@ -14,8 +14,6 @@ export default ({ state, actions }) => {
 				zIndex: ds.get("zIndex.aboveAll"),
 				border: 0,
 				position: "fixed",
-				bottom: "15px",
-				left: "30px",
 				cursor: "pointer",
 				width: "65px",
 				height: "65px",
@@ -23,6 +21,14 @@ export default ({ state, actions }) => {
 				justifyContent: "center",
 				":focus": {
 					outline: 0,
+				},
+				right: "30px",
+				top: "35px",
+				"@media (min-width: 768px)": {
+					bottom: "15px",
+					left: "30px",
+					top: "unset",
+					right: "unset",
 				},
 			})}
 		>

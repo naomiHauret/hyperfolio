@@ -15,7 +15,6 @@ export default () => (state, actions) => (
 	<div
 		key="page"
 		oncreate={actions.setContactContent(state, actions)}
-		onupdate={actions.setContactContent(state, actions)}
 		class={cxs({
 			minHeight: "100vh",
 			display: "flex",
@@ -23,8 +22,8 @@ export default () => (state, actions) => (
 			flexGrow: "1",
 		})}
 	>
-		<Exit easing="linear" time={50} css={{ opacity: 0 }}>
-			<Enter easing="ease-in-out" time={550} css={{ opacity: 1, transform: "translateY(-150px)", scrollBehavior: "auto" }}>
+		<Exit easing="linear" time={50} css={{ opacity: 0, overflow: "hidden" }}>
+			<Enter easing="ease-in-out" time={550} css={{ opacity: 0, transform: "translateY(-150px)", overflow: "hidden" }}>
 				<div
 					key="contactcontent"
 					class={cxs({
@@ -124,16 +123,9 @@ export default () => (state, actions) => (
 										})}
 										oncreate={() =>
 											html2canvas(document.body).then((canvas) => {
-												let modal = document.querySelector("#backdrop")
-												modal.style.backgroundImage = "url(" + canvas.toDataURL("image/png") + ")"
-												modal.style.filter = "blur(2px)"
-											})
-										}
-										onupdate={() =>
-											html2canvas(document.body).then((canvas) => {
-												let modal = document.querySelector("#backdrop")
-												modal.style.backgroundImage = "url(" + canvas.toDataURL("image/png") + ")"
-												modal.style.filter = "blur(2px)"
+												let backdrop = document.querySelector("#backdrop")
+												backdrop.style.backgroundImage = "url(" + canvas.toDataURL("image/png") + ")"
+												backdrop.style.filter = "blur(5px)"
 											})
 										}
 									>

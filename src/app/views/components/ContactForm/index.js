@@ -28,7 +28,7 @@ export default ({ actions }) => (
 				paddingRight: 0,
 			},
 			"@media (min-width: 768px)": {
-				paddingTop: ds.pxTo(80, ds.get("typo.pxFontSize.base"), "rem"),
+				paddingTop: ds.pxTo(40, ds.get("typo.pxFontSize.base"), "rem"),
 			},
 		})}
 	>

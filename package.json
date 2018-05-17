@@ -61,6 +61,7 @@
   "dependencies": {
     "@hyperapp/router": "^0.7.0",
     "@hyperapp/transitions": "^1.0.2",
+    "blazy": "^1.8.2",
     "cxs": "^6.2.0",
     "design-system-utils": "^0.12.1",
     "html2canvas": "^1.0.0-alpha.12",

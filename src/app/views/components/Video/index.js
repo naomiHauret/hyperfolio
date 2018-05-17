@@ -2,6 +2,7 @@ import { h } from "hyperapp"
 import cxs from "cxs"
 import { ds } from "assets/styles/theme"
 import YouTubePlayer from "youtube-player"
+import placeholder from "assets/images/content/videoLoading.gif"
 
 export default ({ loop, autoplay, videoId, type, actions, state }) => {
 	const id = `player-${videoId}`
@@ -18,6 +19,11 @@ export default ({ loop, autoplay, videoId, type, actions, state }) => {
 				margin: "auto 0",
 				transform: "translateY(-1.75%)",
 				" > iframe": {
+					transtion: "all 550ms ease-in-out",
+					opacity: 0,
+					".ready": {
+						opacity: 1,
+					},
 					":focus": {
 						outline: 0,
 					},
@@ -33,6 +39,9 @@ export default ({ loop, autoplay, videoId, type, actions, state }) => {
 					width: "100%",
 					height: "100%",
 					marginTop: ds.get("spacing.video.ytWatermark"),
+					backgroundImage: `url('${placeholder}')`,
+					backgroundRepeat: "no-repeat",
+					backgroundPosition: "center",
 				})}
 				oncreate={() => {
 					let player
@@ -52,8 +61,11 @@ export default ({ loop, autoplay, videoId, type, actions, state }) => {
 						if (e.data === 0) {
 							player.playVideo() // when video ends, relaunch without reloading the video
 						}
-					})
 
+						if (e.data === 1) {
+							document.querySelector(`#${id}`).classList.add("ready")
+						}
+					})
 					let observables = document.querySelectorAll(`[data-observable='${id}']`)
 					let observer = new IntersectionObserver(
 						(entries) => {
