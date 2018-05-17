@@ -2,13 +2,23 @@ import { h } from "hyperapp"
 import { Link } from "@hyperapp/router"
 import { ds } from "assets/styles/theme"
 import cxs from "cxs"
+import CircleType from "circletype"
 import { homePageUrl } from "app/routes"
+
+import leftWing from "assets/images/content/left_wing_unicorn.png"
+import rightWing from "assets/images/content/right_wing_unicorn.png"
+import body from "assets/images/content/body_unicorn.png"
+
+import Unicorn from "app/views/components/Unicorn"
 
 export default ({ state, actions, name, metaTitle, desc }) => (
 	<div
 		oncreate={actions.setPageMetaData({ metaTitle, desc })}
 		onupdate={actions.setPageMetaData({ metaTitle, desc })}
 		key="notfoundpage"
+		class={cxs({
+			textAlign: "center",
+		})}
 	>
 		<h1
 			class={cxs({
@@ -17,8 +27,17 @@ export default ({ state, actions, name, metaTitle, desc }) => (
 				letterSpacing: ds.pxTo(5, ds.get("typo.pxFontSize.xl"), "em"),
 			})}
 		>
-			{name}
+			<div
+				id="curved_text"
+			>
+				<div
+					oncreate={() => new CircleType(document.getElementById('curved_text')).radius(1000)}
+				>
+					{name}
+				</div>
+			</div>
 		</h1>
+		<Unicorn leftWing={leftWing} rightWing={rightWing} body={body} />
 		<button
 			type="button"
 			title="Go back to home page"

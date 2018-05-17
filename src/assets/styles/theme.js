@@ -68,7 +68,7 @@ export const myDesignSystem = {
 		},
 		lineHeight: {
 			headings: 1.1,
-			paragraph: 1.7,
+			paragraph: 1.8,
 		},
 	},
 	colors: {

@@ -60,6 +60,7 @@
   "dependencies": {
     "@hyperapp/router": "^0.7.0",
     "@hyperapp/transitions": "^1.0.2",
+    "circletype": "^2.2.0",
     "classcat": "^3.0.2",
     "cxs": "^6.2.0",
     "design-system-utils": "^0.12.1",

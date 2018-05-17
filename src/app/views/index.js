@@ -3,6 +3,7 @@ import { Switch, Route, Link } from "@hyperapp/router"
 import Navigation from "app/views/components/Navigation"
 import Header from "app/views/components/Header"
 import DottedBackground from "app/views/components/DottedBackground"
+import background from "assets/images/content/background404.jpg"
 import ToggleMusic from "app/views/components/ToggleMusic"
 import { routes, projectsPageUrl } from "app/routes"
 import { ds } from "assets/styles/theme"
@@ -25,7 +26,9 @@ const defaultStyle = cxs({
 })
 
 const notFoundPageStyle = cxs({
-	backgroundImage: ds.get("colors.background.rainbow"),
+	backgroundImage: `url("${background}")`,
+	backgroundPosition: "center",
+	backgroundSize: "cover",
 	fontFamily: ds.get("typo.fontFamily.error.text"),
 })
 export default ({ state, actions, match }) => {
