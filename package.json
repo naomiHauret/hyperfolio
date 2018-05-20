@@ -15,7 +15,7 @@
     "css:prettify": "npx prettier --parser=css --write \"src/**/*.css\"",
     "format": "npm run css:prettify && npm run js:prettify",
     "precommit": "npx lint-staged",
-    "deploy": "git subtree push --prefix dist origin gh-pages"
+    "deploy": "surge"
   },
   "author": "Naomi Hauret",
   "license": "MIT",
@@ -67,6 +67,7 @@
     "pixi-filters": "^2.6.0",
     "pixi.js": "^4.7.3",
     "prismic-javascript": "^1.5.0-beta.3",
+    "surge": "^0.20.1",
     "youtube-player": "^5.5.0"
   },
   "browserslist": [

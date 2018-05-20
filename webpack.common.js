@@ -2,7 +2,7 @@ const path = require("path")
 const webpack = require("webpack")
 const ExtractTextPlugin = require("extract-text-webpack-plugin")
 const CopyPlugin = require("copy-webpack-plugin")
-const SocialTagsPlugin = require('social-tags-webpack-plugin')
+const SocialTagsPlugin = require("social-tags-webpack-plugin")
 const Dotenv = require("dotenv-webpack")
 
 const exludedFolders = [path.join(__dirname, "node_modules")]
@@ -10,8 +10,9 @@ const exludedFolders = [path.join(__dirname, "node_modules")]
 module.exports = {
 	entry: ["./src/index.js"],
 	output: {
-		filename: "[name].[hash].js",
+		filename: "assets/scripts/[name].[hash].js",
 		path: path.resolve(__dirname, "dist"),
+		publicPath: "/",
 	},
 	resolve: {
 		modules: [path.resolve("./src"), path.resolve("./node_modules")],
@@ -40,8 +41,7 @@ module.exports = {
 					{
 						loader: "file-loader",
 						options: {
-							outputPath: "assets/images/",
-							name: "[name].[ext]",
+							name: "assets/images/[name].[ext]",
 						},
 					},
 				],

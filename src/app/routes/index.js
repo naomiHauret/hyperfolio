@@ -1,5 +1,5 @@
 // Page url
-export const baseUrl = process.env.NODE_ENV === "production" ? "/hyperfolio/" : "/"
+export const baseUrl = "/"
 export const homePageUrl = baseUrl
 export const aboutPageUrl = `${baseUrl}about`
 export const contactPageUrl = `${baseUrl}contact`
