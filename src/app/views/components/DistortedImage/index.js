@@ -1,6 +1,6 @@
 import { h } from "hyperapp"
 import cxs from "cxs"
-import { Application, filters, Sprite, Texture } from "pixi.js"
+import { Application, filters, Sprite } from "pixi.js"
 
 const canvasMaxWidth = 670 // in px
 const canvasHeight = 350 // in px
@@ -28,16 +28,16 @@ const startDistortionAnimation = (id, src, filterSrc) => {
 	let distortionSprite = Sprite.fromImage(filterSrc) // distortion filter image (can be any image)
 
 	let appliedDistortionFilter = new filters.DisplacementFilter(distortionSprite) // create distortion filter based on our distortion filter image
-	distortionSprite.scale.y = 1
-	distortionSprite.scale.x = 1
+	distortionSprite.scale.y = 0.5
+	distortionSprite.scale.x = 0.5
 
 	app.stage.addChild(distortionSprite)
 	app.stage.addChild(distortedImageSprite)
 
 	app.ticker.add((delta) => {
-		distortionSprite.x += 10 * count
-		distortionSprite.y += 10 * count
-		count += 0.0295
+		distortionSprite.x = count * 60
+		distortionSprite.y = count * 60
+		count += 0.0025
 		app.stage.filters = [appliedDistortionFilter]
 		app.render(app.stage)
 	})

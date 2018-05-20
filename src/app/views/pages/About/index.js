@@ -82,7 +82,7 @@ export default () => (state, actions) => {
 									position: "relative",
 								})}
 							>
-								<DistortedImage id="lettersBackground" src={letters} filterSrc={filter} />
+								<DistortedImage id="lettersBackgroundAbout" src={letters} filterSrc={filter} />
 							</div>
 						</div>
 						<div class={cxs({ marginTop: ds.pxTo(25, ds.get("typo.pxFontSize.base"), "rem"), textAlign: "center" })}>
