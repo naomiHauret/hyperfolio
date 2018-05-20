@@ -5,8 +5,10 @@ import { Application, filters, Sprite } from "pixi.js"
 const canvasMaxWidth = 670 // in px
 const canvasHeight = 350 // in px
 
+let app = new Application(canvasMaxWidth, canvasHeight, { transparent: true })
 const startDistortionAnimation = (id, src, filterSrc) => {
-	let app = new Application(canvasMaxWidth, canvasHeight, { transparent: true })
+	app.stage.children = []
+
 	app.renderer.view.style.position = "absolute"
 	app.renderer.view.style.display = "block"
 	app.renderer.view.style.width = "100%"
@@ -51,6 +53,7 @@ export default ({ id, src, filterSrc }) => (
 			justifyContent: "center",
 		})}
 		oncreate={startDistortionAnimation(id, src, filterSrc)}
+		onupdate={startDistortionAnimation(id, src, filterSrc)}
 		id={id}
 	/>
 )

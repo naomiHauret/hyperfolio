@@ -10,8 +10,9 @@ const exludedFolders = [path.join(__dirname, "node_modules")]
 module.exports = {
 	entry: ["./src/index.js"],
 	output: {
-		filename: "assets/scripts/[name].[hash].js",
+		filename: "[name].[hash].js",
 		path: path.resolve(__dirname, "dist"),
+		publicPath: "/",
 	},
 	resolve: {
 		modules: [path.resolve("./src"), path.resolve("./node_modules")],
@@ -40,7 +41,8 @@ module.exports = {
 					{
 						loader: "file-loader",
 						options: {
-							name: "assets/images/[name].[ext]",
+							outputPath: "assets/images/",
+							name: "[name].[ext]",
 						},
 					},
 				],

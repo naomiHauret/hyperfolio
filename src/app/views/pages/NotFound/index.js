@@ -2,14 +2,10 @@ import { h } from "hyperapp"
 import { Link } from "@hyperapp/router"
 import { ds } from "assets/styles/theme"
 import cxs from "cxs"
-import { homePageUrl } from "app/routes"
+import { homePageUrl, projectsPageUrl, notFoundPageName } from "app/routes"
 
-export default ({ state, actions, name, metaTitle, desc }) => (
-	<div
-		oncreate={actions.setPageMetaData({ metaTitle, desc })}
-		onupdate={actions.setPageMetaData({ metaTitle, desc })}
-		key="notfoundpage"
-	>
+export default () => (state, actions) => (
+	<div oncreate={() => actions.setNotFoundContent(state, actions)} key="notfoundpage">
 		<h1
 			class={cxs({
 				fontWeight: ds.get("typo.fontWeight.normal"),
@@ -17,7 +13,7 @@ export default ({ state, actions, name, metaTitle, desc }) => (
 				letterSpacing: ds.pxTo(5, ds.get("typo.pxFontSize.xl"), "em"),
 			})}
 		>
-			{name}
+			{notFoundPageName}
 		</h1>
 		<button
 			type="button"
@@ -41,7 +37,15 @@ export default ({ state, actions, name, metaTitle, desc }) => (
 				},
 			})}
 		>
-			<Link to={homePageUrl}>Go back</Link>
+			<Link
+				to={
+					state.projects !== null && state.projects !== undefined && state.projects.length > 0
+						? `${projectsPageUrl}/${state.projects[0]["uid"]}`
+						: homePageUrl
+				}
+			>
+				Go back
+			</Link>
 		</button>
 	</div>
 )

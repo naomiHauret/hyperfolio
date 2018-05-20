@@ -2,9 +2,9 @@ import { h } from "hyperapp"
 import cxs from "cxs"
 import { ds } from "assets/styles/theme"
 import YouTubePlayer from "youtube-player"
-import lottie from "lottie-web"
+import placeholder from "assets/images/content/videoLoading.gif"
 
-export default ({ url, loop, autoplay, videoId, type, actions, state }) => {
+export default ({ loop, autoplay, videoId, type, actions, state }) => {
 	const id = `player-${videoId}`
 	return (
 		<div
@@ -13,11 +13,21 @@ export default ({ url, loop, autoplay, videoId, type, actions, state }) => {
 				pointerEvents: "none",
 				position: "relative",
 				overflow: "hidden",
-				height: "85vh",
-				maxWidth: type === "cover" ? "100vw" : "65vw",
+				height: type === "cover" ? "85vh" : "100%",
+				width: type === "cover" ? "unset" : "100%",
+				maxWidth: type === "cover" ? "100vw" : "unset",
 				margin: "auto 0",
 				transform: "translateY(-1.75%)",
 				" > iframe": {
+					transtion: "all 550ms ease-in-out",
+					opacity: 0,
+					backgroundImage: `url('${placeholder}')`,
+					backgroundRepeat: "no-repeat",
+					backgroundPosition: "center",
+					".ready": {
+						opacity: 1,
+						background: "transparent",
+					},
 					":focus": {
 						outline: 0,
 					},
@@ -33,6 +43,9 @@ export default ({ url, loop, autoplay, videoId, type, actions, state }) => {
 					width: "100%",
 					height: "100%",
 					marginTop: ds.get("spacing.video.ytWatermark"),
+					backgroundImage: `url('${placeholder}')`,
+					backgroundRepeat: "no-repeat",
+					backgroundPosition: "center",
 				})}
 				oncreate={() => {
 					let player
@@ -47,17 +60,16 @@ export default ({ url, loop, autoplay, videoId, type, actions, state }) => {
 							modestbranding: 0,
 						},
 					})
-
+					player.mute()
 					player.on("stateChange", (e) => {
 						if (e.data === 0) {
 							player.playVideo() // when video ends, relaunch without reloading the video
 						}
 
-						if (e.data === 1 && type === "cover") {
-							lottie.play() // start all animation on page
+						if (e.data === 1) {
+							document.querySelector(`#${id}`).classList.add("ready")
 						}
 					})
-
 					let observables = document.querySelectorAll(`[data-observable='${id}']`)
 					let observer = new IntersectionObserver(
 						(entries) => {

@@ -9,15 +9,15 @@ import cxs from "cxs"
 export default ({ state, actions }) => (
 	<nav
 		class={cxs({
-			zIndex: ds.get("zIndex.high"),
 			"> ul": {
 				padding: 0,
 				margin: 0,
 				listStyle: "none",
 				"> li": {
-					padding: "5px",
 					cursor: "pointer",
 					transition: ds.get("transition.fast"),
+					zIndex: ds.get("zIndex.godView"),
+
 					"::after": {
 						content: "' '",
 						width: "125%",
@@ -39,6 +39,8 @@ export default ({ state, actions }) => (
 				},
 			},
 		})}
+		key="nav"
+		oncreate={() => actions.setProjects(state, actions)}
 	>
 		<Menu state={state} actions={actions} />
 		{(state.location.pathname === aboutPageUrl || state.location.pathname === contactPageUrl) && (

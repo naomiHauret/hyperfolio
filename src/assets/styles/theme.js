@@ -1,26 +1,31 @@
 import DesignSystem from "design-system-utils"
 
 const pxFontSize = {
+	xs: 13,
 	sm: 14,
 	base: 16,
+	md: 25,
 	lg: 27.23,
 	xl: 50,
-	xxl: 300,
+	xxl: 87,
+	xxxl: 300,
 }
 
 const fontFamily = {
 	text:
-		'"Playfair", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Fira Sans", "Droid Sans"',
+		'"Playfair", "BoutiqueScript", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Fira Sans", "Droid Sans"',
 	error: {
 		code: '"PassionOne"',
 		text: '"Pacifico"',
 	},
+	title: '"BoutiqueScript"',
 }
 
 const colorPalette = {
 	black: "#000000",
 	white: "#ffffff",
 	grey: "#6a6a6a",
+	greyLighter: "#A7A7A8",
 	blue: "#1700ff",
 	blueTransparent: "#1700ff73",
 	pink: "#ff5eac",
@@ -50,19 +55,23 @@ export const myDesignSystem = {
 			...pxFontSize,
 		},
 		sizes: {
+			xs: `${pxFontSize.xs / pxFontSize.base}rem`, // ~ 13px ,
 			sm: `${pxFontSize.sm / pxFontSize.base}rem`, // ~ 14px ,
 			base: 1, // 16px
+			md: `${pxFontSize.md / pxFontSize.base}rem`, // ~ 25px ,
 			lg: `${pxFontSize.lg / pxFontSize.base}rem`, // ~ 27.23px
 			xl: `${pxFontSize.xl / pxFontSize.base}rem`, // ~ 50px
-			xxl: `${pxFontSize.xxl / pxFontSize.base}rem`, // ~ 300px
+			xxl: `${pxFontSize.xxl / pxFontSize.base}rem`, // ~ 87px
+			xxxl: `${pxFontSize.xxxl / pxFontSize.base}rem`, // ~ 300px
 		},
 		fontFamily,
 		fontFamilyBase: fontFamily.text,
 		fontWeight: {
+			lightest: 100,
 			normal: "normal",
 		},
 		lineHeight: {
-			headings: 1.1,
+			paragraphs: 1.65,
 		},
 	},
 	colors: {
@@ -78,8 +87,16 @@ export const myDesignSystem = {
 			link: colorPalette.white,
 			paragraph: colorPalette.white,
 			title: colorPalette.blue,
-			input: colorPalette.blue,
+			input: {
+				label: colorPalette.blue,
+				value: colorPalette.greyLighter,
+			},
 			rainbow: colorPalette.pink,
+		},
+		border: {
+			input: colorPalette.blue,
+			button: colorPalette.blue,
+			modal: colorPalette.blue,
 		},
 	},
 	zIndex: {
@@ -87,12 +104,16 @@ export const myDesignSystem = {
 		mid: 2,
 		high: 3,
 		aboveAll: 4,
+		godView: 5,
+		aboveGodView: 6,
+		modal: 9,
 	},
 	spacing: {
 		frame: 35,
 		video: {
 			ytWatermark: "50px",
 		},
+		input: 15.5,
 	},
 	dimensions: {
 		video: {
@@ -108,6 +129,15 @@ export const myDesignSystem = {
 	},
 	transition: {
 		fast: "all 350ms ease-in-out",
+	},
+
+	boxShadow: {
+		default: `0
+			${21 / pxFontSize.base}rem
+			${47 / pxFontSize.base}rem
+			${-2 / pxFontSize.base}rem
+			rgba(0,0,0,0.55)
+		`,
 	},
 }
 

@@ -1,9 +1,7 @@
 import { h, app } from "hyperapp"
-import { location } from "@hyperapp/router"
-
 import state from "app/state"
+import { location } from "@hyperapp/router"
 import actions from "app/actions"
-
 import App from "app/views"
 import "assets/styles/index.css"
 

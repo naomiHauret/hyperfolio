@@ -3,8 +3,9 @@ import { h } from "hyperapp"
 import { Application, Sprite } from "pixi.js"
 import { GlitchFilter, CRTFilter, MotionBlurFilter } from "pixi-filters"
 
+let app = new Application(500, 500, { backgroundColor: "transparent" })
 const startPortraitAnimation = (id, src) => {
-	let app = new Application(350, 650, { backgroundColor: "transparent" })
+	app.stage.children = []
 	app.renderer.view.style.position = "absolute"
 	app.renderer.view.style.display = "block"
 	app.renderer.autoResize = true
@@ -23,7 +24,7 @@ const startPortraitAnimation = (id, src) => {
 		noise: 2,
 		noiseSize: 1,
 		vignetting: 1,
-		vignettingAlpha: 0.65,
+		vignettingAlpha: 0.75,
 		vignettingBlur: 1,
 		seed: 0,
 		time: 0,

@@ -8,6 +8,8 @@ const PurifyCSSPlugin = require("purifycss-webpack")
 const WebappPlugin = require("webapp-webpack-plugin")
 const AssetsCompressionPlugin = require("brotli-webpack-plugin")
 const ScriptsCompressionPlugin = require("brotli-gzip-webpack-plugin")
+const ImageminPlugin = require("imagemin-webpack-plugin").default
+
 const common = require("./webpack.common.js")
 
 module.exports = merge(common, {
@@ -56,7 +58,7 @@ module.exports = merge(common, {
 			},
 		}),
 		new WebappPlugin({
-			logo: "./src/assets/images/favicon/index.svg",
+			logo: "./src/assets/images/favicon/index.png",
 			favicons: {
 				appName: "portfolio",
 				appDescription: "My awesome portfolio",
@@ -91,10 +93,11 @@ module.exports = merge(common, {
 				removeRedundantAttributes: true,
 			},
 		}),
+		new ImageminPlugin({ test: /\.(png|jpe?g|gif)$/ }),
 		new AssetsCompressionPlugin({
 			algorithm: "gzip",
 			asset: "[path].gz[query]",
-			test: /\.(css|html|svg|ttf|eot|woff|woff2|ico)$/,
+			test: /\.(css|html|svg|ttf|eot|ico)$/,
 			minRatio: 0.8,
 		}),
 		new ScriptsCompressionPlugin({

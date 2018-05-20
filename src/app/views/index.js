@@ -1,17 +1,36 @@
+// Hyperapp
 import { h } from "hyperapp"
 import { Switch, Route, Link } from "@hyperapp/router"
+import { Enter, Exit, Move } from "@hyperapp/transitions"
+
+// Pages
+import Home from "app/views/pages/Home"
+import About from "app/views/pages/About"
+import Contact from "app/views/pages/Contact"
+import Projects from "app/views/pages/Projects"
+import NotFound from "app/views/pages/NotFound"
+
+// Components
 import Navigation from "app/views/components/Navigation"
 import Header from "app/views/components/Header"
 import DottedBackground from "app/views/components/DottedBackground"
 import ToggleMusic from "app/views/components/ToggleMusic"
-import { routes } from "app/routes"
+
+// Routes related
+import { homePageUrl, aboutPageUrl, contactPageUrl, projectsPageUrl, routes } from "app/routes"
+
+// Styles
 import { ds } from "assets/styles/theme"
 import cxs from "cxs"
+
+// Other assets
 import musicFile from "assets/music/audio.mp3"
 
+// Music
 let music = new Audio(musicFile)
 music.loop = true
 
+// Base style
 const defaultStyle = cxs({
 	flexGrow: 1,
 	color: ds.get("colors.text.paragraph"),
@@ -23,22 +42,25 @@ const defaultStyle = cxs({
 	flexDirection: "column",
 	width: "100vw",
 })
-
 const notFoundPageStyle = cxs({
 	backgroundImage: ds.get("colors.background.rainbow"),
 	fontFamily: ds.get("typo.fontFamily.error.text"),
 })
-export default ({ state, actions }) => {
-	routes.map((route) => route.path).includes(state.location.pathname) && state.isPlayingMusic === true
-		? music.play()
-		: music.pause()
+
+export default ({ state, actions, match }) => {
+	const not404 =
+		routes.map((route) => route).includes(state.location.pathname) ||
+		state.location.pathname.indexOf(`${projectsPageUrl}/`) >= 0
+	console.log(not404)
+	not404 && state.isPlayingMusic === true ? music.play() : music.pause()
 
 	return (
 		<div
 			class={`
 			${defaultStyle}
-			${routes.map((route) => route.path).includes(state.location.pathname) === false ? notFoundPageStyle : ""}
-		`}
+			${not404 === false ? notFoundPageStyle : ""}
+			`}
+			key="k1"
 		>
 			<div
 				class={cxs({
@@ -47,6 +69,7 @@ export default ({ state, actions }) => {
 					height: "100%",
 					width: "100%",
 					position: "relative",
+					lineHeight: ds.get("typo.lineHeight.paragraphs"),
 					"@media (min-width: 768px)": {
 						maxWidth: ds.get("grid.width.sm"),
 					},
@@ -64,16 +87,29 @@ export default ({ state, actions }) => {
 					},
 				})}
 			>
-				{routes.map((route) => route.path).includes(state.location.pathname) && <Header state={state} />}
-				{routes.map((route) => route.path).includes(state.location.pathname) && (
-					<Navigation state={state} actions={actions} />
-				)}
-				{routes.map((route) => route.path).includes(state.location.pathname) && (
-					<ToggleMusic state={state} actions={actions} />
-				)}
-				{routes.map((route) => route.path).includes(state.location.pathname) && <DottedBackground />}
-
-				<Switch>{routes.map((route) => <Route {...route} />)}</Switch>
+				{not404 &&
+					state.location.pathname !== homePageUrl && (
+						<Enter
+							easing="ease-in-out"
+							time={550}
+							css={{
+								transform:
+									state.location.previous || state.location.pathname === contactPageUrl ? "translateY(-15%)" : "translateY(15%)",
+							}}
+						>
+							<Header />
+						</Enter>
+					)}
+				{not404 === true && <Navigation state={state} actions={actions} />}
+				{not404 === true && <ToggleMusic state={state} actions={actions} />}
+				{not404 === true && <DottedBackground />}
+				<Switch>
+					<Route path={homePageUrl} render={Home} />
+					<Route path={aboutPageUrl} render={About} />
+					<Route path={contactPageUrl} render={Contact} />
+					<Route parent path={projectsPageUrl} render={Projects} />
+					<Route parent render={NotFound} />
+				</Switch>
 			</div>
 		</div>
 	)
