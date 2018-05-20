@@ -1,5 +1,7 @@
 # Hyperfolio
 
+Source code for [Inès Guerrini](https://www.linkedin.com/in/ines-guerrini-02906b64/)'s online portfolio, last year student in webdesign at [ECV Digital Nantes](http://www.ecvdigital.fr/).
+
 ## Pre-requisites
 
 * Have`npm` installed on your machine
@@ -37,4 +39,6 @@ To be able to test out the contact page:
 
 ## Special thanks
 
-I wanted to thank the awesome Hyperapp community, who kindly helped me to get my head around things :) 
+- The Hyperapp community, for their help and support during these past months (and their awesome libs)
+- Prismic team, for building their awesome tool (and saving me hours f)
+- Caffeine.
