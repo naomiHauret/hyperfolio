@@ -60,7 +60,7 @@ export default ({ loop, autoplay, videoId, type, actions, state }) => {
 							modestbranding: 0,
 						},
 					})
-
+					player.mute()
 					player.on("stateChange", (e) => {
 						if (e.data === 0) {
 							player.playVideo() // when video ends, relaunch without reloading the video

@@ -128,7 +128,13 @@ export default ({ match }) => (state, actions) => {
 										left: "50%",
 										transform: "translateX(-50%)",
 									})}
-									onclick={() => window.scrollTo(0, window.innerHeight)}
+									onclick={() =>
+										window.scrollTo({
+											behavior: "smooth",
+											left: 0,
+											top: window.innerHeight,
+										})
+									}
 								>
 									<img src={scrollDown} alt="Scroll down" />
 								</button>
