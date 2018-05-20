@@ -9,33 +9,58 @@ export default ({ images }) => (
 			flexWrap: "wrap",
 			"@media (min-width: 992px)": {
 				"> div": {
+					":not(:first-child)": {
+						"@media (min-width: 1200px)": {
+							marginTop: "-10%",
+						},
+					},
 					":nth-child(odd)": {
 						marginLeft: "auto",
-						textAlign: "right",
 						"> img": {
 							marginLeft: "auto",
+							objectPosition: "right",
 						},
 					},
 					":nth-child(even)": {
 						marginRight: "auto",
-						textAlign: "left",
 						"> img": {
 							marginRight: "auto",
+							objectPosition: "left",
 						},
 					},
-
-					":nth-child(3n+0)": {
-						margin: "0 auto",
-						textAlign: "center",
+					":nth-last-child(3)": {
+						marginRight: "auto",
+						marginLeft: "auto",
+						marginTop: ds.pxTo(35, ds.get("typo.pxFontSize.base"), "rem"),
+						marginBottom: ds.pxTo(105, ds.get("typo.pxFontSize.base"), "rem"),
 						"> img": {
-							marginLeft: "auto",
-							marginRight: "auto",
+							objectPosition: "center",
+						},
+					},
+					":nth-last-child(2)": {
+						paddingRight: ds.pxTo(35, ds.get("typo.pxFontSize.base"), "rem"),
+						"> img": {
+							objectPosition: "left",
+						},
+					},
+					":last-child": {
+						paddingLeft: ds.pxTo(35, ds.get("typo.pxFontSize.base"), "rem"),
+						"> img": {
+							objectPosition: "right",
 						},
 					},
 					":nth-last-child(-n+2)": {
 						width: "50%",
 						margin: 0,
 					},
+				},
+			},
+			"@media (min-width: 1440px)": {
+				"> div:nth-last-child(2)": {
+					padding: 0,
+				},
+				"> div:last-child": {
+					padding: 0,
 				},
 			},
 		})}
@@ -46,13 +71,12 @@ export default ({ images }) => (
 				<div
 					class={cxs({
 						width: "100%",
-						height: "35vh",
 						marginTop: ds.pxTo(35, ds.get("typo.pxFontSize.base"), "rem"),
+						height: ds.pxTo(350, ds.get("typo.pxFontSize.base"), "rem"),
 						marginBottom: ds.pxTo(35, ds.get("typo.pxFontSize.base"), "rem"),
 						"@media (min-width: 992px)": {
-							maxWidth: ds.pxTo(750, ds.get("typo.pxFontSize.base"), "rem"),
+							maxWidth: ds.pxTo(970, ds.get("typo.pxFontSize.base"), "rem"),
 							width: "100%",
-							height: ds.pxTo(350, ds.get("typo.pxFontSize.base"), "rem"),
 							marginTop: ds.pxTo(70, ds.get("typo.pxFontSize.base"), "rem"),
 							marginBottom: ds.pxTo(70, ds.get("typo.pxFontSize.base"), "rem"),
 						},
@@ -64,11 +88,12 @@ export default ({ images }) => (
 							width: "100%",
 							height: "100%",
 							display: "block",
-							objectFit: "cover",
-							objectPosition: "center",
 							transition: "all 550ms ease-in-out",
+							objectFit: "cover",
+
 							":not(.b-loaded)": {
 								filter: "blur(20px)",
+								objectFit: "contain",
 							},
 
 							".b-loaded": {

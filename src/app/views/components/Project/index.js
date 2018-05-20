@@ -19,18 +19,15 @@ export default ({ match }) => (state, actions) => {
 				display: "flex",
 				flexDirection: "column",
 				flexGrow: "1",
+				outline: 0,
 			})}
 			oncreate={actions.setProjectContent({ uid: projectUid })}
 		>
 			<Exit easing="linear" time={50} css={{ display: "none", opacity: 0, overflow: "hidden" }}>
 				<Enter
 					easing="ease-in-out"
-					time={500}
-					css={{
-						transform: "translateX(40%)",
-						opacity: 0,
-						overflow: "hidden",
-					}}
+					time={550}
+					css={{ transform: "translateX(40%)", opacity: 0, overflow: "hidden", height: 0 }}
 				>
 					{state.currentProject !== null &&
 						state.currentProject !== undefined &&
@@ -42,6 +39,7 @@ export default ({ match }) => (state, actions) => {
 									display: "flex",
 									flexDirection: "column",
 									flexGrow: "1",
+									height: "auto",
 								})}
 								ondestroy={() => window.scrollTo(0, 0)}
 							>
@@ -100,14 +98,7 @@ export default ({ match }) => (state, actions) => {
 												},
 											})}
 										>
-											<div
-												class={cxs({
-													textTransform: "uppercase",
-													fontSize: "inherit",
-												})}
-											>
-												{state.currentProject.type}
-											</div>
+											<div class={cxs({ textTransform: "uppercase", fontSize: "inherit" })}>{state.currentProject.type}</div>
 											<div
 												class={cxs({
 													textDecoration: "uppercase",
@@ -194,14 +185,7 @@ export default ({ match }) => (state, actions) => {
 										>
 											{state.currentProject.content.map((element) => <p>{element.text}</p>)}
 										</div>
-										<div
-											class={cxs({
-												margin: "15px auto 0",
-												"@media (min-width: 992px)": {
-													margin: "35px 0 0 0",
-												},
-											})}
-										>
+										<div class={cxs({ margin: "15px auto 0", "@media (min-width: 992px)": { margin: "35px 0 0 0" } })}>
 											<Branding data={state.currentProject.branding} />
 										</div>
 									</div>

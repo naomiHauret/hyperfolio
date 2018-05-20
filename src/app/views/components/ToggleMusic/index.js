@@ -25,7 +25,7 @@ export default ({ state, actions }) => {
 				right: "30px",
 				top: "35px",
 				"@media (min-width: 768px)": {
-					bottom: "15px",
+					bottom: "20px",
 					left: "30px",
 					top: "unset",
 					right: "unset",

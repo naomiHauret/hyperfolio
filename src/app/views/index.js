@@ -96,7 +96,16 @@ export default ({ state, actions, match }) => {
 			>
 				{not404 &&
 					state.location.pathname !== homePageUrl && (
-						<Enter easing="ease-in-out" time={550} css={{ transform: "translateY(15%)" }}>
+						<Enter
+							easing="ease-in-out"
+							time={550}
+							css={{
+								transform:
+									state.location.previous || state.location.pathname === contactPageUrl
+										? "translateY(150px)"
+										: "translateY(-150px)",
+							}}
+						>
 							<Header />
 						</Enter>
 					)}

@@ -56,11 +56,26 @@ export default {
 				lazyloadContent()
 				actions.onFetchProjectSuccess(data)
 			})
+			.catch((err) => console.log(err))
 	},
 
-	onFetchProjectSuccess: (data) => (state) => ({
-		currentProject: data,
-	}),
+	onFetchProjectSuccess: (data) => (state) => {
+		let currentProjectIndex = state.projects.filter((project) => project.uid === data.uid)[0].index
+		let nextProject =
+			state.projects[currentProjectIndex + 1] !== undefined
+				? state.projects[currentProjectIndex + 1].uid
+				: state.projects[0].uid
+		let previousProject =
+			state.projects[currentProjectIndex - 1] !== undefined
+				? state.projects[currentProjectIndex - 1].uid
+				: state.projects[state.projects.length - 1].uid
+
+		return {
+			previousProject,
+			nextProject,
+			currentProject: data,
+		}
+	},
 
 	// Home
 	setHomeContent: () => (state, actions) => {
@@ -75,6 +90,7 @@ export default {
 				setupMeta(metaTitle, desc)
 				actions.onFetchHomeSuccess(rawData.video_id)
 			})
+			.catch((err) => console.log(err))
 	},
 
 	onFetchHomeSuccess: (data) => (state) => ({
@@ -94,6 +110,7 @@ export default {
 				setupMeta(metaTitle, desc)
 				actions.onFetchAboutSuccess(rawData.text.map((content) => content.text))
 			})
+			.catch((err) => console.log(err))
 	},
 
 	onFetchAboutSuccess: (data) => (state) => ({
@@ -112,6 +129,7 @@ export default {
 				let desc = rawData.meta_description
 				setupMeta(metaTitle, desc)
 			})
+			.catch((err) => console.log(err))
 	},
 
 	// Not found
@@ -126,5 +144,6 @@ export default {
 				let desc = rawData.meta_description
 				setupMeta(metaTitle, desc)
 			})
+			.catch((err) => console.log(err))
 	},
 }

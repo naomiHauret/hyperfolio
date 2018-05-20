@@ -3,7 +3,7 @@ import { location } from "@hyperapp/router"
 export default {
 	location: location.state,
 	isPlayingMusic: true,
-	emailSent: true,
+	emailSent: false,
 	currentProject: {
 		uid: null,
 		title: null,
@@ -15,5 +15,7 @@ export default {
 		videoGallery: null,
 		imagesGallery: null,
 	},
+	previousProject: ":projectUid",
+	nextProject: ":projectUid",
 	projects: [],
 }

@@ -21,8 +21,12 @@ export default ({ loop, autoplay, videoId, type, actions, state }) => {
 				" > iframe": {
 					transtion: "all 550ms ease-in-out",
 					opacity: 0,
+					backgroundImage: `url('${placeholder}')`,
+					backgroundRepeat: "no-repeat",
+					backgroundPosition: "center",
 					".ready": {
 						opacity: 1,
+						background: "transparent",
 					},
 					":focus": {
 						outline: 0,

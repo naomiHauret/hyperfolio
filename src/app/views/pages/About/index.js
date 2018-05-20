@@ -16,7 +16,6 @@ export default () => (state, actions) => {
 		<div
 			key="page"
 			oncreate={actions.setAboutContent(state, actions)}
-			onupdate={actions.setAboutContent(state, actions)}
 			class={cxs({
 				minHeight: "100vh",
 				display: "flex",
@@ -46,10 +45,7 @@ export default () => (state, actions) => {
 					easing="ease-in-out"
 					time={550}
 					css={{
-						transform:
-							state.location.previous || state.location.pathname === contactPageUrl
-								? "translateY(150px)"
-								: "translateY(-150px)",
+						transform: state.location.pathname === contactPageUrl ? "translateY(150px)" : "translateY(-150px)",
 						opacity: 0,
 						overflow: "hidden",
 					}}

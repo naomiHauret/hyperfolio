@@ -35,11 +35,11 @@
 
 * {
 	box-sizing: border-box;
-	scroll-behavior: smooth;
 }
 
 html {
 	font-size: 16px;
+	overflow-x: hidden;
 }
 
 body {
@@ -48,7 +48,6 @@ body {
 	min-height: 100vh;
 	margin: 0 auto;
 	background-color: var(--backgroundColor);
-	overflow-x: hidden;
 }
 
 input:-webkit-autofill,
