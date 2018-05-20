@@ -60,17 +60,13 @@ const notFoundPageStyle = cxs({
 export default ({ state, actions, match }) => {
 	const not404 = true
 	not404 && state.isPlayingMusic === true ? music.play() : music.pause()
-	actions.setProjects(state, actions)
+	
 
-	return (
-		<div
-			class={`
+	return <div class={`
 			${defaultStyle}
 			${not404 === false ? notFoundPageStyle : ""}
-			`}
-		>
-			<div
-				class={cxs({
+			`} key="k1">
+			<div  class={cxs({
 					maxWidth: ds.get("grid.width.xs"),
 					margin: "0 auto",
 					height: "100%",
@@ -92,23 +88,10 @@ export default ({ state, actions, match }) => {
 					"@media (min-width: 1441px)": {
 						maxWidth: ds.get("grid.width.xxl"),
 					},
-				})}
-			>
-				{not404 &&
-					state.location.pathname !== homePageUrl && (
-						<Enter
-							easing="ease-in-out"
-							time={550}
-							css={{
-								transform:
-									state.location.previous || state.location.pathname === contactPageUrl
-										? "translateY(150px)"
-										: "translateY(-150px)",
-							}}
-						>
+				})}>
+				{not404 && state.location.pathname !== homePageUrl && <Enter easing="ease-in-out" time={550} css={{ transform: state.location.previous || state.location.pathname === contactPageUrl ? "translateY(150px)" : "translateY(-150px)" }}>
 							<Header />
-						</Enter>
-					)}
+						</Enter>}
 				{not404 && <Navigation state={state} actions={actions} />}
 				{not404 && <ToggleMusic state={state} actions={actions} />}
 				{not404 && <DottedBackground />}
@@ -121,5 +104,4 @@ export default ({ state, actions, match }) => {
 				</Switch>
 			</div>
 		</div>
-	)
 }

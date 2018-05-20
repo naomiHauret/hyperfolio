@@ -6,8 +6,7 @@ import { homePageUrl, notFoundPageName } from "app/routes"
 
 export default () => (state, actions) => (
 	<div
-		oncreate={actions.setNotFoundContent(state, actions)}
-		onupdate={actions.setNotFoundContent(state, actions)}
+		oncreate={() => actions.setNotFoundContent(state, actions)}
 		key="notfoundpage"
 	>
 		<h1

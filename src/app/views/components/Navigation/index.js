@@ -39,6 +39,8 @@ export default ({ state, actions }) => (
 				},
 			},
 		})}
+		key="nav"
+		oncreate={() => actions.setProjects(state, actions)}
 	>
 		<Menu state={state} actions={actions} />
 		{(state.location.pathname === aboutPageUrl || state.location.pathname === contactPageUrl) && (

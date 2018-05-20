@@ -1,18 +1,10 @@
 import { h } from "hyperapp"
 import Project from "app/views/components/Project"
-import Video from "app/views/components/Video"
 import { Switch, Route, Link } from "@hyperapp/router"
 import { Enter, Exit } from "@hyperapp/transitions"
 import cxs from "cxs"
 import { ds } from "assets/styles/theme"
-import postcssJs from "postcss-js"
-import postcssPlacehold from "postcss-placehold"
-import scrollDown from "assets/images/content/scrollDown.gif"
 
-let placehold = postcssJs.sync([postcssPlacehold])
-let style = placehold({
-	background: "placehold(400, 400)",
-})
 
 export default ({ match }) => (state, actions) => (
 	<div

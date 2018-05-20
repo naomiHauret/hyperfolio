@@ -11,40 +11,26 @@ import cxs from "cxs"
 export default ({ match }) => (state, actions) => {
 	const projectUid = match.params["projectId"]
 
-	return (
-		<div
-			key="page"
-			class={cxs({
+	return <div key="page" class={cxs({
 				minHeight: "100vh",
 				display: "flex",
 				flexDirection: "column",
 				flexGrow: "1",
 				outline: 0,
-			})}
-			oncreate={actions.setProjectContent({ uid: projectUid })}
-		>
+			})}>
+			<div class={cxs({display: "none"})} key={`project-${projectUid}`} oncreate={() => actions.setProjectContent({ uid: projectUid })} />
 			<Exit easing="linear" time={50} css={{ display: "none", opacity: 0, overflow: "hidden" }}>
-				<Enter
-					easing="ease-in-out"
-					time={550}
-					css={{ transform: "translateX(40%)", opacity: 0, overflow: "hidden", height: 0 }}
-				>
-					{state.currentProject !== null &&
-						state.currentProject !== undefined &&
-						state.currentProject.uid === projectUid && (
-							<div
-								key="projectpage"
-								class={cxs({
-									minHeight: "100vh",
-									display: "flex",
-									flexDirection: "column",
-									flexGrow: "1",
-									height: "auto",
-								})}
-								ondestroy={() => window.scrollTo(0, 0)}
-							>
-								<div
-									class={cxs({
+				<Enter easing="ease-in-out" time={550} css={{ transform: "translateX(40%)", opacity: 0, overflow: "hidden", height: 0 }}>
+					{state.currentProject !== null && state.currentProject !== undefined && state.currentProject.uid === projectUid && <div key="projectpage" class={cxs(
+									{
+										minHeight: "100vh",
+										display: "flex",
+										flexDirection: "column",
+										flexGrow: "1",
+										height: "auto",
+									},
+								)} ondestroy={() => window.scrollTo(0, 0)}>
+								<div class={cxs({
 										flexGrow: 1,
 										paddingLeft: ds.pxTo(70, ds.get("typo.pxFontSize.base"), "rem"),
 										paddingRight: ds.pxTo(70, ds.get("typo.pxFontSize.base"), "rem"),
@@ -53,10 +39,8 @@ export default ({ match }) => (state, actions) => {
 										"@media (min-width: 992px)": {
 											paddingRight: 0,
 										},
-									})}
-								>
-									<div
-										class={cxs({
+									})}>
+									<div class={cxs({
 											display: "flex",
 											flexDirection: "column",
 											flexGrow: 1,
@@ -65,10 +49,8 @@ export default ({ match }) => (state, actions) => {
 											"@media (min-width: 992px)": {
 												flexDirection: "row",
 											},
-										})}
-									>
-										<div
-											class={cxs({
+										})}>
+										<div class={cxs({
 												flexGrow: 1,
 												height: "410px",
 												margin: "auto -35px 40px -35px",
@@ -81,12 +63,10 @@ export default ({ match }) => (state, actions) => {
 												"@media (min-width: 1365px)": {
 													height: ds.pxTo(610, ds.get("typo.pxFontSize.base"), "rem"),
 												},
-											})}
-										>
+											})}>
 											<Video type="project" loop={true} autoplay={true} videoId={state.currentProject.mainVideoId} />
 										</div>
-										<div
-											class={cxs({
+										<div class={cxs({
 												justifyContent: "center",
 												alignSelf: "center",
 												textAlign: "center",
@@ -96,22 +76,18 @@ export default ({ match }) => (state, actions) => {
 													alignSelf: "flex-end",
 													marginLeft: ds.pxTo(45, ds.get("typo.pxFontSize.base"), "rem"),
 												},
-											})}
-										>
+											})}>
 											<div class={cxs({ textTransform: "uppercase", fontSize: "inherit" })}>{state.currentProject.type}</div>
-											<div
-												class={cxs({
+											<div class={cxs({
 													textDecoration: "uppercase",
 													marginBottom: ds.pxTo(8, ds.get("typo.pxFontSize.base"), "rem"),
-												})}
-											>
+												})}>
 												{state.currentProject.client}
 											</div>
 										</div>
 									</div>
 								</div>
-								<button
-									class={cxs({
+								<button class={cxs({
 										backgroundColor: "transparent",
 										border: 0,
 										color: ds.get("colors.blue"),
@@ -123,28 +99,18 @@ export default ({ match }) => (state, actions) => {
 										top: "calc(100vh - 70px)",
 										left: "50%",
 										transform: "translateX(-50%)",
-									})}
-									onclick={() => window.scrollTo(0, window.innerHeight)}
-								>
+									})} onclick={() => window.scrollTo(0, window.innerHeight)}>
 									<img src={scrollDown} alt="Scroll down" />
 								</button>
 
-								<div
-									class={cxs({
-										padding: `${ds.pxTo(130, ds.get("typo.pxFontSize.base"), "rem")}
+								<div class={cxs({ padding: `${ds.pxTo(130, ds.get("typo.pxFontSize.base"), "rem")}
 						${ds.pxTo(70, ds.get("typo.pxFontSize.base"), "rem")}
 						${ds.pxTo(170, ds.get("typo.pxFontSize.base"), "rem")}
-					`,
-										"@media (min-width: 992px)": {
-											padding: `${ds.pxTo(90, ds.get("typo.pxFontSize.base"), "rem")}
+					`, "@media (min-width: 992px)": { padding: `${ds.pxTo(90, ds.get("typo.pxFontSize.base"), "rem")}
 							${ds.pxTo(70, ds.get("typo.pxFontSize.base"), "rem")}
 							${ds.pxTo(170, ds.get("typo.pxFontSize.base"), "rem")}
-						`,
-										},
-									})}
-								>
-									<div
-										class={cxs({
+						` } })}>
+									<div class={cxs({
 											marginTop: ds.pxTo(150, ds.get("typo.pxFontSize.base"), "rem"),
 											marginLeft: "auto",
 											marginRight: "auto",
@@ -156,22 +122,18 @@ export default ({ match }) => (state, actions) => {
 												marginRight: 0,
 												textAlign: "left",
 											},
-										})}
-									>
+										})}>
 										<HandwrittenTitle title={state.currentProject.title} />
 									</div>
-									<div
-										class={cxs({
+									<div class={cxs({
 											display: "flex",
 											flexDirection: "column-reverse",
 											"@media (min-width: 992px)": {
 												flexDirection: "row !important",
 												justifyContent: "space-between",
 											},
-										})}
-									>
-										<div
-											class={cxs({
+										})}>
+										<div class={cxs({
 												width: "100%",
 												marginTop: ds.pxTo(35, ds.get("typo.pxFontSize.base"), "rem"),
 												"@media (min-width: 992px)": {
@@ -181,23 +143,17 @@ export default ({ match }) => (state, actions) => {
 												"@media (min-width: 1200px)": {
 													width: `${7 / 12 * 100}%`,
 												},
-											})}
-										>
+											})}>
 											{state.currentProject.content.map((element) => <p>{element.text}</p>)}
 										</div>
 										<div class={cxs({ margin: "15px auto 0", "@media (min-width: 992px)": { margin: "35px 0 0 0" } })}>
 											<Branding data={state.currentProject.branding} />
 										</div>
 									</div>
-									{state.currentProject.imagesGallery !== null &&
-										state.currentProject.imagesGallery.length > 0 && (
-											<ImagesGallery images={state.currentProject.imagesGallery} />
-										)}
+									{state.currentProject.imagesGallery !== null && state.currentProject.imagesGallery.length > 0 && <ImagesGallery images={state.currentProject.imagesGallery} />}
 								</div>
-							</div>
-						)}
+							</div>}
 				</Enter>
 			</Exit>
 		</div>
-	)
 }
