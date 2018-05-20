@@ -12,7 +12,7 @@ module.exports = {
 	output: {
 		filename: "[name].[hash].js",
 		path: path.resolve(__dirname, "dist"),
-		publicPath: "/",
+		publicPath: process.env.NODE_ENV === "production" ? "/hyperfolio/" : "/",
 	},
 	resolve: {
 		modules: [path.resolve("./src"), path.resolve("./node_modules")],
