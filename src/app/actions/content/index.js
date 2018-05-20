@@ -32,10 +32,9 @@ export default {
 	}),
 
 	setProjectContent: ({ uid }) => (state, actions) => {
-		const id = state.projects.filter((project) => project.uid === uid)[0]["id"]
 		Prismic.getApi(apiEndpoint, { accessToken: apiToken })
 			.then((api) => {
-				return api.getByID(id)
+				return api.getByUID("project_page", uid)
 			})
 			.then((response) => {
 				let rawData = response.data

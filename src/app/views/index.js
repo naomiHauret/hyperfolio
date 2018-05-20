@@ -17,17 +17,7 @@ import DottedBackground from "app/views/components/DottedBackground"
 import ToggleMusic from "app/views/components/ToggleMusic"
 
 // Routes related
-import {
-	homePageUrl,
-	aboutPageUrl,
-	contactPageUrl,
-	projectsPageUrl,
-	aboutPageName,
-	contactPageName,
-	projectsPageName,
-	notFoundPageName,
-	routes,
-} from "app/routes"
+import { homePageUrl, aboutPageUrl, contactPageUrl, projectsPageUrl, routes } from "app/routes"
 
 // Styles
 import { ds } from "assets/styles/theme"
@@ -58,7 +48,10 @@ const notFoundPageStyle = cxs({
 })
 
 export default ({ state, actions, match }) => {
-	const not404 = true
+	const not404 =
+		routes.map((route) => route).includes(state.location.pathname) ||
+		state.location.pathname.indexOf(`${projectsPageUrl}/`) >= 0
+	console.log(not404)
 	not404 && state.isPlayingMusic === true ? music.play() : music.pause()
 
 	return (
@@ -107,9 +100,9 @@ export default ({ state, actions, match }) => {
 							<Header />
 						</Enter>
 					)}
-				{not404 && <Navigation state={state} actions={actions} />}
-				{not404 && <ToggleMusic state={state} actions={actions} />}
-				{not404 && <DottedBackground />}
+				{not404 === true && <Navigation state={state} actions={actions} />}
+				{not404 === true && <ToggleMusic state={state} actions={actions} />}
+				{not404 === true && <DottedBackground />}
 				<Switch>
 					<Route path={homePageUrl} render={Home} />
 					<Route path={aboutPageUrl} render={About} />

@@ -2,7 +2,7 @@ import { h } from "hyperapp"
 import { Link } from "@hyperapp/router"
 import { ds } from "assets/styles/theme"
 import cxs from "cxs"
-import { homePageUrl, notFoundPageName } from "app/routes"
+import { homePageUrl, projectsPageUrl, notFoundPageName } from "app/routes"
 
 export default () => (state, actions) => (
 	<div oncreate={() => actions.setNotFoundContent(state, actions)} key="notfoundpage">
@@ -37,7 +37,15 @@ export default () => (state, actions) => (
 				},
 			})}
 		>
-			<Link to={state.projects[0]["uid"]}>Go back</Link>
+			<Link
+				to={
+					state.projects !== null && state.projects !== undefined && state.projects.length > 0
+						? `${projectsPageUrl}/${state.projects[0]["uid"]}`
+						: homePageUrl
+				}
+			>
+				Go back
+			</Link>
 		</button>
 	</div>
 )

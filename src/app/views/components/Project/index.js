@@ -5,7 +5,7 @@ import Branding from "app/views/components/Project/Branding"
 import ImagesGallery from "app/views/components/Project/ImagesGallery"
 import HandwrittenTitle from "app/views/components/HandwrittenTitle"
 import { ds } from "assets/styles/theme"
-import scrollDown from "assets/images/content/scrollDown.gif"
+import scrollDown from "./../../../../assets/images/content/scrollDown.gif"
 import cxs from "cxs"
 
 export default ({ match }) => (state, actions) => {
