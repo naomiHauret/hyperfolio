@@ -5,10 +5,7 @@ import cxs from "cxs"
 import { homePageUrl, notFoundPageName } from "app/routes"
 
 export default () => (state, actions) => (
-	<div
-		oncreate={() => actions.setNotFoundContent(state, actions)}
-		key="notfoundpage"
-	>
+	<div oncreate={() => actions.setNotFoundContent(state, actions)} key="notfoundpage">
 		<h1
 			class={cxs({
 				fontWeight: ds.get("typo.fontWeight.normal"),

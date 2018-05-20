@@ -53,8 +53,8 @@ export default {
 					imagesGallery: rawData.images_gallery,
 				}
 				setupMeta(metaTitle, desc)
-				lazyloadContent()
 				actions.onFetchProjectSuccess(data)
+				lazyloadContent()
 			})
 			.catch((err) => console.log(err))
 	},

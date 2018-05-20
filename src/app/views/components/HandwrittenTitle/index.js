@@ -13,6 +13,7 @@ export default ({ title }) => (
 			"-webkit-background-clip": "text",
 			color: "blue",
 			marginBottom: 0,
+			lineHeight: ds.pxTo(75, ds.get("typo.pxFontSize.base"), "rem"),
 		})}
 	>
 		{title}

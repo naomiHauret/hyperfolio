@@ -13,10 +13,13 @@ import filter from "assets/images/filters/distortion.jpg"
 import { contactPageName, projectsPageUrl } from "app/routes"
 
 export default () => (state, actions) => {
-	return <div key="page" class={cxs({ minHeight: "100vh", display: "flex", flexDirection: "column", flexGrow: "1" })}>
+	return (
+		<div key="page" class={cxs({ minHeight: "100vh", display: "flex", flexDirection: "column", flexGrow: "1" })}>
 			<Exit easing="linear" time={50} css={{ opacity: 0, overflow: "hidden" }}>
-				<Enter easing="ease-in-out" time={550} css={{ opacity: 0, transform: "translateY(-150px)", overflow: "hidden" }}>
-					<div key="contactcontent" class={cxs({
+				<Enter easing="ease-in-out" time={550} css={{ opacity: 0, transform: "translateY(-15%)", overflow: "hidden" }}>
+					<div
+						key="contactcontent"
+						class={cxs({
 							minHeight: "100vh",
 							display: "flex",
 							flexDirection: "column",
@@ -41,9 +44,13 @@ export default () => (state, actions) => {
 							"@media (min-width: 768px)": {
 								width: "620px",
 							},
-						})} oncreate={() => actions.setContactContent(state, actions)} ondestroy={() => window.scrollTo(0, 0)}>
+						})}
+						oncreate={() => actions.setContactContent(state, actions)}
+						ondestroy={() => window.scrollTo(0, 0)}
+					>
 						<PageTitle title={contactPageName} />
-						<div class={cxs({
+						<div
+							class={cxs({
 								width: "100%",
 								position: "absolute",
 								pointerEvents: "none",
@@ -54,12 +61,17 @@ export default () => (state, actions) => {
 								"@media (min-width: 768px)": {
 									width: `670px`,
 								},
-							})}>
+							})}
+						>
 							<DistortedImage id="lettersBackground" src={letters} filterSrc={filter} />
 						</div>
-						{state.emailSent === false ? <ContactForm actions={actions} /> : <Exit easing="ease-in-out" time={250} css={{ opacity: 1 }}>
+						{state.emailSent === false ? (
+							<ContactForm actions={actions} />
+						) : (
+							<Exit easing="ease-in-out" time={250} css={{ opacity: 1 }}>
 								<Enter easing="ease-in-out" time={350} css={{ opacity: 0 }}>
-									<div class={cxs({
+									<div
+										class={cxs({
 											position: "fixed",
 											top: 0,
 											left: 0,
@@ -70,22 +82,31 @@ export default () => (state, actions) => {
 											display: "flex",
 											justifyContent: "center",
 											alignItems: "center",
-										})}>
+										})}
+									>
 										<Exit easing="ease-in-out" time={250} css={{ opacity: 1, transform: "translateX(-5%) scale(0.75)" }}>
 											<Enter easing="ease-in-out" time={550} css={{ opacity: 0 }}>
-												<div class={cxs({
+												<div
+													class={cxs({
 														position: "absolute",
 														top: 0,
 														left: 0,
 														backgroundColor: "rgba(0, 0, 0, 0.65)",
 														width: "100%",
 														height: "100%",
-													})} />
+													})}
+												/>
 											</Enter>
 										</Exit>
 										<Exit easing="ease-in-out" time={250} css={{ opacity: 1 }}>
-											<Enter easing="ease-in-out" delay={375} time={550} css={{ opacity: 0, transform: "translateY(-5%) scale(0.75)" }}>
-												<div class={cxs({
+											<Enter
+												easing="ease-in-out"
+												delay={375}
+												time={550}
+												css={{ opacity: 0, transform: "translateY(-5%) scale(0.75)" }}
+											>
+												<div
+													class={cxs({
 														display: "flex",
 														flexDirection: "column",
 														alignItems: "center",
@@ -107,13 +128,16 @@ export default () => (state, actions) => {
 															height: "auto",
 															maxWidth: ds.pxTo(550, ds.get("typo.pxFontSize.base"), "rem"),
 														},
-													})}>
-													<h3 class={cxs({
+													})}
+												>
+													<h3
+														class={cxs({
 															color: ds.get("colors.text.title"),
 															fontSize: ds.get("typo.sizes.md"),
 															letterSpacing: ds.pxTo(5, ds.get("typo.pxFontSize.base"), "rem"),
 															textTransform: "uppercase",
-														})}>
+														})}
+													>
 														Thanks
 													</h3>
 													<div class={cxs({ height: ds.pxTo(150, ds.get("typo.pxFontSize.base"), "rem") })}>
@@ -123,14 +147,18 @@ export default () => (state, actions) => {
 														Thanks for your email !<br />
 														I will answer you as soon as possible.
 													</p>
-													<button class={cxs({
+													<button
+														class={cxs({
 															backgroundColor: ds.get("colors.background.colorful"),
 															color: ds.get("colors.text.link"),
 															border: 0,
 															fontFamily: "inherit",
 															fontSize: "inherit",
-														})} onclick={actions.toggleShowSentMessage}>
-														<Link class={cxs({
+														})}
+														onclick={actions.toggleShowSentMessage}
+													>
+														<Link
+															class={cxs({
 																color: "inherit",
 																textDecoration: "none",
 																textTransform: "uppercase",
@@ -138,7 +166,9 @@ export default () => (state, actions) => {
 																width: "100%",
 																height: "100%",
 																padding: ds.pxTo(10, ds.get("typo.pxFontSize.base"), "rem"),
-															})} to={`${projectsPageUrl}/${state.projects[0]["uid"]}`}>
+															})}
+															to={`${projectsPageUrl}/${state.projects[0]["uid"]}`}
+														>
 															Go back to projects
 														</Link>
 													</button>
@@ -147,9 +177,11 @@ export default () => (state, actions) => {
 										</Exit>
 									</div>
 								</Enter>
-							</Exit>}
+							</Exit>
+						)}
 					</div>
 				</Enter>
 			</Exit>
 		</div>
+	)
 }

@@ -5,7 +5,6 @@ import { Enter, Exit } from "@hyperapp/transitions"
 import cxs from "cxs"
 import { ds } from "assets/styles/theme"
 
-
 export default ({ match }) => (state, actions) => (
 	<div
 		key="page"
