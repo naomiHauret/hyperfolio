@@ -27,40 +27,41 @@ export default ({ state, actions, name, metaTitle, desc }) => (
 				letterSpacing: ds.pxTo(5, ds.get("typo.pxFontSize.xl"), "em"),
 			})}
 		>
-			<div
-				id="curved_text"
-			>
-				<div
-					oncreate={() => new CircleType(document.getElementById('curved_text')).radius(1000)}
-				>
-					{name}
-				</div>
+			<div id="curved_text">
+				<div oncreate={() => new CircleType(document.getElementById("curved_text")).radius(1000)}>{name}</div>
 			</div>
 		</h1>
 		<Unicorn leftWing={leftWing} rightWing={rightWing} body={body} />
-		<button
-			type="button"
-			title="Go back to home page"
+		<div
 			class={cxs({
-				backgroundColor: ds.get("colors.background.light"),
-				border: "none",
-				fontSize: ds.get("typo.sizes.lg"),
-				borderRadius: ds.pxTo(12, ds.get("typo.pxFontSize.lg"), "em"),
-				fontFamily: "inherit",
-				boxShadow: "0 14px 28px rgba(0,0,0,0.01), 0 10px 10px rgba(0,0,0,0.05)",
-				padding: 0,
-				" > a": {
-					color: ds.get("colors.text.rainbow"),
-					textDecoration: "none",
-					paddingTop: ds.pxTo(5, ds.get("typo.pxFontSize.lg"), "em"),
-					paddingBottom: ds.pxTo(10, ds.get("typo.pxFontSize.lg"), "em"),
-					paddingLeft: ds.pxTo(58.75, ds.get("typo.pxFontSize.lg"), "em"),
-					paddingRight: ds.pxTo(58.75, ds.get("typo.pxFontSize.lg"), "em"),
-					display: "inline-block",
-				},
+				position: "absolute",
+				bottom: "0",
 			})}
 		>
-			<Link to={homePageUrl}>Go back</Link>
-		</button>
+			<button
+				type="button"
+				title="Go back to home page"
+				class={cxs({
+					backgroundColor: ds.get("colors.background.light"),
+					border: "none",
+					fontSize: ds.get("typo.sizes.lg"),
+					borderRadius: ds.pxTo(12, ds.get("typo.pxFontSize.lg"), "em"),
+					fontFamily: "inherit",
+					boxShadow: "0 14px 28px rgba(0,0,0,0.01), 0 10px 10px rgba(0,0,0,0.05)",
+					padding: 0,
+					" > a": {
+						color: ds.get("colors.text.rainbow"),
+						textDecoration: "none",
+						paddingTop: ds.pxTo(5, ds.get("typo.pxFontSize.lg"), "em"),
+						paddingBottom: ds.pxTo(10, ds.get("typo.pxFontSize.lg"), "em"),
+						paddingLeft: ds.pxTo(58.75, ds.get("typo.pxFontSize.lg"), "em"),
+						paddingRight: ds.pxTo(58.75, ds.get("typo.pxFontSize.lg"), "em"),
+						display: "inline-block",
+					},
+				})}
+			>
+				<Link to={homePageUrl}>Go back</Link>
+			</button>
+		</div>
 	</div>
 )

@@ -28,7 +28,7 @@ export default ({ state, actions, name, metaTitle, desc }) => (
 		{console.log(state.location)}
 
 		<Enter>
-		<CenterLine id="centerLine" />
+			<CenterLine id="centerLine" />
 			<div
 				class={cxs({
 					minHeight: "100vh",
@@ -78,14 +78,18 @@ export default ({ state, actions, name, metaTitle, desc }) => (
 					class={cxs({
 						marginLeft: "auto",
 						marginRight: "auto",
-						paddingTop: "20px",
+						paddingTop: "80px",
 						paddingBottom: "160px",
 						width: "440px",
 						lineHeight: ds.get("typo.lineHeight.paragraph"),
 					})}
 				>
-					Lorem ipsum, sit amet tempus lectus lacinia id. Aliquam erat volutpat. Nulla eget arcu lorem. Maecenas magna mi, mattis at egestas et, commodo vel libero. Mauris at erat fermentum tortor rhoncus tincidunt nec at libero. Curabitur vitae laoreet odio. In ipsum velit, sodales eget lobortis nec, luctus maximus urna.<br /><br />
-					Nulla fringilla vulputate magna, quis congue quam vulputate in. Ut aliquam dolor in eros placerat, vel porttitor purus dictum. Praesent sem turpis, gravida id lobortis sit amet, viverra quis lectus. Sed sed metus tellus.
+					Lorem ipsum, sit amet tempus lectus lacinia id. Aliquam erat volutpat. Nulla eget arcu lorem. Maecenas magna mi,
+					mattis at egestas et, commodo vel libero. Mauris at erat fermentum tortor rhoncus tincidunt nec at libero.
+					Curabitur vitae laoreet odio. In ipsum velit, sodales eget lobortis nec, luctus maximus urna.<br />
+					<br />
+					Nulla fringilla vulputate magna, quis congue quam vulputate in. Ut aliquam dolor in eros placerat, vel porttitor
+					purus dictum. Praesent sem turpis, gravida id lobortis sit amet, viverra quis lectus. Sed sed metus tellus.
 				</div>
 			</div>
 		</Enter>
