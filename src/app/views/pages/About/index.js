@@ -12,7 +12,10 @@ import filter from "assets/images/filters/distortion.jpg"
 import cxs from "cxs"
 
 export default () => (state, actions) => {
-	return <div key="page" class={cxs({
+	return (
+		<div
+			key="page"
+			class={cxs({
 				minHeight: "100vh",
 				display: "flex",
 				flexDirection: "column",
@@ -34,19 +37,32 @@ export default () => (state, actions) => {
 					animationDelay: "750ms",
 					animationDuration: "750ms",
 				},
-			})}>
+			})}
+		>
 			<Exit easing="linear" time={50} css={{ opacity: 0 }}>
-				<Enter easing="ease-in-out" time={550} css={{ transform: state.location.pathname === contactPageUrl ? "translateY(15%)" : "translateY(-15%)", opacity: 0, overflow: "hidden" }}>
-					<div class={cxs({
+				<Enter
+					easing="ease-in-out"
+					time={550}
+					css={{
+						transform: state.location.pathname === contactPageUrl ? "translateY(15%)" : "translateY(-15%)",
+						opacity: 0,
+						overflow: "hidden",
+					}}
+				>
+					<div
+						class={cxs({
 							minHeight: "100vh",
 							display: "flex",
 							flexDirection: "column",
 							flexGrow: "1",
-						})} ondestroy={() => window.scrollTo(0, 0)}>
+						})}
+						ondestroy={() => window.scrollTo(0, 0)}
+					>
 						<PageTitle title={aboutPageName} />
 
 						<div class={cxs({ paddingTop: "150px" })}>
-							<div class={cxs({
+							<div
+								class={cxs({
 									position: "absolute",
 									width: ds.pxTo(440, ds.get("typo.pxFontSize.base"), "rem"),
 									height: ds.pxTo(440, ds.get("typo.pxFontSize.base"), "rem"),
@@ -54,25 +70,31 @@ export default () => (state, actions) => {
 									left: "50%",
 									transform: "translateX(-50%)",
 									zIndex: ds.get("zIndex.aboveAll"),
-								})}>
+								})}
+							>
 								<GlitchImage id="portrait" src={portrait} />
 							</div>
-							<div class={cxs({
+							<div
+								class={cxs({
 									marginTop: ds.pxTo(30, ds.get("typo.pxFontSize.base"), "rem"),
 									zIndex: ds.get("zIndex.aboveAll"),
 									position: "relative",
-								})}>
+								})}
+							>
 								<DistortedImage id="lettersBackgroundAbout" src={letters} filterSrc={filter} />
 							</div>
 						</div>
-						<div class={cxs({
+						<div
+							class={cxs({
 								marginTop: ds.pxTo(50, ds.get("typo.pxFontSize.base"), "rem"),
 								marginBottom: ds.pxTo(35, ds.get("typo.pxFontSize.base"), "rem"),
 								textAlign: "center",
-							})}>
+							})}
+						>
 							<HandwrittenTitle title="Who i am" />
 						</div>
-						<div class={cxs({
+						<div
+							class={cxs({
 								position: "relative",
 								marginLeft: "auto",
 								marginRight: "auto",
@@ -85,11 +107,15 @@ export default () => (state, actions) => {
 									"rem",
 								)}`,
 								zIndex: ds.get("zIndex.aboveAll"),
-							})} key="abouttext" oncreate={() => actions.setAboutContent(state, actions)}>
+							})}
+							key="abouttext"
+							oncreate={() => actions.setAboutContent(state, actions)}
+						>
 							{state.aboutContent ? state.aboutContent.map((text) => <p>{text}</p>) : <p>...</p>}
 						</div>
 					</div>
 				</Enter>
 			</Exit>
 		</div>
+	)
 }

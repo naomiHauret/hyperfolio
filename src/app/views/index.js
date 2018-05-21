@@ -15,6 +15,7 @@ import Navigation from "app/views/components/Navigation"
 import Header from "app/views/components/Header"
 import DottedBackground from "app/views/components/DottedBackground"
 import ToggleMusic from "app/views/components/ToggleMusic"
+import Modal from "app/views/components/Modal"
 
 // Routes related
 import { homePageUrl, aboutPageUrl, contactPageUrl, projectsPageUrl, routes } from "app/routes"
@@ -25,6 +26,7 @@ import cxs from "cxs"
 
 // Other assets
 import musicFile from "assets/music/audio.mp3"
+import warning from "assets/images/content/warning.gif"
 
 // Music
 let music = new Audio(musicFile)
@@ -51,8 +53,8 @@ export default ({ state, actions, match }) => {
 	const not404 =
 		routes.map((route) => route).includes(state.location.pathname) ||
 		state.location.pathname.indexOf(`${projectsPageUrl}/`) >= 0
-	console.log(not404)
-	not404 && state.isPlayingMusic === true ? music.play() : music.pause()
+
+	not404 && state.isPlayingMusic === true && state.readWarning === true ? music.play() : music.pause()
 
 	return (
 		<div
@@ -103,6 +105,52 @@ export default ({ state, actions, match }) => {
 				{not404 === true && <Navigation state={state} actions={actions} />}
 				{not404 === true && <ToggleMusic state={state} actions={actions} />}
 				{not404 === true && <DottedBackground />}
+				{state.readWarning === false && (
+					<Modal>
+						<h3
+							class={cxs({
+								color: ds.get("colors.text.title"),
+								fontSize: ds.get("typo.sizes.md"),
+								letterSpacing: ds.pxTo(5, ds.get("typo.pxFontSize.base"), "rem"),
+								textTransform: "uppercase",
+							})}
+						>
+							Warning
+						</h3>
+						<div class={cxs({ height: ds.pxTo(150, ds.get("typo.pxFontSize.base"), "rem") })}>
+							<img src={warning} alt="" class={cxs({ height: "100%", width: "100%", objectFit: "contain" })} />
+						</div>
+						<p>
+							This website contains :
+							<ul
+								class={cxs({
+									listStyle: "none",
+									"> li": {
+										marginBottom: ds.pxTo(15, ds.get("typo.pxFontSize.base"), "rem"),
+									},
+								})}
+							>
+								<li>- Flashing images that may not be suitable for photosensitive epilepsy</li>
+								<li>- Music</li>
+							</ul>
+						</p>
+						<button
+							class={cxs({
+								backgroundColor: ds.get("colors.background.colorful"),
+								color: ds.get("colors.text.link"),
+								border: 0,
+								fontFamily: "inherit",
+								fontSize: "inherit",
+								padding: ds.pxTo(10, ds.get("typo.pxFontSize.base"), "rem"),
+								cursor: "pointer",
+								textTransform: "uppercase",
+							})}
+							onclick={actions.didReadWarning}
+						>
+							I understand
+						</button>
+					</Modal>
+				)}
 				<Switch>
 					<Route path={homePageUrl} render={Home} />
 					<Route path={aboutPageUrl} render={About} />

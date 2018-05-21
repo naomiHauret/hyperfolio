@@ -1,0 +1,282 @@
+@font-face {
+	font-family: "Playfair";
+	src: url(./../fonts/PlayfairDisplay-Regular.woff2) format('woff2');
+	font-weight: normal;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: "Pacifico";
+	src: url(./../fonts/Pacifico.woff2) format('woff2');
+	font-weight: normal;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: "PassionOne";
+	src: url(./../fonts/PassionOne-Bold.woff2) format('woff2');
+	font-weight: bold;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: "BoutiqueScript";
+	src: url(./../fonts/BoutiqueScript.woff2) format('woff2');
+	font-weight: 100;
+	font-style: normal;
+}
+
+html {
+	line-height: 1.15;
+	-webkit-text-size-adjust: 100%;
+}
+
+h1 {
+	font-size: 2em;
+	margin: 0.67em 0;
+}
+
+hr {
+	box-sizing: content-box;
+	height: 0;
+	overflow: visible;
+}
+
+pre {
+	font-family: monospace, monospace;
+	font-size: 1em;
+}
+
+a {
+	-webkit-text-decoration-skip: objects;
+}
+
+abbr[title] {
+	text-decoration: underline;
+	-webkit-text-decoration: underline dotted;
+	        text-decoration: underline dotted;
+}
+
+b,
+strong {
+	font-weight: bolder;
+}
+
+code,
+kbd,
+samp {
+	font-family: monospace, monospace;
+	font-size: 1em;
+}
+
+small {
+	font-size: 80%;
+}
+
+button,
+input,
+optgroup,
+select,
+textarea {
+	margin: 0;
+}
+
+button {
+	text-transform: none;
+}
+
+button,
+[type="button"],
+[type="reset"],
+[type="submit"] {
+	-webkit-appearance: button;
+}
+
+button::-moz-focus-inner,
+[type="button"]::-moz-focus-inner,
+[type="reset"]::-moz-focus-inner,
+[type="submit"]::-moz-focus-inner {
+	border-style: none;
+	padding: 0;
+}
+
+button:-moz-focusring,
+[type="button"]:-moz-focusring,
+[type="reset"]:-moz-focusring,
+[type="submit"]:-moz-focusring {
+	outline: 1px dotted ButtonText;
+}
+
+fieldset {
+	padding: 0.35em 0.75em 0.625em;
+}
+
+input {
+	overflow: visible;
+}
+
+legend {
+	box-sizing: border-box;
+	display: table;
+	max-width: 100%;
+	padding: 0;
+	white-space: normal;
+}
+
+progress {
+	display: inline-block;
+	vertical-align: baseline;
+}
+
+select {
+	text-transform: none;
+}
+
+[type="number"]::-webkit-inner-spin-button,
+[type="number"]::-webkit-outer-spin-button {
+	height: auto;
+}
+
+[type="search"] {
+	-webkit-appearance: textfield;
+	outline-offset: -2px;
+}
+
+[type="search"]::-webkit-search-cancel-button,
+[type="search"]::-webkit-search-decoration {
+	-webkit-appearance: none;
+}
+
+::-webkit-file-upload-button {
+	-webkit-appearance: button;
+	font: inherit;
+}
+
+details {
+	display: block;
+}
+
+summary {
+	display: list-item;
+}
+
+* {
+	box-sizing: border-box;
+}
+
+html {
+	font-size: 16px;
+	overflow-x: hidden;
+}
+
+body {
+	display: flex;
+	flex-direction: column;
+	min-height: 100vh;
+	margin: 0 auto;
+	background-color: #000000;
+}
+
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus input:-webkit-autofill,
+textarea:-webkit-autofill,
+textarea:-webkit-autofill:hover textarea:-webkit-autofill:focus {
+	-webkit-text-fill-color: #1700ff;
+	transition: background-color 5000s ease-in-out 0s;
+}
+::-webkit-scrollbar {
+	width: 0;
+}
+
+@-webkit-keyframes glow {
+	from {
+		border-color: var(--inputBorderColorFrom);
+	}
+	to {
+		border-color: var(--inputBorderColorTo);
+	}
+}
+
+@keyframes glow {
+	from {
+		border-color: var(--inputBorderColorFrom);
+	}
+	to {
+		border-color: var(--inputBorderColorTo);
+	}
+}
+@-webkit-keyframes outerMotion {
+	100% {
+		-webkit-transform: rotate(360deg);
+		        transform: rotate(360deg);
+	}
+}
+@keyframes outerMotion {
+	100% {
+		-webkit-transform: rotate(360deg);
+		        transform: rotate(360deg);
+	}
+}
+
+@-webkit-keyframes innerMotion {
+	100% {
+		-webkit-transform: rotate(-360deg);
+		        transform: rotate(-360deg);
+	}
+}
+
+@keyframes innerMotion {
+	100% {
+		-webkit-transform: rotate(-360deg);
+		        transform: rotate(-360deg);
+	}
+}
+
+@-webkit-keyframes areaMotion {
+	50% {
+		-webkit-transform: translate(5%, 5%);
+		        transform: translate(5%, 5%);
+	}
+
+	100% {
+		-webkit-transform: translate(-5%, 5%);
+		        transform: translate(-5%, 5%);
+	}
+}
+
+@keyframes areaMotion {
+	50% {
+		-webkit-transform: translate(5%, 5%);
+		        transform: translate(5%, 5%);
+	}
+
+	100% {
+		-webkit-transform: translate(-5%, 5%);
+		        transform: translate(-5%, 5%);
+	}
+}
+
+@-webkit-keyframes miniUnfold {
+	to {
+		height: 55px;
+	}
+}
+
+@keyframes miniUnfold {
+	to {
+		height: 55px;
+	}
+}
+
+@-webkit-keyframes unfold {
+	to {
+		height: calc(100vh - 150px);
+	}
+}
+
+@keyframes unfold {
+	to {
+		height: calc(100vh - 150px);
+	}
+}

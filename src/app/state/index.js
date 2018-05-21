@@ -3,6 +3,7 @@ import { location } from "@hyperapp/router"
 export default {
 	location: location.state,
 	isPlayingMusic: true,
+	readWarning: false,
 	emailSent: false,
 	currentProject: {
 		uid: null,

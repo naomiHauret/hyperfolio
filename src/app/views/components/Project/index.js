@@ -3,6 +3,7 @@ import { Enter, Exit } from "@hyperapp/transitions"
 import Video from "app/views/components/Video"
 import Branding from "app/views/components/Project/Branding"
 import ImagesGallery from "app/views/components/Project/ImagesGallery"
+import VideosGallery from "app/views/components/Project/VideosGallery"
 import HandwrittenTitle from "app/views/components/HandwrittenTitle"
 import { ds } from "assets/styles/theme"
 import scrollDown from "./../../../../assets/images/content/scrollDown.gif"
@@ -87,7 +88,13 @@ export default ({ match }) => (state, actions) => {
 												},
 											})}
 										>
-											<Video type="project" loop={true} autoplay={true} videoId={state.currentProject.mainVideoId} />
+											<Video
+												type="project"
+												loop={true}
+												autoplay={true}
+												videoId={state.currentProject.mainVideoId}
+												readWarning={state.readWarning}
+											/>
 										</div>
 										<div
 											class={cxs({
@@ -199,6 +206,12 @@ export default ({ match }) => (state, actions) => {
 											<Branding data={state.currentProject.branding} />
 										</div>
 									</div>
+
+									{state.currentProject.videoGallery !== null &&
+										state.currentProject.videoGallery.length > 0 && (
+											<VideosGallery readWarning={state.readWarning} videos={state.currentProject.videoGallery} />
+										)}
+
 									{state.currentProject.imagesGallery !== null &&
 										state.currentProject.imagesGallery.length > 0 && (
 											<ImagesGallery images={state.currentProject.imagesGallery} />

@@ -85,7 +85,7 @@ module.exports = merge(common, {
 		new HtmlPlugin({
 			template: "./src/index.html",
 			excludeChunks: ["base"],
-			filename: "index.html",
+			filename: "200.html",
 			minify: {
 				collapseWhitespace: true,
 				collapseInlineTagWhitespace: true,

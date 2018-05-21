@@ -4,7 +4,7 @@ import { ds } from "assets/styles/theme"
 import YouTubePlayer from "youtube-player"
 import placeholder from "assets/images/content/videoLoading.gif"
 
-export default ({ loop, autoplay, videoId, type, actions, state }) => {
+export default ({ loop, autoplay, videoId, type, readWarning }) => {
 	const id = `player-${videoId}`
 	return (
 		<div
@@ -19,11 +19,11 @@ export default ({ loop, autoplay, videoId, type, actions, state }) => {
 				margin: "auto 0",
 				transform: "translateY(-1.75%)",
 				" > iframe": {
-					transtion: "all 550ms ease-in-out",
 					opacity: 0,
 					backgroundImage: `url('${placeholder}')`,
 					backgroundRepeat: "no-repeat",
 					backgroundPosition: "center",
+					transition: "3750ms ease-in-out opacity",
 					".ready": {
 						opacity: 1,
 						background: "transparent",
@@ -67,7 +67,7 @@ export default ({ loop, autoplay, videoId, type, actions, state }) => {
 						}
 
 						if (e.data === 1) {
-							document.querySelector(`#${id}`).classList.add("ready")
+							readWarning === true && document.querySelector(`#${id}`).classList.add("ready")
 						}
 					})
 					let observables = document.querySelectorAll(`[data-observable='${id}']`)
@@ -86,6 +86,7 @@ export default ({ loop, autoplay, videoId, type, actions, state }) => {
 						observer.observe(observable)
 					})
 				}}
+				onupdate={() => readWarning === true && document.querySelector(`#${id}`).classList.add("ready")}
 			/>
 		</div>
 	)

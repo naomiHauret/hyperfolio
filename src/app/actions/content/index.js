@@ -145,4 +145,9 @@ export default {
 			})
 			.catch((err) => console.log(err))
 	},
+
+	// Warning
+	didReadWarning: () => (state) => ({
+		readWarning: true,
+	}),
 }
