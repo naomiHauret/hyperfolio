@@ -40,5 +40,5 @@ To be able to test out the contact page:
 ## Special thanks
 
 - The Hyperapp community, for their help and support during these past months (and their awesome libs)
-- Prismic team, for building their awesome tool (and saving me hours f)
+- Prismic team, for building their awesome tool (and saving hours/days without sleeping)
 - Caffeine.
