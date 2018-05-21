@@ -2,13 +2,13 @@ import { h } from "hyperapp"
 import cxs from "cxs"
 import { ds } from "assets/styles/theme"
 import { Link } from "@hyperapp/router"
-import { homePageUrl } from "app/routes"
+import { homePageUrl, projectsPageUrl } from "app/routes"
 
-export default ({ state, actions }) => {
+export default ({ location }) => {
 	return (
 		<header
 			class={cxs({
-				background: "linear-gradient(black, transparent 115%)",
+				background: location.pathname.indexOf(`${projectsPageUrl}/`) >= 0 ? ds.get("colors.background.dark") : "linear-gradient(black, transparent 115%)",
 				position: "fixed",
 				top: 0,
 				left: 0,

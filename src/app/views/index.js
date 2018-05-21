@@ -99,7 +99,7 @@ export default ({ state, actions, match }) => {
 									state.location.previous || state.location.pathname === contactPageUrl ? "translateY(-15%)" : "translateY(15%)",
 							}}
 						>
-							<Header />
+							<Header location={state.location} />
 						</Enter>
 					)}
 				{not404 === true && <Navigation state={state} actions={actions} />}

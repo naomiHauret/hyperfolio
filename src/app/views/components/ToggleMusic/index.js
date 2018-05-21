@@ -11,7 +11,7 @@ export default ({ state, actions }) => {
 			class={cxs({
 				backgroundColor: "transparent",
 				color: ds.get("colors.blue"),
-				zIndex: ds.get("zIndex.aboveAll"),
+				zIndex: ds.get("zIndex.aboveGodView"),
 				border: 0,
 				position: "fixed",
 				cursor: "pointer",
