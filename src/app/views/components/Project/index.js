@@ -206,7 +206,8 @@ export default ({ match }) => (state, actions) => {
 											<Branding data={state.currentProject.branding} />
 										</div>
 									</div>
-
+									
+								{console.log(state.currentProject.videoGallery)}
 									{state.currentProject.videoGallery !== null &&
 										state.currentProject.videoGallery.length > 0 && (
 											<VideosGallery readWarning={state.readWarning} videos={state.currentProject.videoGallery} />

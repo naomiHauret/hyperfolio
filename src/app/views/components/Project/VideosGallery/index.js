@@ -8,32 +8,27 @@ export default ({ videos, readWarning }) => (
 		class={cxs({
 			"> div:nth-child(odd)": {
 				marginRight: "auto",
-				"> div": {
-					"@media (min-width: 768px)": {
-						width: "75%",
-					},
-					"@media (min-width: 1199px)": {
-						width: "45%",
-					},
+				"@media (min-width: 768px)": {
+					width: "75%",
+				},
+				"@media (min-width: 1199px)": {
+					width: "50%",
 				},
 			},
 			"> div:nth-child(even)": {
 				marginLeft: "auto",
-				"> div": {
-					"@media (min-width: 768px)": {
-						width: "65%",
-					},
-					"@media (min-width: 1199px)": {
-						width: "55%",
-					},
+				"@media (min-width: 768px)": {
+					width: "65%",
+				},
+				"@media (min-width: 1199px)": {
+					width: "55%",
 				},
 			},
 			"> div:last-child": {
 				marginLeft: "auto",
 				marginRight: "0",
-				"> div": {
-					width: "100%",
-				},
+				width: "100%",
+				marginBottom: ds.pxTo(70, ds.get("typo.pxFontSize.base"), "rem"),
 			},
 		})}
 	>
@@ -41,12 +36,6 @@ export default ({ videos, readWarning }) => (
 			<div
 				class={cxs({
 					height: "395px",
-					"@media (min-width: 768px)": {
-						width: "75%",
-					},
-					"@media (min-width: 1199px)": {
-						width: "45%",
-					},
 				})}
 			>
 				<Video type="project" loop={true} autoplay={true} videoId={video.project_video} readWarning={readWarning} />

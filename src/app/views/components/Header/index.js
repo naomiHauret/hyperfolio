@@ -8,7 +8,10 @@ export default ({ location }) => {
 	return (
 		<header
 			class={cxs({
-				background: location.pathname.indexOf(`${projectsPageUrl}/`) >= 0 ? ds.get("colors.background.dark") : "linear-gradient(black, transparent 115%)",
+				background:
+					location.pathname.indexOf(`${projectsPageUrl}/`) >= 0
+						? ds.get("colors.background.dark")
+						: "linear-gradient(black, transparent 115%)",
 				position: "fixed",
 				top: 0,
 				left: 0,
